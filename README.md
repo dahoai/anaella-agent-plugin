@@ -89,6 +89,12 @@ Create API keys in the Anaella app under **Settings > API keys**. Or tell any ag
 | `meeting-scheduler` | Finds free time and books a Google or Outlook event (invites only on request) |
 | `inbox-triage` | Summarizes unread mail (Gmail, Outlook, IMAP) and saves reply drafts for you to send |
 | `social-publish` | Drafts per-network posts and schedules them after approval |
+| `payments-followup` | Unpaid Stripe or PayPal invoices, reminders, payment requests and refunds, each confirmed first |
+| `slack-digest` | Summarizes channels and open questions, posts approved updates or thread replies |
+| `lead-research` | Company profiles from a domain, local business prospects, and the owners behind them on LinkedIn |
+| `document-from-template` | Copies a Docs template and fills its placeholders, writes Docs from Markdown, shares on request |
+| `n8n-ops` | Finds failed n8n runs, explains why, retries them; runs and edits workflows and data tables |
+| `alerts-automations` | Watches for new items and automations on a schedule or trigger, writes held for approval |
 
 Skills that write (replies, emails, events, posts) always show you the exact content first and
 prefer the reversible option: mail drafts, events without invitations, scheduled posts.
