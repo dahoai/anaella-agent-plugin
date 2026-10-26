@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "anaella",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Connects your agent to Anaella: email, calendars, Drive, Sheets, Slack, Search Console, Analytics, ads, payments and social through one hosted MCP server, plus skills for reports, replies, scheduling and inbox triage.",
   "author": {
     "name": "Anaella",
@@ -63,6 +63,62 @@
         "composerIcon": "./assets/icon.png",
         "supportURL": "https://github.com/dahoai/anaella-agent-plugin/issues",
         "longDescription": "Anaella gives your agent the accounts you already use, through one sign-in. Connect them once in Anaella and ask in plain words: summarize unread email and save reply drafts (Gmail, Outlook or any IMAP mailbox), find a free slot and book a meeting (Google or Outlook Calendar), read and update Sheets, fill a Docs template, catch up on Slack channels, build an SEO report from Search Console and Analytics, compare Meta and Google Ads spend, reply to Google reviews, chase unpaid Stripe or PayPal invoices, check failed n8n runs, and schedule social posts on X, LinkedIn, Instagram, Facebook, TikTok, YouTube, Threads, Bluesky and Mastodon.\n\nEvery write (an email, an event, a post, a reply, an invoice or refund) is shown to you first and only runs after you approve it. Drafts and other reversible options come first. Content the agent reads is treated as data, never as instructions.\n\nAccount tools are free on every Anaella plan. A few research and media tools are paid per call from your Anaella balance, and the tool says so before it runs."
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "List the PayPal invoices that are still open on the connected (sandbox) PayPal account.",
+              "prompt": "Which of my PayPal invoices are still unpaid?",
+              "tools_triggered": "paypal_invoices_list",
+              "expected_behavior": "Call paypal_invoices_list and list the returned invoices that are not paid (draft, sent, unpaid or partly paid) with their id, amount, currency, status and due date. Use only returned data; if none are open, say so. Do not send, remind or cancel any invoice."
+            },
+            {
+              "description": "Draft a PayPal invoice after confirming its contents with the user, without sending it.",
+              "prompt": "Create a PayPal invoice for $40 to client@example.com for \"Logo design\", but do not send it yet.",
+              "tools_triggered": "paypal_invoice_create",
+              "expected_behavior": "Show the exact invoice (recipient, item, amount, currency) and ask for confirmation before calling paypal_invoice_create. After the user confirms, create it as a draft (send false) and report its id and status. Do not send it."
+            },
+            {
+              "description": "See which accounts are connected to the Anaella workspace.",
+              "prompt": "Which accounts are connected to my Anaella workspace?",
+              "tools_triggered": "list_channels",
+              "expected_behavior": "Call list_channels and list each connected account with its platform and name (the demo workspace has a PayPal sandbox account). Do not connect or change any account."
+            },
+            {
+              "description": "Search the web and summarize the results with sources.",
+              "prompt": "Search the web for the latest Model Context Protocol specification release and summarize what it changed.",
+              "tools_triggered": "web_search; web_page_read (optional, to read a result)",
+              "expected_behavior": "Call web_search with a relevant query, optionally read one or two results with web_page_read, and summarize the changes with links to the sources used. Do not invent details that are not in the returned pages."
+            },
+            {
+              "description": "Read a public web page and extract structured information from it.",
+              "prompt": "Read https://anaella.com/pricing and list the plans with their prices.",
+              "tools_triggered": "web_page_read",
+              "expected_behavior": "Call web_page_read on the URL and list each plan with its monthly price and main limits as written on the page. If the page cannot be read, say so instead of guessing."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Creative writing does not need any connected account or web data.",
+              "prompt": "Write a haiku about autumn leaves.",
+              "tools_triggered": "None; no Anaella tools should be called.",
+              "expected_behavior": "Do not activate the Anaella plugin or call any Anaella tool. Answer directly from general knowledge."
+            },
+            {
+              "description": "Simple arithmetic is outside the plugin's account and web tools.",
+              "prompt": "What is 15% of 240?",
+              "tools_triggered": "None; no Anaella tools should be called.",
+              "expected_behavior": "Do not activate the Anaella plugin or call any Anaella tool. Answer directly from general knowledge."
+            },
+            {
+              "description": "A general explanation from common knowledge does not need Anaella.",
+              "prompt": "Explain how photosynthesis works in simple terms.",
+              "tools_triggered": "None; no Anaella tools should be called.",
+              "expected_behavior": "Do not activate the Anaella plugin or call any Anaella tool. Answer directly from general knowledge."
+            }
+          ]
+        }
       }
     }
   }
