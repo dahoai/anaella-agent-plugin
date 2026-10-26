@@ -1,0 +1,17 @@
+{
+  "name": "anaella",
+  "displayName": "Anaella",
+  "version": "0.2.0",
+  "description": "One API for your agents: web search and page reading, Search Console, Google Analytics, Meta and Google Ads, Business Profile reviews, Google or Outlook calendars, Google Sheets, Gmail, Outlook / Microsoft 365 or any IMAP mailbox, social publishing and comment replies, through the accounts you connect to Anaella.",
+  "author": { "name": "Anaella", "url": "https://anaella.com" },
+  "homepage": "https://anaella.com/for-agents",
+  "repository": "https://github.com/dahoai/anaella-plugin",
+  "license": "Apache-2.0",
+  "keywords": ["mcp", "seo", "google-analytics", "ads", "gmail", "calendar", "reviews", "social-media"],
+  "mcpServers": {
+    "anaella": {
+      "type": "http",
+      "url": "https://api.anaella.com/mcp"
+    }
+  }
+}

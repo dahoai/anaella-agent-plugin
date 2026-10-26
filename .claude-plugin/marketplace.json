@@ -1,0 +1,12 @@
+{
+  "name": "anaella",
+  "description": "Anaella plugins for Claude Code",
+  "owner": { "name": "Anaella", "url": "https://anaella.com" },
+  "plugins": [
+    {
+      "name": "anaella",
+      "source": "./plugins/anaella",
+      "description": "Anaella's hosted MCP server plus skills for SEO and ads reports, review replies, scheduling, inbox triage and social publishing."
+    }
+  ]
+}
