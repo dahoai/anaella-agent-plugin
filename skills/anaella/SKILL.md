@@ -1,6 +1,6 @@
 ---
 name: anaella
-description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, Business Profile reviews and updates, Google Calendar or Outlook calendars, Google Sheets, Google Drive or Docs, Slack, Gmail, Outlook / Microsoft 365 or any IMAP mailbox, Stripe or PayPal payments, n8n workflows, a phone number (texts and AI calls), a notetaker bot that records and transcribes Google Meet, Zoom and Teams calls, social posting and comments, RSS feeds, watches for new items or automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
+description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, Business Profile reviews and updates, Google Calendar or Outlook calendars, Google Sheets, Google Drive or Docs, Slack, Gmail, Outlook / Microsoft 365 or any IMAP mailbox, Stripe or PayPal payments, n8n workflows, a phone number (texts and AI calls), a meeting bot that records and transcribes Google Meet, Zoom and Teams calls, social posting and comments, RSS feeds, watches for new items or automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
 ---
 
 # Using Anaella

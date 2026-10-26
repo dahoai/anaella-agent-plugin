@@ -40,14 +40,14 @@
         "phone",
         "sms",
         "voice-ai",
-        "meeting-notetaker",
+        "meeting-bot",
         "meeting-transcripts",
         "social-media",
         "web-search",
         "rss",
         "automation"
       ],
-      "version": "0.6.1"
+      "version": "0.7.0"
     }
   ]
 }

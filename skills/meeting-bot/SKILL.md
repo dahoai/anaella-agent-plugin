@@ -1,14 +1,14 @@
 ---
-name: meeting-notes
-description: Record and transcribe Google Meet, Zoom or Microsoft Teams calls with Anaella's notetaker bot, then turn the transcript into notes, decisions and action items by speaker. Use when the user asks to record, transcribe or take notes in a meeting, send a notetaker or bot to a call, or get the transcript, summary or action items of a meeting the bot attended.
+name: meeting-bot
+description: Record and transcribe Google Meet, Zoom or Microsoft Teams calls with Anaella's meeting bot, then turn the transcript into notes, decisions and action items by speaker. Use when the user asks to record, transcribe or take notes in a meeting, send a notetaker or bot to a call, or get the transcript, summary or action items of a meeting the bot attended.
 ---
 
-# Meeting notes with Anaella
+# Meeting bot with Anaella
 
 Read the `anaella` skill first. No account to connect: the bot joins as a guest.
 
 1. **Send the bot.** `meeting.bot.join` with the meeting `url` (Google Meet, Zoom or Teams
-   link) and optionally `botName` (default "Anaella Notetaker"). Confirm first: it costs $0.02
+   link) and optionally `botName` (default "Anaella"). Confirm first: it costs $0.02
    per recorded minute and everyone in the call will see it. Tell the user someone in the
    meeting must admit the bot within 10 minutes. It returns a `meetingId`.
 2. **Wait for the end.** The bot leaves when everyone else has left (at most 3 hours), then
