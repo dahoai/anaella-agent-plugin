@@ -1,0 +1,49 @@
+{
+  "name": "anaella",
+  "displayName": "Anaella",
+  "version": "0.3.0",
+  "description": "Connects your agent to Anaella: email, calendars, Drive, Sheets, Slack, Search Console, Analytics, ads, payments and social through one hosted MCP server, plus skills for reports, replies, scheduling and inbox triage.",
+  "author": {
+    "name": "Anaella",
+    "url": "https://anaella.com"
+  },
+  "homepage": "https://anaella.com/for-agents",
+  "repository": "https://github.com/dahoai/anaella-agent-plugin",
+  "license": "Apache-2.0",
+  "keywords": [
+    "anaella",
+    "mcp",
+    "agent-tools",
+    "gmail",
+    "outlook",
+    "imap",
+    "email",
+    "google-calendar",
+    "outlook-calendar",
+    "google-drive",
+    "google-docs",
+    "google-sheets",
+    "slack",
+    "google-search-console",
+    "google-analytics",
+    "google-ads",
+    "meta-ads",
+    "google-business-profile",
+    "reviews",
+    "stripe",
+    "paypal",
+    "payments",
+    "n8n",
+    "social-media",
+    "web-search",
+    "rss",
+    "automation"
+  ],
+  "mcpServers": {
+    "anaella": {
+      "type": "http",
+      "url": "https://api.anaella.com/mcp"
+    }
+  },
+  "privacyPolicyUrl": "https://anaella.com/privacy-policy"
+}

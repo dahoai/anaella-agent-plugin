@@ -1,40 +1,83 @@
-# Anaella plugin for Claude Code
+# Anaella agent plugin
 
-Connects Claude Code to [Anaella](https://anaella.com): one API for agents, with typed tools
-and the accounts you connect (Search Console, Google Analytics, Meta Ads, Google Ads,
-Business Profile, Google or Outlook calendars, Gmail, Outlook or any IMAP mailbox, and 9 social
-networks).
+Connects your coding agent to [Anaella](https://anaella.com): one hosted MCP server for the
+accounts you use every day (Gmail, Outlook or any IMAP mailbox, Google and Outlook calendars,
+Drive, Docs and Sheets, Slack, Search Console, Google Analytics, Meta and Google Ads, Business
+Profile reviews, Stripe, PayPal, n8n and 9 social networks), plus skills for reports, replies,
+scheduling and inbox triage.
+
+This repository is the plugin only: a pointer to the hosted server (`https://api.anaella.com/mcp`)
+and Markdown skills. It follows the [Agent Plugins specification v1.0.0](https://agent-plugins.org/specification):
+`plugin.json`, `mcp.json` and `skills/` are the portable package; `.claude-plugin/` and
+`.agents/` add Claude Code and Codex marketplace support.
 
 ## Install
 
+### Claude Code
+
 ```
-/plugin marketplace add dahoai/anaella-skills
+/plugin marketplace add dahoai/anaella-agent-plugin
 /plugin install anaella@anaella
 ```
 
-Then run `/mcp`, pick **anaella** and sign in with your Anaella account (OAuth). Claude Code
-stores and refreshes the token.
+Then run `/mcp`, pick **anaella** and sign in with your Anaella account.
 
-### Using an API key instead of OAuth
-
-For CI or headless use, add the server yourself with an `ana_` key from
-**Settings > API keys** in the Anaella app:
+### Codex
 
 ```
-claude mcp add --transport http anaella-key https://api.anaella.com/mcp \
-  --header "Authorization: Bearer $ANAELLA_API_KEY"
+codex plugin marketplace add dahoai/anaella-agent-plugin
+codex plugin add anaella@anaella
+codex mcp login anaella
 ```
 
-A configured `Authorization` header turns OAuth off for that server, which is why the
-plugin's own server has none.
+### Antigravity
+
+```
+agy plugin install https://github.com/dahoai/anaella-agent-plugin
+```
+
+### OpenCode, Cursor, Gemini CLI and other Agent Skills hosts
+
+Install the skills with the [Skills CLI](https://github.com/vercel-labs/skills):
+
+```
+npx skills add https://github.com/dahoai/anaella-agent-plugin
+```
+
+Then add the MCP server in the client. OpenCode (`opencode.json`):
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "anaella": { "type": "remote", "url": "https://api.anaella.com/mcp" }
+  }
+}
+```
+
+and sign in with `opencode mcp auth anaella`. Any other MCP client takes the same URL over
+Streamable HTTP, either signing in with OAuth or sending an API key:
+
+```json
+{
+  "mcpServers": {
+    "anaella": {
+      "url": "https://api.anaella.com/mcp",
+      "headers": { "Authorization": "Bearer ana_..." }
+    }
+  }
+}
+```
+
+Create API keys in the Anaella app under **Settings > API keys**. Or tell any agent
+"set up https://anaella.com/SKILL.md" and it configures itself.
 
 ## What's included
 
-**MCP server** `anaella` (`https://api.anaella.com/mcp`): `find`, `explain`, `do` and `job`
-for every Anaella capability (email, calendars, Sheets, Drive and Docs, Slack, SEO, ads, reviews, social posting,
-media…), plus `list_channels` and `create_connect_link`.
+**MCP server** `anaella`: `find`, `explain`, `do` and `job` for every Anaella capability, plus
+`list_channels` and `create_connect_link`.
 
-**Skills** (Claude loads them when relevant, or run them as `/anaella:<name>`):
+**Skills:**
 
 | Skill | What it does |
 |-------|--------------|
@@ -47,22 +90,14 @@ media…), plus `list_channels` and `create_connect_link`.
 | `inbox-triage` | Summarizes unread mail (Gmail, Outlook, IMAP) and saves reply drafts for you to send |
 | `social-publish` | Drafts per-network posts and schedules them after approval |
 
-Skills that write (replies, emails, events, posts) always show you the exact content first
-and prefer the reversible option: mail drafts, events without invitations, scheduled posts.
+Skills that write (replies, emails, events, posts) always show you the exact content first and
+prefer the reversible option: mail drafts, events without invitations, scheduled posts.
 
 ## Accounts
 
-Connect accounts in the Anaella app under **Channels**, or let Claude create a connect link
-when a tool needs one. Tools that need an account you haven't connected say so and return
-the link.
+Connect accounts in the Anaella app under **Channels**, or let the agent create a connect link
+when a tool needs one.
 
-## Develop
+## Privacy
 
-```
-claude plugin validate ./plugins/anaella
-claude plugin validate ./
-claude plugin marketplace add ./ && claude plugin install anaella@anaella
-```
-
-Bump `version` in `.claude-plugin/plugin.json` on every release: installed users stay on
-the version they have until it changes.
+[Privacy policy](https://anaella.com/privacy-policy) · [Terms](https://anaella.com/terms-of-service)

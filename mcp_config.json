@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "anaella": {
+      "serverUrl": "https://api.anaella.com/mcp"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "anaella",
+  "version": "0.3.0",
+  "description": "Connects your agent to Anaella: email, calendars, Drive, Sheets, Slack, Search Console, Analytics, ads, payments and social through one hosted MCP server, plus skills for reports, replies, scheduling and inbox triage.",
+  "author": {
+    "name": "Anaella",
+    "url": "https://anaella.com"
+  },
+  "homepage": "https://anaella.com/for-agents",
+  "repository": "https://github.com/dahoai/anaella-agent-plugin",
+  "license": "Apache-2.0",
+  "keywords": [
+    "anaella",
+    "mcp",
+    "agent-tools",
+    "gmail",
+    "outlook",
+    "imap",
+    "email",
+    "google-calendar",
+    "outlook-calendar",
+    "google-drive",
+    "google-docs",
+    "google-sheets",
+    "slack",
+    "google-search-console",
+    "google-analytics",
+    "google-ads",
+    "meta-ads",
+    "google-business-profile",
+    "reviews",
+    "stripe",
+    "paypal",
+    "payments",
+    "n8n",
+    "social-media",
+    "web-search",
+    "rss",
+    "automation"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Anaella",
+        "shortDescription": "Your email, calendars, Drive, Slack, ads and social, for your agent",
+        "developerName": "Anaella",
+        "category": "Productivity",
+        "capabilities": [
+          "Interactive",
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://anaella.com",
+        "privacyPolicyURL": "https://anaella.com/privacy-policy",
+        "termsOfServiceURL": "https://anaella.com/terms-of-service",
+        "defaultPrompt": [
+          "Summarize my unread email and draft replies.",
+          "Find a free hour next week and book a call.",
+          "Build an SEO report from my Search Console."
+        ],
+        "logo": "./assets/icon.png",
+        "composerIcon": "./assets/icon.png"
+      }
+    }
+  }
+}
