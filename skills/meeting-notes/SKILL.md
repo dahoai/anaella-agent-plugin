@@ -14,7 +14,8 @@ Read the `anaella` skill first. No account to connect: the bot joins as a guest.
 2. **Wait for the end.** The bot leaves when everyone else has left (at most 3 hours), then
    the recording is transcribed in a few minutes. `meeting.get` shows `status`: in_progress,
    transcribing, completed, or failed with `error` ("not let into the meeting"…). A watch on
-   `meetings.list` reports each finished meeting (see `alerts-automations`).
+   `meetings.list` reports each finished meeting (see `alerts-automations`). To end it
+   early, `meeting.bot.stop`: what was recorded so far is still transcribed.
 3. **Use the transcript.** `meeting.get` returns utterances with `speaker` (their name in the
    meeting, or "Speaker N"), `start`/`end` in seconds and `text`. Write what the user asked
    for: a summary, decisions, action items with owners, or the full transcript. What

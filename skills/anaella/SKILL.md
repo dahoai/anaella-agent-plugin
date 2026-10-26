@@ -27,7 +27,7 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`,
 `social.comments.reply`, `social.comments.delete`, `payments.request.create`, `stripe.customers.list`,
 `stripe.refund.create`, `paypal.invoices.list`, `n8n.workflows.list`, `n8n.workflow.run`,
 `sms.send`, `sms.list`, `call.place`, `call.get`, `calls.list`,
-`meeting.bot.join`, `meeting.get`, `meetings.list`,
+`meeting.bot.join`, `meeting.bot.stop`, `meeting.get`, `meetings.list`,
 `company.research`, `prospects.search`, `rss.feed.read`, `watch.create`, `watch.events`,
 `automation.create`. List tools (`*.list` / `*.accounts.list` /
 `*.properties.list`) tell you which accounts are connected and give their `channelId`.
