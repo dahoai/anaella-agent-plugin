@@ -3,7 +3,7 @@
 Connects your coding agent to [Anaella](https://anaella.com): one hosted MCP server for the
 accounts you use every day (Gmail, Outlook or any IMAP mailbox, Google and Outlook calendars,
 Drive, Docs and Sheets, Slack, Search Console, Google Analytics, Meta and Google Ads, Business
-Profile reviews, Stripe, PayPal, n8n and 9 social networks), plus skills for reports, replies,
+Profile reviews, Stripe, PayPal, n8n, a phone number and 9 social networks), plus skills for reports, replies,
 scheduling and inbox triage.
 
 This repository is the plugin only: a pointer to the hosted server (`https://api.anaella.com/mcp`)
@@ -93,6 +93,7 @@ Create API keys in the Anaella app under **Settings > API keys**. Or tell any ag
 | `slack-digest` | Summarizes channels and open questions, posts approved updates or thread replies |
 | `lead-research` | Company profiles from a domain, local business prospects, and the owners behind them on LinkedIn |
 | `document-from-template` | Copies a Docs template and fills its placeholders, writes Docs from Markdown, shares on request |
+| `phone-calls` | Texts from your number, AI calls that book or ask and report back, an AI that answers and takes messages |
 | `n8n-ops` | Finds failed n8n runs, explains why, retries them; runs and edits workflows and data tables |
 | `alerts-automations` | Watches for new items and automations on a schedule or trigger, writes held for approval |
 

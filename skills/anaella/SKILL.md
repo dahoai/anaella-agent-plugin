@@ -1,6 +1,6 @@
 ---
 name: anaella
-description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, Business Profile reviews and updates, Google Calendar or Outlook calendars, Google Sheets, Google Drive or Docs, Slack, Gmail, Outlook / Microsoft 365 or any IMAP mailbox, Stripe or PayPal payments, n8n workflows, social posting and comments, RSS feeds, watches for new items or automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
+description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, Business Profile reviews and updates, Google Calendar or Outlook calendars, Google Sheets, Google Drive or Docs, Slack, Gmail, Outlook / Microsoft 365 or any IMAP mailbox, Stripe or PayPal payments, n8n workflows, a phone number (texts and AI calls), social posting and comments, RSS feeds, watches for new items or automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
 ---
 
 # Using Anaella
@@ -26,6 +26,7 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`,
 `social.post.analytics`, `media.upload`, `social.comments.list`,
 `social.comments.reply`, `social.comments.delete`, `payments.request.create`, `stripe.customers.list`,
 `stripe.refund.create`, `paypal.invoices.list`, `n8n.workflows.list`, `n8n.workflow.run`,
+`sms.send`, `sms.list`, `call.place`, `call.get`, `calls.list`,
 `company.research`, `prospects.search`, `rss.feed.read`, `watch.create`, `watch.events`,
 `automation.create`. List tools (`*.list` / `*.accounts.list` /
 `*.properties.list`) tell you which accounts are connected and give their `channelId`.
@@ -45,7 +46,8 @@ These tools act in the user's name, and some are public: `reviews.reply` (public
 Google), `business.posts.create` (public update on their Google Business Profile), `email.send` (mail from their address), `calendar.event.create` (can invite people),
 `social.post.create` (public post), `social.comments.reply` (public reply), `social.comments.delete` (removes someone's comment), `slack.message.send`, `drive.file.share`,
 `sheets.update`, `payments.request.create` and the `stripe.*` / `paypal.*` writes (invoices, refunds,
-cancellations: real money), and `n8n.workflow.*` changes.
+cancellations: real money), `n8n.workflow.*` changes, `sms.send` (a text from their number) and
+`call.place` (an AI voice phones someone for them; billed per minute).
 Before calling one:
 
 - Show the user the exact text, recipients / audience and timing, and get an explicit yes.

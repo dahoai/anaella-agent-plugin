@@ -37,12 +37,15 @@
         "paypal",
         "payments",
         "n8n",
+        "phone",
+        "sms",
+        "voice-ai",
         "social-media",
         "web-search",
         "rss",
         "automation"
       ],
-      "version": "0.4.4"
+      "version": "0.5.0"
     }
   ]
 }
