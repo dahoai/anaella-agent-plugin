@@ -8,7 +8,7 @@ networks).
 ## Install
 
 ```
-/plugin marketplace add dahoai/anaella-plugin
+/plugin marketplace add dahoai/anaella-skills
 /plugin install anaella@anaella
 ```
 
