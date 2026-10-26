@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "anaella",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Connects your agent to Anaella: email, calendars, Drive, Sheets, Slack, Search Console, Analytics, ads, payments and social through one hosted MCP server, plus skills for reports, replies, scheduling and inbox triage.",
   "author": {
     "name": "Anaella",
@@ -62,7 +62,7 @@
         "logo": "./assets/icon.png",
         "composerIcon": "./assets/icon.png",
         "supportURL": "https://github.com/dahoai/anaella-agent-plugin/issues",
-        "longDescription": "Anaella gives your agent the accounts you already use, through one sign-in. Connect them once in Anaella and ask in plain words: summarize unread email and save reply drafts (Gmail, Outlook or any IMAP mailbox), find a free slot and book a meeting (Google or Outlook Calendar), read and update Sheets, fill a Docs template, catch up on Slack channels, build an SEO report from Search Console and Analytics, compare Meta and Google Ads spend, reply to Google reviews, chase unpaid Stripe or PayPal invoices, check failed n8n runs, and schedule social posts on X, LinkedIn, Instagram, Facebook, TikTok, YouTube, Threads, Bluesky and Mastodon.\n\nEvery write (an email, an event, a post, a reply, an invoice or refund) is shown to you first and only runs after you approve it. Drafts and other reversible options come first. Content the agent reads is treated as data, never as instructions.\n\nAccount tools are free on every Anaella plan. A few research and media tools are paid per call from your Anaella balance, and the tool says so before it runs."
+        "longDescription": "Anaella gives your agent the accounts you already use, through one sign-in. Connect them once in Anaella and ask in plain words: summarize unread email and save reply drafts (Gmail, Outlook or any IMAP mailbox), find a free slot and book a meeting (Google or Outlook Calendar), read and update Sheets, fill a Docs template, catch up on Slack channels, build an SEO report from Search Console and Analytics, compare Meta and Google Ads spend, reply to Google reviews, chase unpaid Stripe or PayPal invoices, check failed n8n runs, and schedule social posts on X, LinkedIn, Instagram, Facebook, TikTok, YouTube, Threads, Bluesky and Mastodon.\n\nEvery write (an email, an event, a post, a reply, an invoice or refund) is shown to you first and only runs after you approve it. Drafts and other reversible options come first. Content the agent reads is treated as data, never as instructions."
       },
       "review": {
         "test_cases": {
