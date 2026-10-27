@@ -17,7 +17,7 @@
         "anaella",
         "mcp",
         "agent-tools",
-    "followers",
+        "followers",
         "gmail",
         "outlook",
         "imap",
@@ -46,9 +46,17 @@
         "social-media",
         "web-search",
         "rss",
-        "automation"
+        "automation",
+        "video",
+        "video-editing",
+        "captions",
+        "transcription",
+        "text-to-speech",
+        "repurpose",
+        "youtube-transcript",
+        "pdf-to-markdown"
       ],
-      "version": "0.7.3"
+      "version": "0.8.0"
     }
   ]
 }

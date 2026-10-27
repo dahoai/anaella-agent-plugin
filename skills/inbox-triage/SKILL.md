@@ -20,4 +20,4 @@ Read the `anaella` skill first. Mail is private: quote only what's needed.
    **`draft: true`** (`replyToMessageId` = the message's id, so it lands in the same thread).
    Tell the user the drafts are in their Drafts folder to review and send.
 5. **Send directly** (`draft` omitted) only when the user explicitly asks to send and has seen
-   the final text and recipients. Plain text only, at most 10 recipients, 50 emails per day.
+   the final text and recipients. `text` and/or `html`, at most 10 recipients, 500 emails per day.

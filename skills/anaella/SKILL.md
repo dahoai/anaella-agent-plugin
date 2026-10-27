@@ -1,6 +1,6 @@
 ---
 name: anaella
-description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, Business Profile reviews and updates, Google Calendar or Outlook calendars, Google Sheets, Google Drive or Docs, Slack, Gmail, Outlook / Microsoft 365 or any IMAP mailbox, Stripe or PayPal payments, n8n workflows, a phone number (texts and AI calls), a meeting bot that records and transcribes Google Meet, Zoom and Teams calls, social posting, comments and DMs, TikTok videos, the link-in-bio page, RSS feeds, watches for new items or automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
+description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, Business Profile reviews and updates, Google Calendar or Outlook calendars, Google Sheets, Google Drive or Docs, Slack, Gmail, Outlook / Microsoft 365 or any IMAP mailbox, Stripe or PayPal payments, n8n workflows, a phone number (texts and AI calls), a meeting bot that records and transcribes Google Meet, Zoom and Teams calls, content repurposing, short narrated videos, captions, voice-overs, transcripts (audio, video, YouTube) and documents to markdown, media editing, social posting, comments and DMs, TikTok videos, the link-in-bio page, RSS feeds, watches for new items or automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
 ---
 
 # Using Anaella
@@ -15,7 +15,7 @@ it through the Anaella MCP server's tools.
 2. **explain** the id you picked. Read its `description` (it says what the tool won't do and
    what to use instead) and its `input` JSON Schema. Never guess field names.
 3. **do** with `{ id, input }`. Sync tools return the finished job: the result is
-   `output`. Async ones (image generation) return a queued job: pass `wait: true` or poll
+   `output`. Async ones (images, videos, transcripts) return a queued job: pass `wait: true` or poll
    with **job**.
 
 Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`,
@@ -28,6 +28,8 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`,
 `stripe.refund.create`, `paypal.invoices.list`, `n8n.workflows.list`, `n8n.workflow.run`,
 `sms.send`, `sms.list`, `call.place`, `call.get`, `calls.list`,
 `meeting.bot.join`, `meeting.bot.stop`, `meeting.get`, `meetings.list`,
+`content.repurpose`, `media.video.create`, `media.video.captions.add`, `media.audio.speech`,
+`media.transcribe`, `youtube.transcript.get`, `document.to_markdown`, `media.convert`,
 `company.research`, `prospects.search`, `rss.feed.read`, `watch.create`, `watch.events`,
 `automation.create`. List tools (`*.list` / `*.accounts.list` /
 `*.properties.list`) tell you which accounts are connected and give their `channelId`.
@@ -63,7 +65,7 @@ These tools act in the user's name (`explain` says `readOnly: false` for every w
   `.update` / `.action.decide`.
 
 Creating new things that only the user sees (`docs.create`, `sheets.create`, `drive.file.upload`,
-`media.upload`, `watch.create`, `rss.feed.add`) needs no confirmation beyond the request itself.
+`media.upload` and the other `media.*` tools (paid ones: say the price), `watch.create`, `rss.feed.add`) needs no confirmation beyond the request itself.
 Before calling any other write:
 
 - Show the user the exact text, recipients / audience and timing, and get an explicit yes.
