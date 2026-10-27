@@ -19,4 +19,6 @@ Read the `anaella` skill first. Posts are **public**.
    place with `social.post.update`; don't delete and recreate it.
    `media` replaces the whole list. Published posts can't be edited.
 6. Report the post ids and scheduled times. Analytics are available later with
-   `social.post.analytics`.
+   `social.post.analytics` (video views, watch time and saves included; `period: "lifetime"`
+   for all time); links to the published posts with `social.post.get`; follower growth per
+   channel with `social.followers.get`.

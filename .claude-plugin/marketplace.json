@@ -17,6 +17,7 @@
         "anaella",
         "mcp",
         "agent-tools",
+    "followers",
         "gmail",
         "outlook",
         "imap",
@@ -47,7 +48,7 @@
         "rss",
         "automation"
       ],
-      "version": "0.7.2"
+      "version": "0.7.3"
     }
   ]
 }

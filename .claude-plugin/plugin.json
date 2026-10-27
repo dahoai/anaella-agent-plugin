@@ -1,7 +1,7 @@
 {
   "name": "anaella",
   "displayName": "Anaella",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "Connects your agent to Anaella: email, calendars, Drive, Sheets, Slack, Search Console, Analytics, ads, payments and social through one hosted MCP server, plus skills for reports, replies, scheduling and inbox triage.",
   "author": {
     "name": "Anaella",
@@ -14,6 +14,7 @@
     "anaella",
     "mcp",
     "agent-tools",
+    "followers",
     "gmail",
     "outlook",
     "imap",
