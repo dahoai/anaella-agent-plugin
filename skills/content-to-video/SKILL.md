@@ -32,7 +32,7 @@ resource whose `id` goes straight into `social.post.create`.
   carousel slides), `media.convert` (MOV→MP4, HEIC→JPG, a lighter file), `$0.01` each.
 - **Photos**: `media.image.background.remove`, `media.image.upscale`.
 - **Bring a file in**: `media.upload` takes direct file URLs, video pages (TikTok, Instagram,
-  X, Facebook, Vimeo, YouTube: the video is fetched) and local files as base64 `files`. Only
+  X, Facebook, YouTube: the video is fetched) and local files as base64 `files`. Only
   download videos the user owns or has the right to reuse.
 
 The media tools are async: pass `wait: true` to `do`, or poll `job`.
