@@ -1,6 +1,6 @@
 ---
 name: anaella
-description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, Business Profile reviews and updates, Google Calendar or Outlook calendars, Google Sheets, Google Drive or Docs, Slack, Gmail, Outlook / Microsoft 365 or any IMAP mailbox, Stripe or PayPal payments, n8n workflows, a phone number (texts and AI calls), a meeting bot that records and transcribes Google Meet, Zoom and Teams calls, social posting and comments, RSS feeds, watches for new items or automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
+description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, Business Profile reviews and updates, Google Calendar or Outlook calendars, Google Sheets, Google Drive or Docs, Slack, Gmail, Outlook / Microsoft 365 or any IMAP mailbox, Stripe or PayPal payments, n8n workflows, a phone number (texts and AI calls), a meeting bot that records and transcribes Google Meet, Zoom and Teams calls, social posting, comments and DMs, TikTok videos, the link-in-bio page, RSS feeds, watches for new items or automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
 ---
 
 # Using Anaella
@@ -37,20 +37,34 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`,
 - A tool that acts on an account needs a connected **channel**. If none exists the call fails
   with `channel_required` and `next.connectChannel`: give the user that link, or create a
   hosted connect link with the connect tool, and stop.
+- Google Drive only shows Anaella the files the user picked on the Drive channel page, plus
+  the ones Anaella created. An empty `drive.files.search` usually means the file wasn't picked:
+  ask the user to choose it there, not to reconnect.
 - Several accounts of the same kind → the call fails with a 422 listing them as
   `<channelId> (<name>)`. Ask the user which one; never pick for them. Then pass `channelId`.
 - `reconnect_required` → the user must reconnect (`next.reconnect`). Retrying won't help.
 
 ## Writes are the user's decision
 
-These tools act in the user's name, and some are public: `reviews.reply` (public reply on
-Google), `business.posts.create` (public update on their Google Business Profile), `email.send` (mail from their address), `calendar.event.create` (can invite people),
-`social.post.create` (public post), `social.comments.reply` (public reply), `social.comments.delete` (removes someone's comment), `slack.message.send`, `drive.file.share`,
-`sheets.update`, `payments.request.create` and the `stripe.*` / `paypal.*` writes (invoices, refunds,
-cancellations: real money), `n8n.workflow.*` changes, `sms.send` (a text from their number) and
-`call.place` (an AI voice phones someone for them; billed per minute) and `meeting.bot.join`
-(a bot joins and records their meeting; billed per minute).
-Before calling one:
+These tools act in the user's name (`explain` says `readOnly: false` for every write):
+
+- **Money**: `payments.request.create` and the `stripe.*` / `paypal.*` writes (invoices,
+  refunds, cancellations), `ads.meta.ad.create` and `ads.meta.campaign.update` (ad spend),
+  `call.place` and `meeting.bot.join` (billed per minute).
+- **Public or seen by others**: `social.post.create` / `.update` / `.delete`,
+  `social.comments.reply` / `.delete`, `social.messages.send` (a DM), `reviews.reply`,
+  `business.posts.create` / `.delete`, `bio.update`, `email.send`, `sms.send`,
+  `calendar.event.create` / `.update` / `.delete` / `.respond` (attendees are notified),
+  `slack.message.send` / `.update`, `slack.reaction.add`, `slack.file.upload`,
+  `drive.file.share`, `ads.meta.events.send` (conversion events to Meta).
+- **Hard to undo**: `email.modify` (archive, trash, labels), `sheets.update` / `.clear`,
+  `docs.replace`, `drive.file.update`, `n8n.workflow.*` / `n8n.execution.*` / `n8n.table.*`
+  changes, `phone.answering.update` (how their number answers calls), `automation.create` /
+  `.update` / `.action.decide`.
+
+Creating new things that only the user sees (`docs.create`, `sheets.create`, `drive.file.upload`,
+`media.upload`, `watch.create`, `rss.feed.add`) needs no confirmation beyond the request itself.
+Before calling any other write:
 
 - Show the user the exact text, recipients / audience and timing, and get an explicit yes.
 - Prefer the reversible option: `email.send` with `draft: true`, `calendar.event.create`
