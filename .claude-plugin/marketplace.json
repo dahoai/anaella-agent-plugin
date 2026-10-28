@@ -52,11 +52,12 @@
         "captions",
         "transcription",
         "text-to-speech",
+        "voice-cloning",
         "repurpose",
         "youtube-transcript",
         "pdf-to-markdown"
       ],
-      "version": "0.8.1"
+      "version": "0.9.0"
     }
   ]
 }

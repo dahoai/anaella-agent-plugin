@@ -1,6 +1,6 @@
 ---
 name: content-to-video
-description: Turn an article, a video, a podcast or a document into ready posts, short narrated videos, captions, voice-overs, transcripts and cleaned-up images with Anaella's media tools, then schedule them. Use when the user asks to repurpose content, make a reel / TikTok / short from a topic or script, add subtitles to a video, transcribe audio or video, get a YouTube transcript, read a PDF or Word file, remove a photo background, convert, trim or merge media, or download a TikTok / Instagram / YouTube video into their library.
+description: Turn an article, a video, a podcast or a document into ready posts, short narrated videos, captions, voice-overs (including a cloned voice), transcripts and cleaned-up images with Anaella's media tools, then schedule them. Use when the user asks to repurpose content, make a reel / TikTok / short from a topic, a script, their own photos or a story, clone their voice, add a logo or watermark to a video, add subtitles to a video, transcribe audio or video, get a YouTube transcript, read a PDF or Word file, remove a photo background, convert, trim or merge media, or download a TikTok / Instagram / YouTube video into their library.
 ---
 
 # Content to posts and videos with Anaella
@@ -21,15 +21,30 @@ resource whose `id` goes straight into `social.post.create`.
 
 ## Media
 
-- **A short video from a topic or a script**: `media.video.create` (`topic` or `script`,
-  `language`, `orientation`, `maxSeconds`, `captionStyle`, `music`). Stock footage, a voice
-  and burnt-in captions. About 1.5 minutes; $0.30 up to 60 s, $0.60 above. Show the user the
-  script before posting.
+- **A short video**: `media.video.create`, narrated with burnt-in captions (`language`,
+  `voice`, `orientation`, `captionStyle`). About 1.5 minutes. Pick the `style`:
+  - `footage` (default): `topic` or `script` over stock footage. $0.30 up to 60 s, $0.60 above.
+  - `captioned`: a `script` (or the user's own voice-over, `audioId`) over one image or video
+    of theirs (`backgroundId`).
+  - `story`: a `script` told with karaoke captions over a background; `narratorImageId` and
+    `narratorName` add a presenter.
+  - `scenes`: 2-30 `scenes` (`text` + `mediaId`), each line over its own image or video: the
+    user's product shots, or stills from `media.image.generate`.
+  captioned, story and scenes: $0.10 up to 60 s, $0.20 above. Show the user the script first.
 - **Captions on the user's own video**: `media.video.captions.add` ($0.10).
-- **Voice-over**: `media.audio.speech` (`text`, `language`, `voice`); lay it over a video with
-  `media.video.merge` (`mediaIds`, `audioId`).
+- **Voice-over**: `media.audio.speech` (`text`, `language`, `voice`; `words: true` adds when
+  each word is said); lay it over a video with `media.video.merge` (`mediaIds`, `audioId`).
+- **The user's own voice**: `media.voice.create` saves a 5-30 s recording as a voice, only with
+  consent: read them the statement `explain` gives and set `consent: true` after they confirm
+  it is their voice or they have the speaker's permission. Then `media.audio.clone`
+  (`voiceId`, English `text`) reads any text in it: $0.25 up to 1,000 characters, $0.05 per
+  1,000 more. `media.voices.list` / `media.voice.delete` manage them.
 - **Edit**: `media.video.trim`, `media.video.merge`, `media.video.frames` (thumbnails or
   carousel slides), `media.convert` (MOV→MP4, HEIC→JPG, a lighter file), `$0.01` each.
+- **Branding**: `media.video.overlay` puts a logo or watermark (`overlayId`, a transparent PNG,
+  `opacity`) or a green-screen layer (`mode: colorkey`) on a video. $0.02.
+- **Check a file**: `media.info` gives duration, size and dimensions (free): check a video
+  against the platform's limits before scheduling it.
 - **Photos**: `media.image.background.remove`, `media.image.upscale`.
 - **Bring a file in**: `media.upload` takes direct file URLs, video pages (TikTok, Instagram,
   X, Facebook, YouTube: the video is fetched) and local files as base64 `files`. Only

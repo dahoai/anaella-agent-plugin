@@ -30,6 +30,7 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`,
 `meeting.bot.join`, `meeting.bot.stop`, `meeting.get`, `meetings.list`,
 `content.repurpose`, `media.video.create`, `media.video.captions.add`, `media.audio.speech`,
 `media.transcribe`, `youtube.transcript.get`, `document.to_markdown`, `media.convert`,
+`media.video.overlay`, `media.info`, `media.voice.create`, `media.audio.clone`,
 `company.research`, `prospects.search`, `rss.feed.read`, `watch.create`, `watch.events`,
 `automation.create`. List tools (`*.list` / `*.accounts.list` /
 `*.properties.list`) tell you which accounts are connected and give their `channelId`.
@@ -66,6 +67,8 @@ These tools act in the user's name (`explain` says `readOnly: false` for every w
 
 Creating new things that only the user sees (`docs.create`, `sheets.create`, `drive.file.upload`,
 `media.upload` and the other `media.*` tools (paid ones: say the price), `watch.create`, `rss.feed.add`) needs no confirmation beyond the request itself.
+The exception is `media.voice.create` (a cloned voice): read the user its consent statement (from `explain`)
+and set `consent: true` only after they confirm it is their voice or they have the speaker's permission.
 Before calling any other write:
 
 - Show the user the exact text, recipients / audience and timing, and get an explicit yes.
