@@ -26,11 +26,14 @@ resource whose `id` goes straight into `social.post.create`.
   - `footage` (default): `topic` or `script` over stock footage. $0.30 up to 60 s, $0.60 above.
   - `captioned`: a `script` (or the user's own voice-over, `audioId`) over one image or video
     of theirs (`backgroundId`).
-  - `story`: a `script` told with karaoke captions over a background; `narratorImageId` and
-    `narratorName` add a presenter.
-  - `scenes`: 2-30 `scenes` (`text` + `mediaId`), each line over its own image or video: the
-    user's product shots, or stills from `media.image.generate`.
-  captioned, story and scenes: $0.10 up to 60 s, $0.20 above. Show the user the script first.
+  - `story`: a `script` told with karaoke captions over a background (`backgroundId`, or one
+    generated from `backgroundPrompt`); `narratorImageId` and `narratorName` add a presenter.
+  - `scenes`: 2-30 `scenes` (`text` + `mediaId` or `imagePrompt`), each line over its own image
+    or video: the user's product shots, or generated images.
+  captioned, story and scenes: $0.10 up to 60 s, $0.20 above. They take a caption `font`
+  (`media.fonts.list`), and can be read by the user's cloned voice (`voiceId`) or the
+  expressive `voice: chatterbox` (English; adds `media.audio.clone`'s price). Show the user the
+  script first.
 - **Captions on the user's own video**: `media.video.captions.add` ($0.10).
 - **Voice-over**: `media.audio.speech` (`text`, `language`, `voice`; `words: true` adds when
   each word is said); lay it over a video with `media.video.merge` (`mediaIds`, `audioId`).
@@ -40,12 +43,14 @@ resource whose `id` goes straight into `social.post.create`.
   (`voiceId`, English `text`) reads any text in it: $0.25 up to 1,000 characters, $0.05 per
   1,000 more. `media.voices.list` / `media.voice.delete` manage them.
 - **Edit**: `media.video.trim`, `media.video.merge`, `media.video.frames` (thumbnails or
-  carousel slides), `media.convert` (MOV→MP4, HEIC→JPG, a lighter file), `$0.01` each.
+  carousel slides; `sheet: true` adds a contact sheet), `media.convert` (MOV→MP4, HEIC→JPG, a lighter file), `$0.01` each.
 - **Branding**: `media.video.overlay` puts a logo or watermark (`overlayId`, a transparent PNG,
   `opacity`) or a green-screen layer (`mode: colorkey`) on a video. $0.02.
 - **Check a file**: `media.info` gives duration, size and dimensions (free): check a video
   against the platform's limits before scheduling it.
-- **Photos**: `media.image.background.remove`, `media.image.upscale`.
+- **Photos**: `media.image.background.remove`, `media.image.upscale` (`factor` 2-4 enlarges;
+  `naturalLook: true` makes a generated image look less AI), `media.image.stitch` (2-36 images
+  in one grid: collage, before / after).
 - **Bring a file in**: `media.upload` takes direct file URLs, video pages (TikTok, Instagram,
   X, Facebook, YouTube: the video is fetched) and local files as base64 `files`. Only
   download videos the user owns or has the right to reuse.
