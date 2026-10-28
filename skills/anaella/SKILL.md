@@ -34,7 +34,9 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`,
 `company.research`, `prospects.search`, `rss.feed.read`, `watch.create`, `watch.events`,
 `automation.create`. To attach a file (a PDF, a resume) to an email, pass it in `email.send`
 `attachments` (`contentBase64` + `filename`, a public `url`, a media `resourceId` or a `driveFile`),
-also with `draft: true`; the media library (`media.upload`) takes photos, videos and audio only. List tools (`*.list` / `*.accounts.list` /
+also with `draft: true`. The media library (`media.upload`) also stores documents (PDF, Office,
+OpenDocument, RTF, TXT, CSV, Markdown, JSON; kept private): upload once, then pass the id as `resourceId`
+(email, Slack, Drive) or `mediaId` (`document.to_markdown`). Documents can't be post media. List tools (`*.list` / `*.accounts.list` /
 `*.properties.list`) tell you which accounts are connected and give their `channelId`.
 
 ## Connected accounts (channels)
