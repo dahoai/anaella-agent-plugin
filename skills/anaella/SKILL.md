@@ -32,7 +32,9 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`,
 `media.transcribe`, `youtube.transcript.get`, `document.to_markdown`, `media.convert`,
 `media.video.overlay`, `media.info`, `media.voice.create`, `media.audio.clone`,
 `company.research`, `prospects.search`, `rss.feed.read`, `watch.create`, `watch.events`,
-`automation.create`. List tools (`*.list` / `*.accounts.list` /
+`automation.create`. To attach a file (a PDF, a resume) to an email, pass it in `email.send`
+`attachments` (`contentBase64` + `filename`, a public `url`, a media `resourceId` or a `driveFile`),
+also with `draft: true`; the media library (`media.upload`) takes photos, videos and audio only. List tools (`*.list` / `*.accounts.list` /
 `*.properties.list`) tell you which accounts are connected and give their `channelId`.
 
 ## Connected accounts (channels)
