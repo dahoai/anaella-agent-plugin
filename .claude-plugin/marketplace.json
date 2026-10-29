@@ -58,9 +58,13 @@
         "advisory-council",
         "decisions",
         "youtube-transcript",
-        "pdf-to-markdown"
+        "pdf-to-markdown",
+        "keyword-research",
+        "backlinks",
+        "serp",
+        "ai-visibility"
       ],
-      "version": "0.9.7"
+      "version": "0.9.8"
     }
   ]
 }

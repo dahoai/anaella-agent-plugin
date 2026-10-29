@@ -19,7 +19,8 @@ it through the Anaella MCP server's tools.
    with **job**.
 
 Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`,
-`analytics.report`, `ads.meta.insights`, `ads.google.query`, `reviews.list`,
+`analytics.report`, `seo.keywords.ideas`, `seo.serp`, `seo.domain.overview`, `seo.backlinks.summary`,
+`seo.ai.mentions`, `ads.meta.insights`, `ads.google.query`, `reviews.list`,
 `reviews.reply`, `business.posts.create`, `calendar.availability`, `calendar.event.create`, `email.list`,
 `email.get`, `email.attachment.read` (text) / `email.attachment.save` (original file), `email.send`, `sheets.read`, `sheets.append`, `drive.files.search`,
 `drive.file.read`, `docs.create`, `slack.messages.list`, `slack.message.send`, `social.post.create`, `social.posts.list`,
