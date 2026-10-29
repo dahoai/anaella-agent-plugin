@@ -97,6 +97,7 @@ Create API keys in the Anaella app under **Settings > API keys**. Or tell any ag
 | `meeting-bot` | Sends Anaella's bot into a Google Meet, Zoom or Teams call, then summarizes the transcript by speaker |
 | `n8n-ops` | Finds failed n8n runs, explains why, retries them; runs and edits workflows and data tables |
 | `content-to-video` | Repurposes an article, video or document into posts, makes narrated short videos (stock, own visuals, stories), captions, voice-overs, voice clones and transcripts |
+| `advisory-council` | Puts a decision before simulated founders and marketers (Musk, Bezos, Hormozi, Ogilvy…), grounded in your own numbers: each take, where they disagree, a recommendation |
 | `alerts-automations` | Watches for new items and automations on a schedule or trigger, writes held for approval |
 
 Skills that write (replies, emails, events, posts) always show you the exact content first and
