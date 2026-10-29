@@ -43,6 +43,7 @@
         "voice-ai",
         "meeting-bot",
         "meeting-transcripts",
+        "talking-bot",
         "social-media",
         "web-search",
         "rss",
@@ -59,7 +60,7 @@
         "youtube-transcript",
         "pdf-to-markdown"
       ],
-      "version": "0.9.4"
+      "version": "0.9.5"
     }
   ]
 }
