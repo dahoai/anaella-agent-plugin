@@ -93,7 +93,8 @@ another URL: fix duplicates or the declared canonical. `sitemaps` with errors, o
 downloaded, come first. Google has no indexing API for ordinary pages (the owner requests it in
 Search Console), but Bing does: after a yes, `bing.urls.submit` (Bing connected, up to 500 URLs,
 daily quota) or `indexnow.submit` (Bing, Yandex, Naver, Seznam…; the site must serve its key
-file) for new or changed pages only. `bing.crawl.issues` lists what Bing could not crawl.
+file) for new or changed pages only. `bing.crawl.issues` lists what Bing could not crawl and
+the sitemaps it has; a missing one goes in with `bing.sitemaps.submit` (after a yes).
 
 **How do I rank for X / keyword research**:
 `seo.keywords.ideas` on the seed (volume, difficulty, intent) → `seo.serp` on the 2-3 best
