@@ -97,9 +97,10 @@ doesn't (compare with `gsc.queries.list`) → `seo.backlinks.summary` for both s
 the user are outreach targets. `view: "anchors"` shows how others describe the site.
 
 **Am I visible in ChatGPT / AI answers**:
-First `seo.ai.readiness`: a site that blocks GPTBot, OAI-SearchBot, ClaudeBot or
-PerplexityBot can't be read or cited by those assistants (blocking only training bots such as
-Google-Extended or CCBot is a choice, not a fault); no llms.txt is a small gap. Then
+First `seo.ai.readiness`: a site that blocks the search and user agents
+(OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, PerplexityBot, Perplexity-User)
+can't be read or cited by those assistants; blocking only training bots (GPTBot, ClaudeBot,
+Google-Extended, CCBot) is a content-use choice, not a visibility fault; no llms.txt is a small gap. Then
 `seo.ai.mentions` with the brand or domain and 2-4 `competitors` (share of mentions; Google AI
 Overviews by default, `platform: "chatgpt"` for ChatGPT, US English only), `questions: true` to
 see which questions mention them. Then `seo.ai.answers` with 2-3 questions a customer would
