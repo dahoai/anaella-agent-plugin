@@ -1,6 +1,6 @@
 ---
 name: seo-report
-description: SEO through Anaella — a performance report from the site's own Search Console and GA4 data, plus outside SEO data (keyword research, live Google results, competitor domains, backlinks, visibility in ChatGPT / AI Overviews) and a strategy method to turn it into a few actions. Use when the user asks how their site is doing in search, what to improve, how to rank for something, who their SEO competitors are, for keyword ideas or backlinks, or whether AI assistants mention them.
+description: SEO through Anaella — a performance report from the site's own Search Console and GA4 data, a technical crawl of the site, outside SEO data (keyword research, live Google results, competitor domains, backlinks, visibility in ChatGPT / AI Overviews) and a strategy method to turn it into a few actions. Use when the user asks how their site is doing in search, what to improve, for a technical SEO audit, broken links or duplicate titles, how to rank for something, who their SEO competitors are, for keyword ideas or backlinks, or whether AI assistants can read or mention them.
 ---
 
 # SEO with Anaella
@@ -15,7 +15,10 @@ Two kinds of data, never mixed up:
   `seo.keywords.metrics`, `seo.serp`, `seo.domain.overview`, `seo.domain.keywords`,
   `seo.domain.tech`, `seo.backlinks.summary`, `seo.backlinks.list`, `seo.ai.answers`,
   `seo.ai.mentions`. Say the price before a run of several calls; prefer `limit` 20-50.
-- Pages: `web.page.read` (content), `web.page.audit` (on-page SEO, schema, tech, headers).
+- The site itself (free): `seo.site.audit` (crawls up to 100 pages: errors, broken links,
+  noindex, canonicals, titles, descriptions, H1, thin pages, alt, orphans, sitemap gaps, each
+  labelled threat or gap), `seo.ai.readiness` (AI crawlers allowed or blocked in robots.txt,
+  llms.txt), `web.page.audit` (one page in depth: schema, hreflang, headers), `web.page.read`.
 
 ## The method: diagnose, choose, act
 
@@ -63,11 +66,24 @@ ask, the searches AI engines run), shows who stands behind it, and has clean str
    pages losing clicks; `gsc.url.inspect` and `web.page.audit` on one or two key pages.
 5. Report: totals with their change, the tables, then diagnosis → policy → 3-5 actions.
 
+**Technical health / site audit**:
+`seo.site.audit` on the home page (`maxPages` 50-100; async, poll the job). Its `issues` are
+already threats and gaps: rank them with the Impact formula (a broken link on a page with many
+`inlinks` matters more than one on a deep page). `web.page.audit` on the 1-2 most important
+pages with problems for schema and headers. `partial: true` means a bigger site: say the
+results cover the pages crawled, not the whole site. Cross-check with `gsc.url.inspect` before
+calling a `noindex` or canonical a mistake.
+
 **How do I rank for X / keyword research**:
 `seo.keywords.ideas` on the seed (volume, difficulty, intent) → `seo.serp` on the 2-3 best
 terms to see who ranks, the People also ask questions and AI Overview sources →
 `web.page.read` the top result to see what it covers → recommend the page to create or
-improve, with its primary and secondary keywords and the questions it must answer. Check the
+improve, with its primary and secondary keywords and the questions it must answer.
+
+**Optimize an existing page for a query**: `seo.serp` on the query, `web.page.read` on the
+user's page and the top 3 organic results, then compare: headings and the subtopics they cover,
+length, the People also ask questions each answers, and what the AI Overview cites. The gaps
+are the edits: missing subtopics and questions, a title and H1 that match the intent. Check the
 user's current position with `gsc.queries.list` first when Search Console is connected.
 
 **Who are my competitors / what do they do better**:
@@ -81,6 +97,9 @@ doesn't (compare with `gsc.queries.list`) → `seo.backlinks.summary` for both s
 the user are outreach targets. `view: "anchors"` shows how others describe the site.
 
 **Am I visible in ChatGPT / AI answers**:
+First `seo.ai.readiness`: a site that blocks GPTBot, OAI-SearchBot, ClaudeBot or
+PerplexityBot can't be read or cited by those assistants (blocking only training bots such as
+Google-Extended or CCBot is a choice, not a fault); no llms.txt is a small gap. Then
 `seo.ai.mentions` with the brand or domain and 2-4 `competitors` (share of mentions; Google AI
 Overviews by default, `platform: "chatgpt"` for ChatGPT, US English only), `questions: true` to
 see which questions mention them. Then `seo.ai.answers` with 2-3 questions a customer would

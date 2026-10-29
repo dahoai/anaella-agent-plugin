@@ -62,9 +62,11 @@
         "keyword-research",
         "backlinks",
         "serp",
-        "ai-visibility"
+        "ai-visibility",
+      "technical-seo",
+      "llms-txt"
       ],
-      "version": "0.9.8"
+      "version": "0.9.9"
     }
   ]
 }

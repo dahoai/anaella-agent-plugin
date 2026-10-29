@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "anaella",
-  "version": "0.9.8",
+  "version": "0.9.9",
   "description": "Connects your agent to Anaella: email, calendars, Drive, Sheets, Slack, Search Console, Analytics, ads, payments and social through one hosted MCP server, plus skills for reports, replies, scheduling and inbox triage.",
   "author": {
     "name": "Anaella",
@@ -59,7 +59,9 @@
     "keyword-research",
     "backlinks",
     "serp",
-    "ai-visibility"
+    "ai-visibility",
+  "technical-seo",
+  "llms-txt"
   ],
   "extensions": {
     "com.openai": {
