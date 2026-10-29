@@ -21,7 +21,7 @@ it through the Anaella MCP server's tools.
 Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`,
 `analytics.report`, `ads.meta.insights`, `ads.google.query`, `reviews.list`,
 `reviews.reply`, `business.posts.create`, `calendar.availability`, `calendar.event.create`, `email.list`,
-`email.get`, `email.attachment.read`, `email.send`, `sheets.read`, `sheets.append`, `drive.files.search`,
+`email.get`, `email.attachment.read` (text) / `email.attachment.save` (original file), `email.send`, `sheets.read`, `sheets.append`, `drive.files.search`,
 `drive.file.read`, `docs.create`, `slack.messages.list`, `slack.message.send`, `social.post.create`, `social.posts.list`,
 `social.post.analytics`, `social.analytics.get`, `social.followers.get`, `media.upload`, `social.comments.list`,
 `social.comments.reply`, `social.comments.delete`, `payments.request.create`, `stripe.customers.list`,
