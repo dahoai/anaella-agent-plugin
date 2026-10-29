@@ -8,8 +8,10 @@ description: SEO through Anaella — a performance report from the site's own Se
 Read the `anaella` skill first for the find → explain → do loop.
 
 Two kinds of data, never mixed up:
-- **The site's own numbers** (exact, free): `gsc.sites.list`, `gsc.queries.list`,
-  `gsc.url.inspect`, `analytics.properties.list`, `analytics.report`. Needs Search Console /
+- **The site's own numbers** (exact, free): `gsc.sites.list`, `gsc.opportunities`
+  (measured quick wins and drops), `gsc.index.coverage` (which pages Google indexed and why
+  not), `gsc.queries.list` (raw rows), `gsc.url.inspect`, `analytics.properties.list`,
+  `analytics.report`. Needs Search Console /
   GA4 connected.
 - **Outside data** (third-party estimates, paid per call, any domain): `seo.keywords.ideas`,
   `seo.keywords.metrics`, `seo.serp`, `seo.domain.overview`, `seo.domain.keywords`,
@@ -57,13 +59,18 @@ ask, the searches AI engines run), shows who stands behind it, and has clean str
 **How is my site doing / what should I improve** (own numbers):
 1. Pick the site (`gsc.sites.list`, `analytics.properties.list`); missing → give the connect
    link it returns. Several → ask which.
-2. `gsc.queries.list`, last 28 days vs the 28 before: totals (no `dimensions`), top queries
-   (`dimensions: ["query"]`, `rowLimit: 25`), top pages (`["page"]`). Data lags ~2 days: end
-   the range 2-3 days ago. `ctr` is a 0-1 ratio.
+2. `gsc.opportunities` (28 days vs the 28 before, already anchored on Google's latest data):
+   `totals` for the change, then its lists. For top queries and pages add `gsc.queries.list`
+   (`dimensions: ["query"]` or `["page"]`, `rowLimit: 25`). `ctr` is a 0-1 ratio.
 3. `analytics.report`, same periods: `sessions`, `totalUsers`, `conversions` by
    `sessionDefaultChannelGroup`, then `sessions` by `landingPage` filtered to Organic Search.
-4. Opportunities: high impressions + position 5-20 + low CTR → title/description rewrites;
-   pages losing clicks; `gsc.url.inspect` and `web.page.audit` on one or two key pages.
+4. Opportunities, from `gsc.opportunities` (each list is measured, never guess one yourself):
+   `pageTwo` → strengthen that page for the query (content, internal links, title);
+   `lowCtr` → rewrite the title and description to match the query; `cannibalized` → pick one
+   page per query, merge or differentiate the others; `fallers`, `clickDrops`, `pageDrops` →
+   read the page (`web.page.audit`) and the results (`seo.serp`): who overtook it, did the
+   page change; `newQueries` → demand you can serve on purpose. Empty movers with
+   `comparable: false` mean "not measurable yet", not "nothing moved".
 5. Report: totals with their change, the tables, then diagnosis → policy → 3-5 actions.
 
 **Technical health / site audit**:
@@ -73,6 +80,17 @@ already threats and gaps: rank them with the Impact formula (a broken link on a 
 pages with problems for schema and headers. `partial: true` means a bigger site: say the
 results cover the pages crawled, not the whole site. Cross-check with `gsc.url.inspect` before
 calling a `noindex` or canonical a mistake.
+
+**Is Google indexing my pages**:
+`gsc.index.coverage` (async; sitemap URLs by default, or `urls` for the key pages). Fix per
+`notIndexed` state: "URL is unknown to Google" → in the sitemap? linked from indexed pages?;
+"Discovered - currently not indexed" → Google has not crawled it yet: add internal links from
+strong pages, make it worth crawling; "Crawled - currently not indexed" → Google judged it not
+worth indexing: thin or duplicate, improve or merge; "Excluded by 'noindex' tag" / "Alternate
+page with proper canonical tag" → intended or not? `canonicalMismatch` → Google prefers
+another URL: fix duplicates or the declared canonical. `sitemaps` with errors, or never
+downloaded, come first. Indexing requests are made by the owner in Search Console (Google has
+no API for ordinary pages).
 
 **How do I rank for X / keyword research**:
 `seo.keywords.ideas` on the seed (volume, difficulty, intent) → `seo.serp` on the 2-3 best

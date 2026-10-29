@@ -18,7 +18,7 @@ it through the Anaella MCP server's tools.
    `output`. Async ones (images, videos, transcripts) return a queued job: pass `wait: true` or poll
    with **job**.
 
-Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`,
+Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.opportunities`, `gsc.index.coverage`,
 `analytics.report`, `seo.keywords.ideas`, `seo.serp`, `seo.domain.overview`, `seo.backlinks.summary`,
 `seo.ai.mentions`, `seo.site.audit`, `seo.ai.readiness`, `ads.meta.insights`, `ads.google.query`, `reviews.list`,
 `reviews.reply`, `business.posts.create`, `calendar.availability`, `calendar.event.create`, `email.list`,
