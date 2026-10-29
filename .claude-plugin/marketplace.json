@@ -16,6 +16,8 @@
       "keywords": [
     "search console",
     "index coverage",
+    "bing webmaster",
+    "indexnow",
         "anaella",
         "mcp",
         "agent-tools",
@@ -69,7 +71,7 @@
       "technical-seo",
       "llms-txt"
       ],
-      "version": "0.9.12"
+      "version": "0.9.13"
     }
   ]
 }

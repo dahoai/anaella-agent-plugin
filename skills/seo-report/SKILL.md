@@ -11,8 +11,9 @@ Two kinds of data, never mixed up:
 - **The site's own numbers** (exact, free): `gsc.sites.list`, `gsc.opportunities`
   (measured quick wins and drops), `gsc.index.coverage` (which pages Google indexed and why
   not), `gsc.queries.list` (raw rows), `gsc.url.inspect`, `analytics.properties.list`,
-  `analytics.report`. Needs Search Console /
-  GA4 connected.
+  `analytics.report`. Needs Search Console / GA4 connected. Bing (also behind Yahoo,
+  DuckDuckGo, Ecosia and ChatGPT search), once Bing Webmaster Tools is connected:
+  `bing.sites.list`, `bing.queries.list`, `bing.crawl.issues`, `bing.url.inspect`.
 - **Outside data** (third-party estimates, paid per call, any domain): `seo.keywords.ideas`,
   `seo.keywords.metrics`, `seo.serp`, `seo.domain.overview`, `seo.domain.keywords`,
   `seo.domain.tech`, `seo.backlinks.summary`, `seo.backlinks.list`, `seo.ai.answers`,
@@ -89,8 +90,10 @@ strong pages, make it worth crawling; "Crawled - currently not indexed" → Goog
 worth indexing: thin or duplicate, improve or merge; "Excluded by 'noindex' tag" / "Alternate
 page with proper canonical tag" → intended or not? `canonicalMismatch` → Google prefers
 another URL: fix duplicates or the declared canonical. `sitemaps` with errors, or never
-downloaded, come first. Indexing requests are made by the owner in Search Console (Google has
-no API for ordinary pages).
+downloaded, come first. Google has no indexing API for ordinary pages (the owner requests it in
+Search Console), but Bing does: after a yes, `bing.urls.submit` (Bing connected, up to 500 URLs,
+daily quota) or `indexnow.submit` (Bing, Yandex, Naver, Seznam…; the site must serve its key
+file) for new or changed pages only. `bing.crawl.issues` lists what Bing could not crawl.
 
 **How do I rank for X / keyword research**:
 `seo.keywords.ideas` on the seed (volume, difficulty, intent) → `seo.serp` on the 2-3 best
