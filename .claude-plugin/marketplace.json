@@ -53,6 +53,7 @@
         "video",
         "video-editing",
         "captions",
+    "text-overlay",
         "transcription",
         "text-to-speech",
         "voice-cloning",
@@ -68,7 +69,7 @@
       "technical-seo",
       "llms-txt"
       ],
-      "version": "0.9.11"
+      "version": "0.9.12"
     }
   ]
 }

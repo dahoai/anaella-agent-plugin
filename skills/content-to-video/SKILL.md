@@ -1,6 +1,6 @@
 ---
 name: content-to-video
-description: Turn an article, a video, a podcast or a document into ready posts, short narrated videos, captions, voice-overs (including a cloned voice), transcripts and cleaned-up images with Anaella's media tools, then schedule them. Use when the user asks to repurpose content, make a reel / TikTok / short from a topic, a script, their own photos or a story, clone their voice, add a logo or watermark to a video, add subtitles to a video, transcribe audio or video, get a YouTube transcript, read a PDF or Word file, remove a photo background, convert, trim or merge media, or download a TikTok / Instagram / YouTube video into their library.
+description: Turn an article, a video, a podcast or a document into ready posts, short narrated videos, captions, voice-overs (including a cloned voice), transcripts and cleaned-up images with Anaella's media tools, then schedule them. Use when the user asks to repurpose content, make a reel / TikTok / short from a topic, a script, their own photos or a story, clone their voice, add a logo or watermark to a video, put text or a hook on a video, add subtitles to a video, transcribe audio or video, get a YouTube transcript, read a PDF or Word file, remove a photo background, convert, trim or merge media, or download a TikTok / Instagram / YouTube video into their library.
 ---
 
 # Content to posts and videos with Anaella
@@ -35,6 +35,10 @@ resource whose `id` goes straight into `social.post.create`.
   expressive `voice: chatterbox` (English; adds `media.audio.clone`'s price). Show the user the
   script first.
 - **Captions on the user's own video**: `media.video.captions.add` ($0.10).
+- **Text on a video** (a hook, a title, labels): `media.video.text.add` takes 1-30 `texts`,
+  each with `start` / `end` seconds, a `style` (classic, box, dark_box, neon, meme, headline,
+  typewriter, minimal), a `position` clear of the apps' buttons (or `x`/`y`) and an `animation`
+  (fade, pop, slide_up, typewriter). $0.02. Keep a hook short and on screen for the first 2-3 s.
 - **Voice-over**: `media.audio.speech` (`text`, `language`, `voice`; `words: true` adds when
   each word is said); lay it over a video with `media.video.merge` (`mediaIds`, `audioId`).
 - **The user's own voice**: `media.voice.create` saves a 5-30 s recording as a voice, only with
