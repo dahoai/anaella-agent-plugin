@@ -20,7 +20,7 @@ Two kinds of data, never mixed up:
 - The site itself (free): `seo.site.audit` (crawls up to 100 pages: errors, broken links,
   noindex, canonicals, titles, descriptions, H1, thin pages, alt, orphans, sitemap gaps, each
   labelled threat or gap), `seo.ai.readiness` (AI crawlers allowed or blocked in robots.txt,
-  llms.txt), `web.page.audit` (one page in depth: schema, hreflang, headers), `web.page.read`.
+  llms.txt), `seo.page.audit` (one page in depth: schema, hreflang, headers), `web.page.read`.
 
 ## The method: diagnose, choose, act
 
@@ -68,7 +68,7 @@ ask, the searches AI engines run), shows who stands behind it, and has clean str
    `pageTwo` → strengthen that page for the query (content, internal links, title);
    `lowCtr` → rewrite the title and description to match the query; `cannibalized` → pick one
    page per query, merge or differentiate the others; `fallers`, `clickDrops`, `pageDrops` →
-   read the page (`web.page.audit`) and the results (`seo.serp`): who overtook it, did the
+   read the page (`seo.page.audit`) and the results (`seo.serp`): who overtook it, did the
    page change; `newQueries` → demand you can serve on purpose. Empty movers with
    `comparable: false` mean "not measurable yet", not "nothing moved".
 5. Report: totals with their change, the tables, then diagnosis → policy → 3-5 actions.
@@ -76,7 +76,7 @@ ask, the searches AI engines run), shows who stands behind it, and has clean str
 **Technical health / site audit**:
 `seo.site.audit` on the home page (`maxPages` 50-100; async, poll the job). Its `issues` are
 already threats and gaps: rank them with the Impact formula (a broken link on a page with many
-`inlinks` matters more than one on a deep page). `web.page.audit` on the 1-2 most important
+`inlinks` matters more than one on a deep page). `seo.page.audit` on the 1-2 most important
 pages with problems for schema and headers. `partial: true` means a bigger site: say the
 results cover the pages crawled, not the whole site. Cross-check with `gsc.url.inspect` before
 calling a `noindex` or canonical a mistake.
