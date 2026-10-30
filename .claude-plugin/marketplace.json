@@ -17,6 +17,7 @@
     "ad library",
     "competitor ads",
     "paid vs organic",
+    "ads audit",
     "search console",
     "index coverage",
     "bing webmaster",
@@ -75,7 +76,7 @@
       "technical-seo",
       "llms-txt"
       ],
-      "version": "0.9.18"
+      "version": "0.9.19"
     }
   ]
 }

@@ -1,6 +1,6 @@
 ---
 name: ads-report
-description: Summarize and diagnose paid ads across the user's connected Meta (Facebook/Instagram) and Google Ads accounts through Anaella — spend, results, cost per result, best and worst campaigns, competitors' Meta ads and hooks, paid search overlapping organic rank, wasted search spend and negative keywords, kill/scale budget verdicts, and anomalies (spend spikes, delivery drops, stopped conversions). Use when the user asks how their ads are doing, where budget goes or is wasted, what to pause or scale, or to compare campaigns or platforms, or what ads competitors run.
+description: Audit, summarize and diagnose paid ads across the user's connected Meta (Facebook/Instagram) and Google Ads accounts through Anaella — spend, results, cost per result, best and worst campaigns, competitors' Meta ads and hooks, paid search overlapping organic rank, wasted search spend and negative keywords, kill/scale budget verdicts, and anomalies (spend spikes, delivery drops, stopped conversions). Use when the user asks for an ads audit or account review, how their ads are doing, where budget goes or is wasted, what to pause or scale, or to compare campaigns or platforms, or what ads competitors run.
 ---
 
 # Ads report with Anaella
@@ -42,6 +42,12 @@ Read the `anaella` skill first. These tools only read; nothing is changed in the
      hooks grouped by how they open. Search the brand name in `searchTerms`, then pass its
      `pageId` in `pageIds`. `countries` must be EU, EEA or UK markets: the archive has no
      ordinary ads elsewhere, so a US-only advertiser shows nothing. Spend is not published.
+   - `ads.audit` (Google): the full account audit, 82 controls with a 0-100 score and a grade.
+     The API-answerable controls come decided with evidence; the others are `JUDGE` with their
+     criteria: decide those you can from what you know of the business (ask if needed), say
+     which you left open, and never present the score as covering them (`coverage`). Pass
+     `localBusiness` when the business serves a local area. Lead with `criticalIssues`, then
+     `quickWins`. Meta's audit comes in a later pass; use the tools above for Meta meanwhile.
 5. **Report**: totals per account, a campaign table, then 3-5 actions in this order: tracking
    first (conversions stopped, or no conversion value), then waste (kill verdicts, negatives),
    then growth (raise_budget, scale). Recommend; don't change anything. Pausing or a budget
