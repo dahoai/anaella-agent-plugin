@@ -20,7 +20,7 @@ it through the Anaella MCP server's tools.
 
 Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.opportunities`, `gsc.index.coverage`, `bing.queries.list`,
 `analytics.report`, `seo.keywords.ideas`, `seo.serp`, `seo.domain.overview`, `seo.backlinks.summary`,
-`seo.ai.mentions`, `seo.site.audit`, `seo.ai.readiness`, `ads.meta.insights`, `ads.google.query`, `ads.pulse`, `ads.budget.review`, `ads.google.wasted_spend`, `reviews.list`,
+`seo.ai.mentions`, `seo.site.audit`, `seo.ai.readiness`, `ads.meta.insights`, `ads.google.query`, `ads.pulse`, `ads.budget.review`, `ads.google.wasted_spend`, `ads.competitors`, `reviews.list`,
 `reviews.reply`, `business.posts.create`, `calendar.availability`, `calendar.event.create`, `email.list`,
 `email.get`, `email.attachment.read` (text) / `email.attachment.save` (original file), `email.send`, `sheets.read`, `sheets.append`, `drive.files.search`,
 `drive.file.read`, `docs.create`, `slack.messages.list`, `slack.message.send`, `social.post.create`, `social.posts.list`,
