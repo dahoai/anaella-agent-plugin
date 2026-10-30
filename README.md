@@ -1,5 +1,7 @@
 # Anaella agent plugin
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/dahoai-anaella-agent-plugin-1edqub)](https://m8ven.ai/mcp/dahoai-anaella-agent-plugin-1edqub?s=readme)
+
 Connects your coding agent to [Anaella](https://anaella.com): one hosted MCP server for the
 accounts you use every day (Gmail, Outlook or any IMAP mailbox, Google and Outlook calendars,
 Drive, Docs and Sheets, Slack, Search Console, Google Analytics, Meta and Google Ads, Business
