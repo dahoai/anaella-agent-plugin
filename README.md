@@ -13,6 +13,8 @@ and Markdown skills. It follows the [Agent Plugins specification v1.0.0](https:/
 `plugin.json`, `mcp.json` and `skills/` are the portable package; `.claude-plugin/` and
 `.agents/` add Claude Code and Codex marketplace support.
 
+[![Anaella MCP server](https://mcprush.com/badge/anaella-mcp/card.svg)](https://mcprush.com/to/anaella-mcp?ref=badge)
+
 ## Install
 
 ### Claude Code
