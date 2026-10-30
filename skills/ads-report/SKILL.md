@@ -42,12 +42,13 @@ Read the `anaella` skill first. These tools only read; nothing is changed in the
      hooks grouped by how they open. Search the brand name in `searchTerms`, then pass its
      `pageId` in `pageIds`. `countries` must be EU, EEA or UK markets: the archive has no
      ordinary ads elsewhere, so a US-only advertiser shows nothing. Spend is not published.
-   - `ads.audit` (Google): the full account audit, 82 controls with a 0-100 score and a grade.
+   - `ads.audit` (Google or Meta account): the full account audit (82 Google / 50 Meta
+     controls) with a 0-100 score and a grade.
      The API-answerable controls come decided with evidence; the others are `JUDGE` with their
      criteria: decide those you can from what you know of the business (ask if needed), say
      which you left open, and never present the score as covering them (`coverage`). Pass
      `localBusiness` when the business serves a local area. Lead with `criticalIssues`, then
-     `quickWins`. Meta's audit comes in a later pass; use the tools above for Meta meanwhile.
+     `quickWins`.
 5. **Report**: totals per account, a campaign table, then 3-5 actions in this order: tracking
    first (conversions stopped, or no conversion value), then waste (kill verdicts, negatives),
    then growth (raise_budget, scale). Recommend; don't change anything. Pausing or a budget
