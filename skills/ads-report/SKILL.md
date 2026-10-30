@@ -1,6 +1,6 @@
 ---
 name: ads-report
-description: Summarize and diagnose paid ads across the user's connected Meta (Facebook/Instagram) and Google Ads accounts through Anaella — spend, results, cost per result, best and worst campaigns, competitors' Meta ads and hooks, wasted search spend and negative keywords, kill/scale budget verdicts, and anomalies (spend spikes, delivery drops, stopped conversions). Use when the user asks how their ads are doing, where budget goes or is wasted, what to pause or scale, or to compare campaigns or platforms, or what ads competitors run.
+description: Summarize and diagnose paid ads across the user's connected Meta (Facebook/Instagram) and Google Ads accounts through Anaella — spend, results, cost per result, best and worst campaigns, competitors' Meta ads and hooks, paid search overlapping organic rank, wasted search spend and negative keywords, kill/scale budget verdicts, and anomalies (spend spikes, delivery drops, stopped conversions). Use when the user asks how their ads are doing, where budget goes or is wasted, what to pause or scale, or to compare campaigns or platforms, or what ads competitors run.
 ---
 
 # Ads report with Anaella
@@ -33,6 +33,10 @@ Read the `anaella` skill first. These tools only read; nothing is changed in the
    - `ads.google.wasted_spend` (Google): searches and 1-3 word phrases that cost money and
      converted nobody, with the campaigns to add them to as exact / phrase negatives. Brand
      searches are never proposed; pass `brandTerms` if the account name isn't the brand.
+   - `ads.google.organic_overlap` (Google + a Search Console site): search terms you pay for
+     while ranking for them organically. Only `strong_overlap` (organic top 3) is worth a
+     test: pause paid for 2-4 weeks on a holdout and compare paid plus organic conversions,
+     never a straight pause. `unknown` is not "you don't rank"; brand terms are never paused.
    - `ads.competitors` (no account needed): a competitor's live Meta ads from the public Ad
      Library, with each ad's hook and `daysLive` (30+ days running usually means it works) and
      hooks grouped by how they open. Search the brand name in `searchTerms`, then pass its

@@ -16,6 +16,7 @@
       "keywords": [
     "ad library",
     "competitor ads",
+    "paid vs organic",
     "search console",
     "index coverage",
     "bing webmaster",
@@ -74,7 +75,7 @@
       "technical-seo",
       "llms-txt"
       ],
-      "version": "0.9.17"
+      "version": "0.9.18"
     }
   ]
 }
