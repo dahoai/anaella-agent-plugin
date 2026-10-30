@@ -83,7 +83,7 @@ Create API keys in the Anaella app under **Settings > API keys**. Or tell any ag
 |-------|--------------|
 | `anaella` | How to use find → explain → do, connected accounts, errors, and the rules for writes |
 | `seo-report` | SEO report from Search Console + GA4 (quick wins, drops, index coverage) and Bing Webmaster Tools, keyword research, competitors, backlinks, site technical audit, AI visibility and readiness, with a diagnose → choose → act method |
-| `ads-report` | Google and Meta ads account audit (scored controls and grade); Meta and Google Ads spend, results and cost per result by campaign; anomalies, kill or scale verdicts per campaign, wasted search spend and negatives; competitors' Meta ads from the Ad Library; paid search terms that already rank organically |
+| `ads-report` | Google and Meta ads account audit (scored controls and grade); Meta and Google Ads spend, results and cost per result by campaign; anomalies, kill or scale verdicts per campaign, wasted search spend and negatives; competitors' Meta ads from the Ad Library; paid search terms that already rank organically; applies the agreed fixes (negatives, pauses, budgets, bidding, keywords, ad copy) after a yes |
 | `review-replies` | Drafts Google review replies, posts only the ones you approve |
 | `comment-replies` | Reads comments on your published posts, drafts replies, posts or queues the approved ones, hides spam |
 | `meeting-scheduler` | Finds free time and books a Google or Outlook event (invites only on request) |

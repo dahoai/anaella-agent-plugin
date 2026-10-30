@@ -18,6 +18,8 @@
     "competitor ads",
     "paid vs organic",
     "ads audit",
+    "negative keywords",
+    "ads changes",
     "search console",
     "index coverage",
     "bing webmaster",
@@ -76,7 +78,7 @@
       "technical-seo",
       "llms-txt"
       ],
-      "version": "0.9.20"
+      "version": "0.9.21"
     }
   ]
 }
