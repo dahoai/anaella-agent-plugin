@@ -63,8 +63,8 @@ step 6, and only with the user's yes.
      pause), `ads.google.ad.update` (pause, or new RSA copy), `ads.google.ad.create` (a new
      RSA, always created paused), `ads.google.conversion_goal.update` (what smart bidding
      counts; turning off a GOOGLE_HOSTED goal is one-way). Ids come from `ads.google.query`.
-   - Meta: `ads.meta.campaign.update`, `ads.meta.adset.update` (status, daily budget in minor
-     units) and `ads.meta.ad.update` (status). Ids come from `ads.meta.insights` at that level.
+   - Meta: `ads.meta.update` with `level` campaign, adset or ad and its `id` (status, daily
+     budget in minor units, never on an ad). Ids come from `ads.meta.insights` at that level.
    - Scale budgets in 20% steps at most; never add the business's own brand as a negative.
 7. **Every morning**: offer an automation that runs `ads.pulse` daily and messages the user
    only when `anomalies` is not empty.
