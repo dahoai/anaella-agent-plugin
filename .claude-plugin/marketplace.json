@@ -51,6 +51,7 @@
         "social-media",
         "web-search",
         "rss",
+        "short-links",
         "automation",
         "video",
         "video-editing",
@@ -71,7 +72,7 @@
       "technical-seo",
       "llms-txt"
       ],
-      "version": "0.9.14"
+      "version": "0.9.15"
     }
   ]
 }

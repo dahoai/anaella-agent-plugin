@@ -1,6 +1,6 @@
 ---
 name: anaella
-description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, Business Profile reviews and updates, Google Calendar or Outlook calendars, Google Sheets, Google Drive or Docs, Slack, Gmail, Outlook / Microsoft 365 or any IMAP mailbox, Stripe or PayPal payments, n8n workflows, a phone number (texts and AI calls), a meeting bot that records and transcribes Google Meet, Zoom and Teams calls, content repurposing, a simulated advisory council (Musk, Bezos, Hormozi…) for decisions, short narrated videos, captions, voice-overs, transcripts (audio, video, YouTube) and documents to markdown, media editing, social posting, comments and DMs, TikTok videos, the link-in-bio page, RSS feeds, watches for new items or automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
+description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, Business Profile reviews and updates, Google Calendar or Outlook calendars, Google Sheets, Google Drive or Docs, Slack, Gmail, Outlook / Microsoft 365 or any IMAP mailbox, Stripe or PayPal payments, n8n workflows, a phone number (texts and AI calls), a meeting bot that records and transcribes Google Meet, Zoom and Teams calls, content repurposing, a simulated advisory council (Musk, Bezos, Hormozi…) for decisions, short narrated videos, captions, voice-overs, transcripts (audio, video, YouTube) and documents to markdown, media editing, social posting, comments and DMs, TikTok videos, the link-in-bio page, RSS feeds, tracked short links and their clicks, watches for new items or automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
 ---
 
 # Using Anaella
@@ -32,7 +32,7 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.op
 `content.repurpose`, `media.video.create`, `media.video.captions.add`, `media.audio.speech`,
 `media.transcribe`, `youtube.transcript.get`, `document.to_markdown`, `media.convert`,
 `media.video.overlay`, `media.video.text.add`, `media.info`, `media.voice.create`, `media.audio.clone`,
-`council.ask`, `company.research`, `prospects.search`, `rss.feed.read`, `watch.create`, `watch.events`,
+`council.ask`, `company.research`, `prospects.search`, `rss.feed.read`, `link.create`, `link.stats`, `watch.create`, `watch.events`,
 `automation.create`. To attach a file (a PDF, a resume) to an email, pass it in `email.send`
 `attachments` (`contentBase64` + `filename`, a public `url`, a media `resourceId` or a `driveFile`),
 also with `draft: true`. The media library (`media.upload`) also stores documents (PDF, Office,
@@ -71,7 +71,7 @@ These tools act in the user's name (`explain` says `readOnly: false` for every w
   `.update` / `.action.decide`.
 
 Creating new things that only the user sees (`docs.create`, `sheets.create`, `drive.file.upload`,
-`media.upload` and the other `media.*` tools (paid ones: say the price), `watch.create`, `rss.feed.add`) needs no confirmation beyond the request itself.
+`media.upload` and the other `media.*` tools (paid ones: say the price), `watch.create`, `rss.feed.add`, `link.create`) needs no confirmation beyond the request itself.
 The exception is `media.voice.create` (a cloned voice): read the user its consent statement (from `explain`)
 and set `consent: true` only after they confirm it is their voice or they have the speaker's permission.
 Before calling any other write:
