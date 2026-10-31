@@ -92,6 +92,7 @@ Create API keys in the Anaella app under **Settings > API keys**. Or tell any ag
 | `comment-replies` | Reads comments on your published posts, drafts replies, posts or queues the approved ones, hides spam |
 | `meeting-scheduler` | Finds free time and books a Google or Outlook event (invites only on request) |
 | `inbox-triage` | Summarizes unread mail (Gmail, Outlook, IMAP) and saves reply drafts for you to send |
+| `marketing` | Runs the whole loop: brief, competitor research, campaign plan, content, publishing after approval, performance report and lessons |
 | `social-publish` | Drafts per-network posts and schedules them after approval |
 | `payments-followup` | Unpaid Stripe or PayPal invoices, reminders, payment requests and refunds, each confirmed first |
 | `slack-digest` | Summarizes channels and open questions, posts approved updates or thread replies |

@@ -1,7 +1,7 @@
 {
   "name": "anaella",
   "displayName": "Anaella",
-  "version": "0.9.24",
+  "version": "0.9.25",
   "description": "Connects your agent to Anaella: email, calendars, Drive, Sheets, Slack, Search Console, Analytics, ads, payments and social through one hosted MCP server, plus skills for reports, replies, scheduling and inbox triage.",
   "author": {
     "name": "Anaella",
@@ -11,6 +11,10 @@
   "repository": "https://github.com/dahoai/anaella-agent-plugin",
   "license": "Apache-2.0",
   "keywords": [
+    "marketing",
+    "marketing plan",
+    "campaign plan",
+    "content calendar",
     "ad library",
     "competitor ads",
     "paid vs organic",
