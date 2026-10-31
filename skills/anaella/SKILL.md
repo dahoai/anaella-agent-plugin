@@ -98,5 +98,6 @@ Before calling any other write:
 | `upstream_unavailable` (503) | provider down or rate limiting | retry once later |
 | `rate_limited` (429) | daily quota reached | tell the user; it resets at `resetAt` |
 | `insufficient_balance` (402) | paid tool, no credit | give the user `next.topUp` |
+| `daily_limit_reached` (402) | the user's own daily spending limit is used up | tell them; they can raise it in billing, or it resets at midnight UTC |
 
 Failed calls are never charged.
