@@ -71,6 +71,10 @@ step 6, and only with the user's yes.
      counts; turning off a GOOGLE_HOSTED goal is one-way). Ids come from `ads.google.query`.
    - Meta: `ads.meta.update` with `level` campaign, adset or ad and its `id` (status, daily
      budget in minor units, never on an ad). Ids come from `ads.meta.insights` at that level.
+     `ads.meta.ad.create` builds a new ad, always paused: an image or video, a promoted post, or
+     a lead ad (`objective: "leads"` with an existing `leadFormId`). Reels usually beat
+     carousels on a small cold budget. Ask whether the ad is about housing, jobs or credit:
+     `specialCategory` is mandatory for those, and rules out age targeting.
    - Scale budgets in 20% steps at most; never add the business's own brand as a negative.
    - Meta: re-read the object before proposing a change (it may already be paused), and leave
      a new ad 7 days before judging it: every significant edit restarts learning. Up to 75%
