@@ -31,6 +31,12 @@ step 6, and only with the user's yes.
    - `ads.budget.review` (Google or Meta account, `targetCpa` / `targetRoas`): a verdict per
      campaign (kill, restart, no_delivery, raise_budget, reduce, fix_bidding, scale, hold,
      insufficient_data) with the reason and the exact change. Scale in 20% steps only.
+     On Meta it also gives a verdict per delivering ad (`ads`): turn_off, rotate, keep,
+     insufficient_data, with `hookRate`, `frequency` and CTR week over week. The CPA here is
+     cost per conversion: leads that never become customers still look cheap, so ask what a
+     qualified lead costs and pass that as `targetCpa`. Never turn off an ad without a
+     replacement ready, except a failed hook; rotate means a new execution of the same
+     concept. Thresholds are defaults for cold audiences, not benchmarks.
    - `ads.google.wasted_spend` (Google): searches and 1-3 word phrases that cost money and
      converted nobody, with the campaigns to add them to as exact / phrase negatives. Brand
      searches are never proposed; pass `brandTerms` if the account name isn't the brand.
@@ -66,6 +72,9 @@ step 6, and only with the user's yes.
    - Meta: `ads.meta.update` with `level` campaign, adset or ad and its `id` (status, daily
      budget in minor units, never on an ad). Ids come from `ads.meta.insights` at that level.
    - Scale budgets in 20% steps at most; never add the business's own brand as a negative.
+   - Meta: re-read the object before proposing a change (it may already be paused), and leave
+     a new ad 7 days before judging it: every significant edit restarts learning. Up to 75%
+     over the daily budget in one day is normal; the week stays within 7x.
 7. **Every morning**: offer an automation that runs `ads.pulse` daily and messages the user
    only when `anomalies` is not empty.
 
