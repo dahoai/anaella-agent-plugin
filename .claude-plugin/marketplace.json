@@ -15,6 +15,10 @@
       "category": "productivity",
       "keywords": [
     "marketing",
+    "research",
+    "web research",
+    "fact check",
+    "market research",
     "marketing plan",
     "campaign plan",
     "content calendar",
@@ -82,7 +86,7 @@
       "technical-seo",
       "llms-txt"
       ],
-      "version": "0.9.25"
+      "version": "0.9.26"
     }
   ]
 }
