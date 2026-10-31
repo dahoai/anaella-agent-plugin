@@ -1,6 +1,6 @@
 ---
 name: anaella
-description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, Business Profile reviews and updates, Google Calendar or Outlook calendars, Google Sheets, Google Drive or Docs, Slack, Gmail, Outlook / Microsoft 365 or any IMAP mailbox, Stripe or PayPal payments, n8n workflows, a phone number (texts and AI calls), a meeting bot that records and transcribes Google Meet, Zoom and Teams calls, content repurposing, a simulated advisory council (Musk, Bezos, Hormozi…) for decisions, short narrated videos, captions, voice-overs, transcripts (audio, video, YouTube) and documents to markdown, media editing, social posting, comments and DMs, TikTok videos, the link-in-bio page, RSS feeds, tracked short links and their clicks, watches for new items or automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
+description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, Business Profile reviews and updates, Google Calendar or Outlook calendars, Google Sheets, Google Drive or Docs, Slack, Gmail, Outlook / Microsoft 365 or any IMAP mailbox, Stripe or PayPal payments, n8n workflows, a phone number (texts and AI calls), a meeting bot that records and transcribes Google Meet, Zoom and Teams calls, content repurposing, a simulated advisory council (Musk, Bezos, Hormozi…) for decisions, short narrated videos, captions, voice-overs, transcripts (audio, video, YouTube), documents to markdown, filling PDF forms, media editing, social posting, comments and DMs, TikTok videos, the link-in-bio page, RSS feeds, tracked short links and their clicks, watches for new items or automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
 ---
 
 # Using Anaella
@@ -30,14 +30,14 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.op
 `sms.send`, `sms.list`, `call.place`, `call.get`, `calls.list`,
 `meeting.bot.join`, `meeting.bot.say`, `meeting.bot.stop`, `meeting.get`, `meetings.list`,
 `content.repurpose`, `media.video.create`, `media.video.captions.add`, `media.audio.speech`,
-`media.transcribe`, `youtube.transcript.get`, `document.to_markdown`, `media.convert`,
+`media.transcribe`, `youtube.transcript.get`, `document.to_markdown`, `document.form_fields`, `document.form_fill`, `media.convert`,
 `media.video.overlay`, `media.video.text.add`, `media.info`, `media.voice.create`, `media.audio.clone`,
 `council.ask`, `company.research`, `prospects.search`, `rss.feed.read`, `link.create`, `link.stats`, `watch.create`, `watch.events`,
 `automation.create`. To attach a file (a PDF, a resume) to an email, pass it in `email.send`
 `attachments` (`contentBase64` + `filename`, a public `url`, a media `resourceId` or a `driveFile`),
 also with `draft: true`. The media library (`media.upload`) also stores documents (PDF, Office,
 OpenDocument, RTF, TXT, CSV, Markdown, JSON; kept private): upload once, then pass the id as `resourceId`
-(email, Slack, Drive) or `mediaId` (`document.to_markdown`). Documents can't be post media. List tools (`*.list` / `*.accounts.list` /
+(email, Slack, Drive) or `mediaId` (`document.to_markdown`, `document.form_fill`). Documents can't be post media. List tools (`*.list` / `*.accounts.list` /
 `*.properties.list`) tell you which accounts are connected and give their `channelId`.
 
 ## Connected accounts (channels)

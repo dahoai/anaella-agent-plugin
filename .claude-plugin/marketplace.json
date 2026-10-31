@@ -16,6 +16,8 @@
       "keywords": [
     "marketing",
     "research",
+    "pdf forms",
+    "fill pdf",
     "web research",
     "fact check",
     "market research",
@@ -86,7 +88,7 @@
       "technical-seo",
       "llms-txt"
       ],
-      "version": "0.9.26"
+      "version": "0.9.27"
     }
   ]
 }
