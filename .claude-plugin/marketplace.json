@@ -17,6 +17,7 @@
     "marketing",
     "research",
     "pdf forms",
+    "e-signature",
     "fill pdf",
     "web research",
     "fact check",
@@ -88,7 +89,7 @@
       "technical-seo",
       "llms-txt"
       ],
-      "version": "0.9.27"
+      "version": "0.9.28"
     }
   ]
 }

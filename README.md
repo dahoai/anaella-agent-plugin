@@ -100,6 +100,7 @@ Create API keys in the Anaella app under **Settings > API keys**. Or tell any ag
 | `lead-research` | Company profiles from a domain, local business prospects, and the owners behind them on LinkedIn |
 | `document-from-template` | Copies a Docs template and fills its placeholders, writes Docs from Markdown, shares on request |
 | `form-filler` | Fills PDF forms from your documents and answers, ready for you to sign: asks only for what is missing, then reports anything left empty or unverified |
+| `e-signature` | Gets a PDF signed: people sign in order on private links you send, can decline, and every step goes in an audit record |
 | `phone-calls` | Texts from your number, AI calls that book or ask and report back, an AI that answers and takes messages |
 | `meeting-bot` | Sends Anaella's bot into a Google Meet, Zoom or Teams call, then summarizes the transcript by speaker; in Meet it can talk for your agent |
 | `n8n-ops` | Finds failed n8n runs, explains why, retries them; runs and edits workflows and data tables |
