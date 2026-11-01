@@ -11,7 +11,7 @@ Read the `anaella` skill first. Posts are **public**.
 2. **Draft** per network: respect each network's length and style (X short, LinkedIn
    longer and professional, Instagram needs media). Keep the user's facts; don't invent
    claims, prices or dates. For images, use `media.stock.search` + `media.stock.import`, or
-   `media.image.generate` (paid, $0.01 per image) if the user wants a generated one.
+   `media.image.generate` (paid, $0.01 to $0.13 per image) if the user wants a generated one.
 3. **Approve.** Show the text per channel, the media and the time. Ask for an explicit yes.
 4. **Publish** with `social.post.create`: schedule for the time the
    user chose; publish immediately only when they asked for it.
