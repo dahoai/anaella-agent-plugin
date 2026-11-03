@@ -53,8 +53,10 @@ With this plugin installed the reference files are next to this skill
 2. **Assets:** `media.upload` their files if they are not in the library yet, then
    `video.motion.assets` with `assets: [{name, kind, mediaId}]` (kinds: logo, product, screen,
    photo; names like `logo`, `product`, `screen`, `screen2`). Look at the `preview`: if a
-   cut-out is bad, run that one again with `cut: false` and present it as a photo. Keep each
-   asset's `mediaId` and `meta`. No assets is fine: the product becomes type, icons and shapes.
+   cut-out is bad, run that one again with `cut: false` and present it as a photo. Read each
+   asset's `notes`: a low-resolution logo or screenshot looks soft on screen, so ask the user for
+   a bigger file (an SVG logo, a full-resolution screenshot) before going on, and keep products
+   within the size they stay sharp at. Keep each asset's `mediaId` and `meta`. No assets is fine: the product becomes type, icons and shapes.
 3. **Develop it, silently:** read the `launch`, `api` and `audio` references. Decide the
    promise, the twist, the 3 proofs, the structure and BPM for their product and length, the
    hook, the reveal, the signature move, the end card, a palette from the assets' colours, and
