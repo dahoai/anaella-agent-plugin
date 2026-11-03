@@ -37,7 +37,7 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.op
 `attachments` (`contentBase64` + `filename`, a public `url`, a media `resourceId` or a `driveFile`),
 also with `draft: true`. The media library (`media.upload`) also stores documents (PDF, Office,
 OpenDocument, RTF, TXT, CSV, Markdown, JSON; kept private): upload once, then pass the id as `resourceId`
-(email, Slack, Drive) or `mediaId` (`document.to_markdown`, `document.form_fill`). Documents can't be post media. A local file you have a shell for (a screenshot, a render): run `anaella upload <path>` and use the returned `id`, rather than pasting base64 into a tool call. List tools (`*.list` / `*.accounts.list` /
+(email, Slack, Drive) or `mediaId` (`document.to_markdown`, `document.form_fill`). Documents can't be post media. A file on this computer (a screenshot, a render): never paste base64 into a tool call; over the local MCP pass `files: [{ "path": "/abs/file.png" }]` to `media.upload`, or with a shell run `anaella upload <path>`, then use the returned `id`. List tools (`*.list` / `*.accounts.list` /
 `*.properties.list`) tell you which accounts are connected and give their `channelId`.
 
 ## Connected accounts (channels)
