@@ -34,6 +34,8 @@ resource whose `id` goes straight into `social.post.create`.
   (`media.fonts.list`), and can be read by the user's cloned voice (`voiceId`) or the
   expressive `voice: chatterbox` (English; adds `media.audio.clone`'s price). Show the user the
   script first.
+- **A motion-graphics video** (a launch, a promo, an ad from their logo, product photos and
+  screenshots, with an original soundtrack, no narration): the `motion-video` skill.
 - **Captions on the user's own video**: `media.video.captions.add` ($0.10).
 - **Text on a video** (a hook, a title, labels): `media.video.text.add` takes 1-30 `texts`,
   each with `start` / `end` seconds, a `style` (classic, box, dark_box, neon, meme, headline,

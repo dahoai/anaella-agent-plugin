@@ -29,7 +29,7 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.op
 `stripe.refund.create`, `paypal.invoices.list`, `n8n.workflows.list`, `n8n.workflow.run`,
 `sms.send`, `sms.list`, `call.place`, `call.get`, `calls.list`,
 `meeting.bot.join`, `meeting.bot.say`, `meeting.bot.stop`, `meeting.get`, `meetings.list`,
-`content.repurpose`, `media.video.create`, `media.video.captions.add`, `media.audio.speech`,
+`content.repurpose`, `media.video.create`, `media.video.captions.add`, `video.motion.check`, `video.motion.render`, `media.audio.speech`,
 `media.transcribe`, `youtube.transcript.get`, `document.to_markdown`, `document.form_fields`, `document.form_fill`, `document.sign`, `document.signature_request.get`, `media.convert`,
 `media.video.overlay`, `media.video.text.add`, `media.info`, `media.voice.create`, `media.audio.clone`,
 `council.ask`, `company.research`, `prospects.search`, `rss.feed.read`, `link.create`, `link.stats`, `watch.create`, `watch.events`,

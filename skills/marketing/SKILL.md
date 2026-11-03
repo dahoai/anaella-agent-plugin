@@ -6,7 +6,7 @@ description: Run a business's marketing through Anaella — a positioning and au
 # Marketing with Anaella
 
 Read the `anaella` skill first. This skill runs the loop; the workflow skills do the detail:
-`social-publish`, `content-to-video`, `seo-report`, `ads-report`, `comment-replies`,
+`social-publish`, `content-to-video`, `motion-video`, `seo-report`, `ads-report`, `comment-replies`,
 `lead-research`, `advisory-council`, `alerts-automations`.
 
 The loop is brief → research → plan → make → approve → publish → measure → learn. Enter where the
@@ -75,7 +75,8 @@ gives opposing views.
   each draft from 1 to 10 on hook, clarity, proof and call to action, and rewrite anything under 7.
 - **Visuals:** `media.stock.search` + `media.stock.import`, or `media.image.generate` (paid).
   Slides or a branded image: `web.page.screenshot` with `html`.
-- **Video:** `content-to-video`, or `media.video.create` for a quick one.
+- **Video:** `motion-video` for a launch, promo or ad made from the brand's logo, product and
+  screens; `content-to-video` for a narrated or captioned one, or `media.video.create` for a quick one.
 - **Email:** `email.send` with `draft: true`, one idea and one link per email. Mail only people
   who agreed to hear from the business.
 - **Links:** `link.create` with `utm_*` params, so `link.stats` shows what each channel brought.

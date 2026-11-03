@@ -104,6 +104,7 @@ Create API keys in the Anaella app under **Settings > API keys**. Or tell any ag
 | `phone-calls` | Texts from your number, AI calls that book or ask and report back, an AI that answers and takes messages |
 | `meeting-bot` | Sends Anaella's bot into a Google Meet, Zoom or Teams call, then summarizes the transcript by speaker; in Meet it can talk for your agent |
 | `n8n-ops` | Finds failed n8n runs, explains why, retries them; runs and edits workflows and data tables |
+| `motion-video` | Makes motion-graphics launch and promo videos (15-30 s, original soundtrack) from the user's logo, product photos and screenshots: prepares the assets, writes the film, checks its key frames and renders the MP4 |
 | `content-to-video` | Repurposes an article, video or document into posts, makes narrated short videos (stock, own visuals, stories), captions, text overlays, voice-overs, voice clones and transcripts |
 | `advisory-council` | Puts a decision before simulated founders and marketers (Musk, Bezos, Hormozi, Ogilvy…), grounded in your own numbers: each take, where they disagree, a recommendation |
 | `alerts-automations` | Watches for new items and automations on a schedule or trigger, writes held for approval |
