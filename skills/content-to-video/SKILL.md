@@ -32,7 +32,7 @@ resource whose `id` goes straight into `social.post.create`.
     or video: the user's product shots, or generated images.
   captioned, story and scenes: $0.10 up to 60 s, $0.20 above. They take a caption `font`
   (`media.fonts.list`), and can be read by the user's cloned voice (`voiceId`) or the
-  expressive `voice: chatterbox` (English; adds `media.audio.clone`'s price). Show the user the
+  expressive `voice: chatterbox` (23 languages, set `language`; adds `media.audio.clone`'s price). Show the user the
   script first.
 - **A motion-graphics video** (a launch, a promo, an ad from their logo, product photos and
   screenshots, with an original soundtrack, no narration): the `motion-video` skill.
@@ -46,7 +46,8 @@ resource whose `id` goes straight into `social.post.create`.
 - **The user's own voice**: `media.voice.create` saves a 5-30 s recording as a voice, only with
   consent: read them the statement `explain` gives and set `consent: true` after they confirm
   it is their voice or they have the speaker's permission. Then `media.audio.clone`
-  (`voiceId`, English `text`) reads any text in it: $0.25 up to 1,000 characters, $0.05 per
+  (`voiceId`, `text`, and `language` when it isn't English: 23 languages, whatever the
+  recording's language) reads any text in it: $0.25 up to 1,000 characters, $0.05 per
   1,000 more. `media.voices.list` / `media.voice.delete` manage them.
 - **Edit**: `media.video.trim`, `media.video.merge`, `media.video.frames` (thumbnails or
   carousel slides; `sheet: true` adds a contact sheet), `media.convert` (MOV→MP4, HEIC→JPG, a lighter file), `$0.01` each.
