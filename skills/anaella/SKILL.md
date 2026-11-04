@@ -31,7 +31,7 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.op
 `meeting.bot.join`, `meeting.bot.say`, `meeting.bot.stop`, `meeting.get`, `meetings.list`,
 `content.repurpose`, `media.video.create`, `media.video.captions.add`, `video.motion.check`, `video.motion.render`, `media.audio.speech`,
 `media.transcribe`, `youtube.transcript.get`, `document.to_markdown`, `document.form_fields`, `document.form_fill`, `document.sign`, `document.signature_request.get`, `media.convert`,
-`media.video.overlay`, `media.video.text.add`, `media.info`, `media.voice.create`, `media.audio.clone`,
+`media.video.overlay`, `media.video.text.add`, `media.image.text.add`, `media.info`, `media.voice.create`, `media.audio.clone`,
 `council.ask`, `company.research`, `prospects.search`, `rss.feed.read`, `link.create`, `link.stats`, `watch.create`, `watch.events`,
 `automation.create`. To attach a file (a PDF, a resume) to an email, pass it in `email.send`
 `attachments` (`contentBase64` + `filename`, a public `url`, a media `resourceId` or a `driveFile`),

@@ -1,6 +1,6 @@
 ---
 name: content-to-video
-description: Turn an article, a video, a podcast or a document into ready posts, short narrated videos, captions, voice-overs (including a cloned voice), transcripts and cleaned-up images with Anaella's media tools, then schedule them. Use when the user asks to repurpose content, make a reel / TikTok / short from a topic, a script, their own photos or a story, clone their voice, add a logo or watermark to a video, put text or a hook on a video, add subtitles to a video, transcribe audio or video, get a YouTube transcript, read a PDF or Word file, remove a photo background, convert, trim or merge media, or download a TikTok / Instagram / YouTube video into their library.
+description: Turn an article, a video, a podcast or a document into ready posts, short narrated videos, captions, voice-overs (including a cloned voice), transcripts and cleaned-up images with Anaella's media tools, then schedule them. Use when the user asks to repurpose content, make a reel / TikTok / short from a topic, a script, their own photos or a story, clone their voice, add a logo or watermark to a video, put text or a hook on a video or a photo, add subtitles to a video, transcribe audio or video, get a YouTube transcript, read a PDF or Word file, remove a photo background, convert, trim or merge media, or download a TikTok / Instagram / YouTube video into their library.
 ---
 
 # Content to posts and videos with Anaella
@@ -41,6 +41,12 @@ resource whose `id` goes straight into `social.post.create`.
   each with `start` / `end` seconds, a `style` (classic, box, dark_box, neon, meme, headline,
   typewriter, minimal), a `position` clear of the apps' buttons (or `x`/`y`) and an `animation`
   (fade, pop, slide_up, typewriter). $0.02. Keep a hook short and on screen for the first 2-3 s.
+- **Text on a photo** (a hook on a stock photo, a pin title, a quote card): `media.image.text.add`
+  takes 1-10 `texts` in the same styles, plus `aspect` (4:5 for Instagram, Facebook and Threads,
+  1:1 for LinkedIn, 2:3 for Pinterest, 9:16 for stories), `shade` (top, bottom or full: keeps
+  white text readable) and per text `highlight` (words drawn in `accent`, default yellow). Text
+  wraps and shrinks to fit. $0.01. A stock photo needs a hook; on a real photo of the work keep
+  it short.
 - **Voice-over**: `media.audio.speech` (`text`, `language`, `voice`; `words: true` adds when
   each word is said); lay it over a video with `media.video.merge` (`mediaIds`, `audioId`).
 - **The user's own voice**: `media.voice.create` saves a 5-30 s recording as a voice, only with
