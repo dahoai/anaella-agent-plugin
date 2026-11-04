@@ -15,7 +15,8 @@ resource whose `id` goes straight into `social.post.create`.
   `mediaId`, and the `platforms` (x, linkedin, instagram, threads, newsletter, blog…). It
   returns `ideas` and per platform `text` (plus `items` for a thread or carousel). $0.05.
 - **Audio or video → text**: `media.transcribe` (`srt: true` for subtitles). $0.01 a minute.
-- **YouTube → text**: `youtube.transcript.get` (free, uses the video's captions).
+- **YouTube → text**: `youtube.transcript.get` (uses the video's captions; usually free, $0.005 when YouTube
+  turns the first source away and a second one fetches them).
 - **PDF, Word, slides, spreadsheet → markdown**: `document.to_markdown` with a `url` or a
   local file as base64 `data` + `name` (free).
 
