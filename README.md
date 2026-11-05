@@ -11,7 +11,7 @@ scheduling and inbox triage.
 This repository is the plugin only: a pointer to the hosted server (`https://api.anaella.com/mcp`)
 and Markdown skills. It follows the [Agent Plugins specification v1.0.0](https://agent-plugins.org/specification):
 `plugin.json`, `mcp.json` and `skills/` are the portable package; `.claude-plugin/` and
-`.agents/` add Claude Code and Codex marketplace support.
+`.agents/` add Claude Code and Codex marketplace support, and `hermes/` is the Hermes build.
 
 [![Anaella MCP server](https://mcprush.com/badge/anaella-mcp/card.svg)](https://mcprush.com/to/anaella-mcp?ref=badge)
 
@@ -39,6 +39,18 @@ codex mcp login anaella
 ```
 agy plugin install https://github.com/dahoai/anaella-agent-plugin
 ```
+
+### Hermes
+
+The [`hermes/`](hermes/) folder is the Hermes package: the same skills, with the MCP server run
+locally from your Anaella API key (`ANAELLA_API_KEY` in your Hermes profile's `.env`, Node.js 20+):
+
+```
+hermes plugins install anaella
+hermes plugins enable anaella
+```
+
+Details in [hermes/README.md](hermes/README.md).
 
 ### OpenCode, Cursor, Gemini CLI and other Agent Skills hosts
 

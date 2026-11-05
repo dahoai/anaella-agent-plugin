@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "anaella",
+  "version": "0.9.40",
+  "description": "Connects Hermes to Anaella: email, calendars, Drive, Sheets, Slack, Search Console, Analytics, ads, payments, a phone number, a meeting bot and social networks through one MCP server, plus workflow skills for reports, replies, scheduling, publishing and research.",
+  "author": {
+    "name": "Anaella",
+    "url": "https://anaella.com"
+  },
+  "homepage": "https://anaella.com/for-agents",
+  "repository": "https://github.com/dahoai/anaella-agent-plugin",
+  "license": "Apache-2.0",
+  "keywords": [
+    "anaella",
+    "mcp",
+    "email",
+    "calendar",
+    "google sheets",
+    "slack",
+    "social media",
+    "ads",
+    "seo",
+    "payments",
+    "phone",
+    "meeting bot",
+    "automation"
+  ]
+}
