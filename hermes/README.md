@@ -13,8 +13,8 @@ and Antigravity; only the MCP server differs, running locally with your API key.
 
 ## Install
 
-1. Create an API key in Anaella: **Organization → API keys** at
-   [anaella.com](https://anaella.com/organizations/api-keys). It starts with `ana_`.
+1. Create an API key in Anaella: your organization's settings → [**API Keys**](https://anaella.com/organizations/api-keys).
+   It starts with `ana_`.
 2. Add it to your Hermes profile's `.env` (`~/.hermes/.env`):
 
    ```
@@ -32,8 +32,8 @@ The MCP server runs locally with `npx -y @anaella/mcp@0.12.0`, so Node.js 20 or 
 needed. The key works in chat, cron jobs and the messaging gateway alike: there is no browser
 sign-in.
 
-Connect the accounts you want Anaella to use (Gmail, Slack, social networks…) at
-[anaella.com](https://anaella.com/channels). If one is missing, the agent gets a connect link to
+Connect the accounts you want Anaella to use (Gmail, Slack, social networks…) on the
+[**Accounts**](https://anaella.com/channels) page. If one is missing, the agent gets a connect link to
 send you.
 
 ## What it gives Hermes

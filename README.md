@@ -128,7 +128,7 @@ prefer the reversible option: mail drafts, events without invitations, scheduled
 
 ## Accounts
 
-Connect accounts in the Anaella app under **Channels**, or let the agent create a connect link
+Connect accounts in the Anaella app on the [**Accounts**](https://anaella.com/channels) page, or let the agent create a connect link
 when a tool needs one.
 
 ## Privacy
