@@ -5,8 +5,8 @@
 Connects your coding agent to [Anaella](https://anaella.com): one hosted MCP server for the
 accounts you use every day (Gmail, Outlook or any IMAP mailbox, Google and Outlook calendars,
 Drive, Docs and Sheets, Slack, Search Console, Google Analytics, Meta and Google Ads, Business
-Profile reviews, Stripe, PayPal, n8n, a phone number, a meeting bot and 9 social networks), plus skills for reports, replies,
-scheduling and inbox triage.
+Profile reviews, Stripe, PayPal, n8n, a phone number, a meeting bot and 9 social networks), plus
+24 workflow skills, listed [below](#whats-included).
 
 This repository is the plugin only: a pointer to the hosted server (`https://api.anaella.com/mcp`)
 and Markdown skills. It follows the [Agent Plugins specification v1.0.0](https://agent-plugins.org/specification):
@@ -91,7 +91,7 @@ Create API keys in the Anaella app under **Settings > API keys**. Or tell any ag
 ## What's included
 
 **MCP server** `anaella`: `find`, `explain`, `do` and `job` for every Anaella capability, plus
-`list_channels` and `create_connect_link`.
+`list_channels`, `create_connect_link`, `connect_account` and `remove_account`.
 
 **Skills:**
 

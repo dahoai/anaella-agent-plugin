@@ -4,7 +4,7 @@ Connects [Hermes Agent](https://hermes-agent.nousresearch.com) to [Anaella](http
 one MCP server for the accounts you use every day (Gmail, Outlook or any IMAP mailbox, Google and
 Outlook calendars, Drive, Docs and Sheets, Slack, Search Console, Google Analytics, Meta and Google
 Ads, Business Profile reviews, Stripe, PayPal, n8n, a phone number, a meeting bot and 9 social
-networks), plus workflow skills for reports, replies, scheduling, publishing and research.
+networks), plus 24 workflow skills.
 
 This folder is the Hermes build of the [Anaella agent plugin](https://github.com/dahoai/anaella-agent-plugin):
 an [Agent Plugins v1](https://agent-plugins.org/specification) package (`plugin.json`, `mcp.json`
@@ -40,25 +40,35 @@ send you.
 
 Eight MCP tools: `find`, `explain` and `do` cover the whole Anaella catalog (about 180
 capabilities), plus `job`, `list_channels`, `create_connect_link`, `connect_account` and
-`remove_account`. Skills are loaded on demand as `anaella:<skill>`:
+`remove_account`. The skills load on demand as `anaella:<skill>`:
 
 | Skill | What it does |
 |-------|--------------|
-| `anaella` | How to use find, explain and do, connected accounts, errors, and the rules for writes |
-| `inbox-triage` | Summarizes unread mail and saves reply drafts for you to send |
-| `meeting-scheduler` | Finds free time and books a Google or Outlook event |
+| `anaella` | How to use find → explain → do, connected accounts, errors, and the rules for writes |
+| `seo-report` | SEO report from Search Console + GA4 (quick wins, drops, index coverage) and Bing Webmaster Tools, keyword research, competitors, backlinks, site technical audit, AI visibility and readiness, with a diagnose → choose → act method |
+| `ads-report` | Google and Meta ads account audit (scored controls and grade); Meta and Google Ads spend, results and cost per result by campaign; anomalies, kill or scale verdicts per campaign and per Meta ad (hook rate, fatigue), wasted search spend and negatives; competitors' Meta ads from the Ad Library; paid search terms that already rank organically; applies the agreed fixes (negatives, pauses, budgets, bidding, keywords, ad copy) and builds paused Meta image, video and lead ads after a yes |
+| `review-replies` | Drafts Google review replies, posts only the ones you approve |
+| `comment-replies` | Reads comments on your published posts, drafts replies, posts or queues the approved ones, hides spam |
+| `comment-mining` | Turns the comments on your posts into audience research: questions, objections, complaints, buying signals and their exact words, with content and FAQ ideas |
+| `post-outliers` | Finds your posts that beat or missed your usual results on each network, explains why (topic, hook, format, timing) and suggests what to post next |
+| `meeting-scheduler` | Finds free time and books a Google or Outlook event (invites only on request) |
+| `inbox-triage` | Summarizes unread mail (Gmail, Outlook, IMAP) and saves reply drafts for you to send |
+| `research` | Answers a question from web, news and paper search, full pages, PDFs and YouTube transcripts, with every claim linked to its source and gaps stated |
+| `marketing` | Runs the whole loop: brief, competitor research, campaign plan, content, publishing after approval, performance report and lessons |
 | `social-publish` | Drafts per-network posts and schedules them after approval |
-| `comment-replies` | Reads comments on your posts, drafts replies, posts the approved ones |
-| `comment-mining` | Turns the comments on your posts into audience research and content ideas |
-| `post-outliers` | Finds your posts that beat or missed your usual results and explains why |
-| `seo-report` | Search Console, Analytics and Bing report, keywords, audits |
-| `ads-report` | Google and Meta ads audit, spend and verdicts, approved changes |
-| `research` | Answers a question from the web with every claim linked to its source |
-| `lead-research` | Company profiles and local business prospects |
-| `marketing` | Brief, research, plan, content, publishing and a performance report |
-
-And more: review replies, payments follow-up, Slack digests, documents and e-signatures, form
-filling, phone calls, the meeting bot, n8n, videos and automations.
+| `payments-followup` | Unpaid Stripe or PayPal invoices, reminders, payment requests and refunds, each confirmed first |
+| `slack-digest` | Summarizes channels and open questions, posts approved updates or thread replies |
+| `lead-research` | Company profiles from a domain, local business prospects, and the owners behind them on LinkedIn |
+| `document-from-template` | Copies a Docs template and fills its placeholders, writes Docs from Markdown, shares on request |
+| `form-filler` | Fills PDF forms from your documents and answers, ready for you to sign: asks only for what is missing, then reports anything left empty or unverified |
+| `e-signature` | Gets a PDF signed: people sign in order on private links you send, can decline, and every step goes in an audit record |
+| `phone-calls` | Texts from your number, AI calls that book or ask and report back, an AI that answers and takes messages |
+| `meeting-bot` | Sends Anaella's bot into a Google Meet, Zoom or Teams call, then summarizes the transcript by speaker; in Meet it can talk for your agent |
+| `n8n-ops` | Finds failed n8n runs, explains why, retries them; runs and edits workflows and data tables |
+| `motion-video` | Makes motion-graphics launch and promo videos (15-30 s, original soundtrack) from the user's logo, product photos and screenshots: prepares the assets, writes the film, checks its key frames and renders the MP4 |
+| `content-to-video` | Repurposes an article, video or document into posts, makes narrated short videos (stock, own visuals, stories), captions, text overlays, voice-overs, voice clones and transcripts |
+| `advisory-council` | Puts a decision before simulated founders and marketers (Musk, Bezos, Hormozi, Ogilvy…), grounded in your own numbers: each take, where they disagree, a recommendation |
+| `alerts-automations` | Watches for new items and automations on a schedule or trigger, writes held for approval |
 
 ## What to know before installing
 
