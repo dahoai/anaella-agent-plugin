@@ -28,7 +28,7 @@ and Antigravity; only the MCP server differs, running locally with your API key.
    hermes plugins enable anaella
    ```
 
-The MCP server runs locally with `npx -y @anaella/mcp@0.12.0`, so Node.js 20 or later and npm are
+The MCP server runs locally with `npx -y @anaella/mcp@0.12.1`, so Node.js 20 or later and npm are
 needed. The key works in chat, cron jobs and the messaging gateway alike: there is no browser
 sign-in.
 
@@ -76,9 +76,17 @@ capabilities), plus `job`, `list_channels`, `create_connect_link`, `connect_acco
   server is started with `npx`, which downloads the pinned `@anaella/mcp` package from npm.
 - **It acts in your name.** Anaella can send email and texts, place AI phone calls, post to your
   social accounts, edit sheets, share files, change ad campaigns, and send invoices or refunds on
-  the accounts you connected. The skills tell the agent to show the exact content and get your yes
-  before every write; Hermes does not enforce that. Some tools cost money from your Anaella
-  wallet (each tool states its price; paid calls stop at your daily spending limit).
+  the accounts you connected. The plugin marks its server untrusted, so Hermes asks you before
+  every write-capable call (`do`, `connect_account`, `remove_account`, `create_connect_link`), and
+  the skills also show the exact content and get your yes first. Some tools cost money from your
+  Anaella wallet (each tool states its price; paid calls stop at your daily spending limit).
+- **Local files.** `media.upload` with `files: [{ "path": ... }]` reads a file on this computer that
+  the agent names and uploads it to your private Anaella library. The skills allow it only for a
+  file you named; the server refuses hidden files and folders (`.env`, `~/.ssh`, `~/.hermes`...)
+  and the Hermes home.
+- **Account passwords.** `connect_account` sends the credentials you give it (a mailbox password
+  or app password for IMAP/SMTP, a Bluesky app password, a bot token, an API key) to Anaella, which
+  stores them encrypted to reach that account.
 - **Credentials.** The plugin stores nothing. Hermes passes `ANAELLA_API_KEY` from your profile
   to the local server; delete the key in Anaella to revoke it.
 - **No telemetry**, no background process beyond the MCP server Hermes starts, no files written
