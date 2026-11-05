@@ -99,5 +99,6 @@ Before calling any other write:
 | `rate_limited` (429) | daily quota reached | tell the user; it resets at `resetAt` |
 | `insufficient_balance` (402) | paid tool, no credit | give the user `next.topUp` |
 | `daily_limit_reached` (402) | the user's own daily spending limit is used up | tell them; they can raise it in billing, or it resets at midnight UTC |
+| `post_limit_reached` (402) | the Free tier's monthly post cap is used up | tell them: any top-up removes it (`next.topUp`), or it resets on the 1st (UTC); don't retry or change the post |
 
 Failed calls are never charged.
