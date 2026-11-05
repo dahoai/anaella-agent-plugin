@@ -89,9 +89,12 @@
         "serp",
         "ai-visibility",
         "technical-seo",
-        "llms-txt"
+        "llms-txt",
+        "comment mining",
+        "audience research",
+        "top posts"
       ],
-      "version": "0.9.38"
+      "version": "0.9.39"
     }
   ]
 }
