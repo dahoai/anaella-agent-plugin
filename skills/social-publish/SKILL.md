@@ -12,6 +12,17 @@ Read the `anaella` skill first. Posts are **public**.
    longer and professional, Instagram needs media). Keep the user's facts; don't invent
    claims, prices or dates. For images, use `media.stock.search` + `media.stock.import`, or
    `media.image.generate` (paid, $0.01 to $0.13 per image) if the user wants a generated one.
+   Write like a person, not a brand, above all on X, Threads and Bluesky:
+   - One thought per post. Lead with the point; no warm-up line.
+   - Plain words, short sentences, as if typed on a phone. Lowercase and fragments are fine
+     when that is the user's voice.
+   - No hashtag piles (one at most, only if the network rewards it), no emoji bullets, no
+     "Here's the thing", "Let's dive in", "game changer", "🚀", or a question just to bait replies.
+   - Specific beats general: a number, a name, what happened. Cut every sentence that would
+     fit any company.
+   - A reply answers the post it is under, in that post's language; it never pitches.
+   - If the user's past posts are available (`social.posts.list`), match their voice, and lean on
+     what did best for them (the `post-outliers` skill).
 3. **Approve.** Show the text per channel, the media and the time. Ask for an explicit yes.
 4. **Publish** with `social.post.create`: schedule for the time the
    user chose; publish immediately only when they asked for it.

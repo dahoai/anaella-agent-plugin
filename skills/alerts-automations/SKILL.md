@@ -22,11 +22,14 @@ Drive and Business Profile push new items within seconds. Then read `watch.event
 - `instructions`: what Anaella's agent should do with each item or run, in plain words.
 - `tools`: the capability ids it may call, as few as the job needs. A scheduled run gets no
   items, so give it the read tools it needs (`email.list`, `calendar.events.list`…).
+- `channelIds`: the accounts its tools use (ids from `list_channels`). Set them whenever the user
+  has several accounts of a kind (mailboxes, Slack workspaces…): one per kind pins the tools to it;
+  without them the agent searches every account, which costs more and can pick the wrong one.
 - `approval`: keep the default `"review"`, where every write waits for the user
   (`automation.actions.list`, `automation.action.decide`, or the app's Automations page).
   `"auto"` sends in their name with no check: only on explicit request.
 - `maxRunsPerDay` (default 20). Runs are billed in AI credits.
 
-Before creating one, show the user the trigger, instructions, tools and approval mode and get a
+Before creating one, show the user the trigger, instructions, tools, accounts and approval mode and get a
 yes. Try it right away with `automation.test`. List or change them with `automation.list` and
 `automation.update`.

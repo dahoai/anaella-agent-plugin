@@ -1,7 +1,7 @@
 {
   "name": "anaella",
   "displayName": "Anaella",
-  "version": "0.9.41",
+  "version": "0.9.42",
   "description": "Connects your agent to Anaella: email, calendars, Drive, Docs and Sheets, Slack, Search Console, Analytics, Meta and Google Ads, payments, a phone number, a meeting bot and 9 social networks through one hosted MCP server, plus 24 workflow skills: social publishing, comment replies, post and comment analysis, inbox triage, meeting scheduling, SEO and ads reports, research and leads, marketing campaigns, review replies, payment follow-ups, Slack digests, documents, forms and e-signatures, phone calls, meeting notes, n8n, videos, an advisory council and automations.",
   "author": {
     "name": "Anaella",
