@@ -91,7 +91,7 @@ Create API keys in the Anaella app under **Settings > API keys**. Or tell any ag
 ## What's included
 
 **MCP server** `anaella`: `find`, `explain`, `do` and `get_job` for every Anaella capability, plus
-`list_accounts`, `create_connect_link`, `connect_account` and `remove_account`.
+`list_accounts`, `connect_account` and `remove_account`.
 
 **Skills:**
 

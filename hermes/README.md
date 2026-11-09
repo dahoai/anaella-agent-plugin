@@ -38,8 +38,8 @@ send you.
 
 ## What it gives Hermes
 
-Eight MCP tools: `find`, `explain` and `do` cover the whole Anaella catalog (about 180
-capabilities), plus `get_job`, `list_accounts`, `create_connect_link`, `connect_account` and
+Seven MCP tools: `find`, `explain` and `do` cover the whole Anaella catalog (about 180
+capabilities), plus `get_job`, `list_accounts`, `connect_account` and
 `remove_account`. The skills load on demand as `anaella:<skill>`:
 
 | Skill | What it does |
@@ -77,7 +77,7 @@ capabilities), plus `get_job`, `list_accounts`, `create_connect_link`, `connect_
 - **It acts in your name.** Anaella can send email and texts, place AI phone calls, post to your
   social accounts, edit sheets, share files, change ad campaigns, and send invoices or refunds on
   the accounts you connected. The plugin marks its server untrusted, so Hermes asks you before
-  every write-capable call (`do`, `connect_account`, `remove_account`, `create_connect_link`), and
+  every write-capable call (`do`, `connect_account`, `remove_account`), and
   the skills also show the exact content and get your yes first. Some tools cost money from your
   Anaella wallet (each tool states its price; paid calls stop at your daily spending limit).
 - **Local files.** `media.upload` with `files: [{ "path": ... }]` reads a file on this computer that
