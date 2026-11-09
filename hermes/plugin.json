@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "anaella",
-  "version": "0.9.44",
+  "version": "0.9.45",
   "description": "Connects Hermes to Anaella: email, calendars, Drive, Docs and Sheets, Slack, Search Console, Analytics, Meta and Google Ads, payments, a phone number, a meeting bot and 9 social networks through one MCP server run locally with your API key, plus 24 workflow skills: social publishing, comment replies, post and comment analysis, inbox triage, meeting scheduling, SEO and ads reports, research and leads, marketing campaigns, review replies, payment follow-ups, Slack digests, documents, forms and e-signatures, phone calls, meeting notes, n8n, videos, an advisory council and automations.",
   "author": {
     "name": "Anaella",

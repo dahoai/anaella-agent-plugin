@@ -43,7 +43,7 @@ OpenDocument, RTF, TXT, CSV, Markdown, JSON; kept private): upload once, then pa
 ## Connected accounts (channels)
 
 - A tool that acts on an account needs a connected **channel**. If none exists the call fails
-  with `channel_required` and `next.connectChannel`, or `find` / `list_channels` shows it
+  with `channel_required` and `next.connectChannel`, or `find` / `list_accounts` shows it
   missing: that is a blocker, not the end of the task. Ask the user to connect (in-app agent:
   `request_connect`; MCP/CLI: give `next.connectChannel`, or `create_connect_link` /
   `connect_account`), wait until the account is connected, then continue the original request.

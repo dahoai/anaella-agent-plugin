@@ -39,7 +39,7 @@ send you.
 ## What it gives Hermes
 
 Eight MCP tools: `find`, `explain` and `do` cover the whole Anaella catalog (about 180
-capabilities), plus `get_job`, `list_channels`, `create_connect_link`, `connect_account` and
+capabilities), plus `get_job`, `list_accounts`, `create_connect_link`, `connect_account` and
 `remove_account`. The skills load on demand as `anaella:<skill>`:
 
 | Skill | What it does |
