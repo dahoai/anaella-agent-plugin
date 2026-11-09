@@ -16,7 +16,7 @@ Read the `anaella` skill first.
    instant and mostly covers Canada.
 3. **Too few?** `prospects.discover` (`query`, `place`, `max` up to 60) reads public map
    listings and the businesses' own sites. It takes a few minutes (async: pass `wait` or poll
-   `job`) and is limited to 10 per workspace per day, so ask before running it.
+   `get_job`) and is limited to 10 per workspace per day, so ask before running it.
 4. **The people.** `prospects.people` with a business id (and `roles` such as `["dentist"]`)
    returns owners and managers with their LinkedIn profile link. There are no personal emails
    or phone numbers, and Anaella cannot message on LinkedIn: the user reaches out there.

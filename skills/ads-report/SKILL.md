@@ -69,7 +69,7 @@ step 6, and only with the user's yes.
      pause), `ads.google.ad.update` (pause, or new RSA copy), `ads.google.ad.create` (a new
      RSA, always created paused), `ads.google.conversion_goal.update` (what smart bidding
      counts; turning off a GOOGLE_HOSTED goal is one-way). Ids come from `ads.google.query`.
-   - Meta: `ads.meta.update` with `level` campaign, adset or ad and its `id` (status, daily
+   - Meta: `ads.meta.entity.update` with `level` campaign, adset or ad and its `id` (status, daily
      budget in minor units, never on an ad). Ids come from `ads.meta.insights.get` at that level.
      `ads.meta.ad.create` builds a new ad, always paused: an image or video, a promoted post, or
      a lead ad (`objective: "leads"` with an existing `leadFormId`). Reels usually beat

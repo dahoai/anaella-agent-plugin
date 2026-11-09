@@ -4,7 +4,7 @@
     "anaella": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@anaella/mcp@0.12.2"],
+      "args": ["-y", "@anaella/mcp@0.13.0"],
       "env": { "ANAELLA_API_KEY": "${ANAELLA_API_KEY}" }
     }
   }

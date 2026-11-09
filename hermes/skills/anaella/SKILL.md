@@ -60,7 +60,7 @@ OpenDocument, RTF, TXT, CSV, Markdown, JSON; kept private): upload once, then pa
 These tools act in the user's name (`explain` says `readOnly: false` for every write):
 
 - **Money**: `payments.request.create` and the `stripe.*` / `paypal.*` writes (invoices,
-  refunds, cancellations), `ads.meta.ad.create`, `ads.meta.update` and the `ads.google.*` writes (campaign, negatives, keywords, ad, conversion goal) (ad spend; `dryRun` validates first),
+  refunds, cancellations), `ads.meta.ad.create`, `ads.meta.entity.update` and the `ads.google.*` writes (campaign, negatives, keywords, ad, conversion goal) (ad spend; `dryRun` validates first),
   `call.create` and `meeting.bot.join` (billed per minute).
 - **Public or seen by others**: `social.post.create` / `.update` / `.delete`,
   `social.comments.reply` / `.delete`, `social.messages.send` (a DM), `reviews.reply`,

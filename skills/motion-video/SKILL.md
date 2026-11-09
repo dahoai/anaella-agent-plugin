@@ -23,7 +23,7 @@ images (`media.video.create`), captions on their own clip (`media.video.captions
 | `video.motion.check` | renders the whole film's key moments to a contact sheet, or with `at` (up to 8 seconds) only those moments full size; the audio report; or the error with its file and line | $0.01 |
 | `video.motion.render` | the MP4: 1080p H.264, AAC 48 kHz, -14 LUFS, in the media library | $0.10 |
 
-All four are async except the reference: pass `wait: true` to `do`, or poll `job`. A render
+All four are async except the reference: pass `wait: true` to `do`, or poll `get_job`. A render
 takes one to two minutes.
 
 With this plugin installed the reference files are next to this skill

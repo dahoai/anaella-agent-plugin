@@ -69,7 +69,7 @@ resource whose `id` goes straight into `social.post.create`.
   X, Facebook, YouTube: the video is fetched) and local files as base64 `files`. Only
   download videos the user owns or has the right to reuse.
 
-The media tools are async: pass `wait: true` to `do`, or poll `job`.
+The media tools are async: pass `wait: true` to `do`, or poll `get_job`.
 
 ## Typical flow
 
