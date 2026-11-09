@@ -8,14 +8,14 @@ description: SEO through Anaella — a performance report from the site's own Se
 Read the `anaella` skill first for the find → explain → do loop.
 
 Two kinds of data, never mixed up:
-- **The site's own numbers** (exact, free): `gsc.sites.list`, `gsc.opportunities`
-  (measured quick wins and drops), `gsc.index.coverage` (which pages Google indexed and why
+- **The site's own numbers** (exact, free): `gsc.sites.list`, `gsc.opportunities.list`
+  (measured quick wins and drops), `gsc.index.coverage.get` (which pages Google indexed and why
   not), `gsc.queries.list` (raw rows), `gsc.url.inspect`, `analytics.properties.list`,
   `analytics.report`. Needs Search Console / GA4 connected. Bing (also behind Yahoo,
   DuckDuckGo, Ecosia and ChatGPT search), once Bing Webmaster Tools is connected:
   `bing.sites.list`, `bing.queries.list`, `bing.crawl.issues`, `bing.url.inspect`.
 - **Outside data** (third-party estimates, paid per call, any domain): `seo.keywords.ideas`,
-  `seo.keywords.metrics`, `seo.serp`, `seo.domain.overview`, `seo.domain.keywords`,
+  `seo.keywords.metrics`, `seo.serp.get`, `seo.domain.overview`, `seo.domain.keywords`,
   `seo.domain.tech`, `seo.backlinks.summary`, `seo.backlinks.list`, `seo.ai.answers`,
   `seo.ai.mentions`. Say the price before a run of several calls; prefer `limit` 20-50.
 - The site itself (free): `seo.site.audit` (crawls up to 100 pages: errors, broken links,
@@ -60,16 +60,16 @@ ask, the searches AI engines run), shows who stands behind it, and has clean str
 **How is my site doing / what should I improve** (own numbers):
 1. Pick the site (`gsc.sites.list`, `analytics.properties.list`); missing → give the connect
    link it returns. Several → ask which.
-2. `gsc.opportunities` (28 days vs the 28 before, already anchored on Google's latest data):
+2. `gsc.opportunities.list` (28 days vs the 28 before, already anchored on Google's latest data):
    `totals` for the change, then its lists. For top queries and pages add `gsc.queries.list`
    (`dimensions: ["query"]` or `["page"]`, `rowLimit: 25`). `ctr` is a 0-1 ratio.
 3. `analytics.report`, same periods: `sessions`, `totalUsers`, `conversions` by
    `sessionDefaultChannelGroup`, then `sessions` by `landingPage` filtered to Organic Search.
-4. Opportunities, from `gsc.opportunities` (each list is measured, never guess one yourself):
+4. Opportunities, from `gsc.opportunities.list` (each list is measured, never guess one yourself):
    `pageTwo` → strengthen that page for the query (content, internal links, title);
    `lowCtr` → rewrite the title and description to match the query; `cannibalized` → pick one
    page per query, merge or differentiate the others; `fallers`, `clickDrops`, `pageDrops` →
-   read the page (`seo.page.audit`) and the results (`seo.serp`): who overtook it, did the
+   read the page (`seo.page.audit`) and the results (`seo.serp.get`): who overtook it, did the
    page change; `newQueries` → demand you can serve on purpose. Empty movers with
    `comparable: false` mean "not measurable yet", not "nothing moved".
 5. Report: totals with their change, the tables, then diagnosis → policy → 3-5 actions.
@@ -83,7 +83,7 @@ results cover the pages crawled, not the whole site. Cross-check with `gsc.url.i
 calling a `noindex` or canonical a mistake.
 
 **Is Google indexing my pages**:
-`gsc.index.coverage` (async; sitemap URLs by default, or `urls` for the key pages). Fix per
+`gsc.index.coverage.get` (async; sitemap URLs by default, or `urls` for the key pages). Fix per
 `notIndexed` state: "URL is unknown to Google" → in the sitemap? linked from indexed pages?;
 "Discovered - currently not indexed" → Google has not crawled it yet: add internal links from
 strong pages, make it worth crawling; "Crawled - currently not indexed" → Google judged it not
@@ -97,19 +97,19 @@ file) for new or changed pages only. `bing.crawl.issues` lists what Bing could n
 the sitemaps it has; a missing one goes in with `bing.sitemaps.submit` (after a yes).
 
 **How do I rank for X / keyword research**:
-`seo.keywords.ideas` on the seed (volume, difficulty, intent) → `seo.serp` on the 2-3 best
+`seo.keywords.ideas` on the seed (volume, difficulty, intent) → `seo.serp.get` on the 2-3 best
 terms to see who ranks, the People also ask questions and AI Overview sources →
 `web.page.read` the top result to see what it covers → recommend the page to create or
 improve, with its primary and secondary keywords and the questions it must answer.
 
-**Optimize an existing page for a query**: `seo.serp` on the query, `web.page.read` on the
+**Optimize an existing page for a query**: `seo.serp.get` on the query, `web.page.read` on the
 user's page and the top 3 organic results, then compare: headings and the subtopics they cover,
 length, the People also ask questions each answers, and what the AI Overview cites. The gaps
 are the edits: missing subtopics and questions, a title and H1 that match the intent. Check the
 user's current position with `gsc.queries.list` first when Search Console is connected.
 
 **Who are my competitors / what do they do better**:
-`seo.serp` on the user's main terms gives the real search competitors (not always their
+`seo.serp.get` on the user's main terms gives the real search competitors (not always their
 business ones) → `seo.domain.overview` for each (estimated visits, keywords by position, top
 pages) → `seo.domain.keywords` on the strongest to find terms they rank for and the user
 doesn't (compare with `gsc.queries.list`) → `seo.backlinks.summary` for both sides.

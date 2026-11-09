@@ -73,7 +73,7 @@ Before the council speaks, pull what the decision turns on and give the numbers 
 | Decision | Pull |
 |---|---|
 | Pricing, revenue, churn | Stripe or PayPal payments and subscriptions (`find` "payments") |
-| Ads, offers | `ads.meta.insights`, `ads.google.query` (spend, CPA, ROAS by campaign) |
+| Ads, offers | `ads.meta.insights.get`, `ads.google.query` (spend, CPA, ROAS by campaign) |
 | Content, social, audience | `social.posts.list`, `social.post.analytics`, follower trends |
 | Website, positioning | `analytics.report`, `gsc.queries.list` (what people search to find you), `web.page.read` on the page in question |
 | Reputation | `reviews.list` (what customers praise and complain about) |

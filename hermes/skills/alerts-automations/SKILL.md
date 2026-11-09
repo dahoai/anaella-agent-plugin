@@ -7,12 +7,12 @@ description: Set up standing jobs through Anaella — watches that report new em
 
 Read the `anaella` skill first.
 
-**Just be told (watch).** `watch.create` with `capability` (a list tool: `email.list`,
+**Just be told (watch).** `watch.create` with `capability` (a list tool: `email.messages.list`,
 `slack.messages.list`, `social.comments.list`, `reviews.list`, `drive.files.search`,
 `sheets.read`, `calendar.events.list`, `stripe.payments.list`, `paypal.invoices.list`,
 `n8n.executions.list`…), its `input` (e.g. `{ "query": "from:@acme.com" }`), a `name`, and
 `every` (5m, 15m, 1h… only used when the provider has no push). Gmail, Outlook, Slack, Calendar,
-Drive and Business Profile push new items within seconds. Then read `watch.events` with
+Drive and Business Profile push new items within seconds. Then read `watch.events.list` with
 `since`; you have no webhook URL in a chat, so check back.
 
 **Act on it (automation).** `automation.create`:
@@ -21,7 +21,7 @@ Drive and Business Profile push new items within seconds. Then read `watch.event
   `{ "cron": "0 9 * * 1", "timezone": "Europe/Paris" }`, at least 15 minutes apart).
 - `instructions`: what Anaella's agent should do with each item or run, in plain words.
 - `tools`: the capability ids it may call, as few as the job needs. A scheduled run gets no
-  items, so give it the read tools it needs (`email.list`, `calendar.events.list`…).
+  items, so give it the read tools it needs (`email.messages.list`, `calendar.events.list`…).
 - `channelIds`: the accounts its tools use (ids from `list_channels`). Set them whenever the user
   has several accounts of a kind (mailboxes, Slack workspaces…): one per kind pins the tools to it;
   without them the agent searches every account, which costs more and can pick the wrong one.

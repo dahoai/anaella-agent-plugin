@@ -43,12 +43,12 @@ before planning: everything after depends on it.
 Read-only, and most of it free:
 
 - **Competitors:** `web.search`, `web.page.read`, `company.research`; their live ads with
-  `ads.competitors` (EU/UK markets, from the public Ad Library).
+  `ads.competitors.list` (EU/UK markets, from the public Ad Library).
 - **Demand:** `gsc.queries.list` for what already brings people, then `seo.keywords.ideas`,
-  `seo.serp`, `seo.domain.overview` (paid per call: say the price first).
+  `seo.serp.get`, `seo.domain.overview` (paid per call: say the price first).
 - **The audience's words:** reviews, comments (`social.comments.list`) and forum threads
   (`web.search`). Quote them; good copy borrows them.
-- **Current results:** `analytics.report`, `social.post.analytics`, `ads.meta.insights`.
+- **Current results:** `analytics.report`, `social.post.analytics`, `ads.meta.insights.get`.
 
 End with what the others all say, what nobody says, and where this business can win.
 
@@ -77,9 +77,9 @@ gives opposing views.
   Slides or a branded image: `web.page.screenshot` with `html`.
 - **Video:** `motion-video` for a launch, promo or ad made from the brand's logo, product and
   screens; `content-to-video` for a narrated or captioned one, or `media.video.create` for a quick one.
-- **Email:** `email.send` with `draft: true`, one idea and one link per email. Mail only people
+- **Email:** `email.message.send` with `draft: true`, one idea and one link per email. Mail only people
   who agreed to hear from the business.
-- **Links:** `link.create` with `utm_*` params, so `link.stats` shows what each channel brought.
+- **Links:** `shortlink.create` with `utm_*` params, so `shortlink.stats` shows what each channel brought.
 - **Long pieces:** `docs.create` for a blog post or a brief to review.
 
 Tag every piece with its topic, hook and format in your notes (or `sheets.append`), or the
@@ -104,8 +104,8 @@ Compare like with like, or the numbers lie:
   Score = likes + 2 × comments + 3 × shares. Read video on views and watch time.
 - **Rank a hook, topic or format only with 5 or more posts.** Below that, the answer is "not enough
   to compare yet", and that is a real answer.
-- **Follow the goal first**, then the channels: `analytics.report`, `link.stats`,
-  `social.followers.get`, `ads.pulse`, `ads.budget.review`, `gsc.opportunities`.
+- **Follow the goal first**, then the channels: `analytics.report`, `shortlink.stats`,
+  `social.followers.get`, `ads.pulse.get`, `ads.budget.review`, `gsc.opportunities.list`.
 - A **dip** is the last 30 days averaging 25% or more below the 30 before. Check for a cause (fewer
   posts, a new format, a network change) before calling it one.
 

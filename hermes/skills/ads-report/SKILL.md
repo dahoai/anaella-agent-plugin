@@ -11,7 +11,7 @@ step 6, and only with the user's yes.
 1. **Accounts.** `ads.meta.accounts.list` (live ad accounts of each Meta login) and
    `ads.google.accounts.list` (connected Google Ads customers). Several → ask which, or
    report each separately. Note each account's currency; never add spend across currencies.
-2. **Meta** (`ads.meta.insights`): `level: "campaign"`, `datePreset: "last_30d"` (or the
+2. **Meta** (`ads.meta.insights.get`): `level: "campaign"`, `datePreset: "last_30d"` (or the
    user's period), `fields: ["spend", "impressions", "clicks", "ctr", "actions",
    "action_values"]`. Results are in `metrics["actions.<type>"]` (e.g.
    `actions.purchase`, `actions.lead`); `ctr` is a percentage.
@@ -25,7 +25,7 @@ step 6, and only with the user's yes.
    Cost is `metrics.costMicros / 1 000 000` in the account currency; `ctr` is a 0-1 ratio.
 4. **Diagnose** (free, model-free: the same data always gives the same verdicts; ask for the
    user's target CPA or ROAS first, else they are judged against the account's own average):
-   - `ads.pulse` (Google or Meta account): anything broken right now? Spend spike, delivery
+   - `ads.pulse.get` (Google or Meta account): anything broken right now? Spend spike, delivery
      drop, CPA up, conversions stopped, and on Google yesterday's changes made outside the API
      (someone in the web UI, auto-applied recommendations). Start here.
    - `ads.budget.review` (Google or Meta account, `targetCpa` / `targetRoas`): a verdict per
@@ -44,12 +44,12 @@ step 6, and only with the user's yes.
      while ranking for them organically. Only `strong_overlap` (organic top 3) is worth a
      test: pause paid for 2-4 weeks on a holdout and compare paid plus organic conversions,
      never a straight pause. `unknown` is not "you don't rank"; brand terms are never paused.
-   - `ads.competitors` (no account needed): a competitor's live Meta ads from the public Ad
+   - `ads.competitors.list` (no account needed): a competitor's live Meta ads from the public Ad
      Library, with each ad's hook and `daysLive` (30+ days running usually means it works) and
      hooks grouped by how they open. Search the brand name in `searchTerms`, then pass its
      `pageId` in `pageIds`. `countries` must be EU, EEA or UK markets: the archive has no
      ordinary ads elsewhere, so a US-only advertiser shows nothing. Spend is not published.
-   - `ads.audit` (Google or Meta account): the full account audit (82 Google / 50 Meta
+   - `ads.audit.run` (Google or Meta account): the full account audit (82 Google / 50 Meta
      controls) with a 0-100 score and a grade.
      The API-answerable controls come decided with evidence; the others are `JUDGE` with their
      criteria: decide those you can from what you know of the business (ask if needed), say
@@ -70,7 +70,7 @@ step 6, and only with the user's yes.
      RSA, always created paused), `ads.google.conversion_goal.update` (what smart bidding
      counts; turning off a GOOGLE_HOSTED goal is one-way). Ids come from `ads.google.query`.
    - Meta: `ads.meta.update` with `level` campaign, adset or ad and its `id` (status, daily
-     budget in minor units, never on an ad). Ids come from `ads.meta.insights` at that level.
+     budget in minor units, never on an ad). Ids come from `ads.meta.insights.get` at that level.
      `ads.meta.ad.create` builds a new ad, always paused: an image or video, a promoted post, or
      a lead ad (`objective: "leads"` with an existing `leadFormId`). Reels usually beat
      carousels on a small cold budget. Ask whether the ad is about housing, jobs or credit:
@@ -79,7 +79,7 @@ step 6, and only with the user's yes.
    - Meta: re-read the object before proposing a change (it may already be paused), and leave
      a new ad 7 days before judging it: every significant edit restarts learning. Up to 75%
      over the daily budget in one day is normal; the week stays within 7x.
-7. **Every morning**: offer an automation that runs `ads.pulse` daily and messages the user
+7. **Every morning**: offer an automation that runs `ads.pulse.get` daily and messages the user
    only when `anomalies` is not empty.
 
 Every figure comes from a tool output; state the period and currency.

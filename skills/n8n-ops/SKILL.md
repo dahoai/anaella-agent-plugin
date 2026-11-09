@@ -19,7 +19,7 @@ Read the `anaella` skill first.
    expects. Find workflows with `n8n.workflows.list` and read one with `n8n.workflow.get`.
 5. **Build or change** with `n8n.workflow.create` (created inactive) and `n8n.workflow.update`.
    Show the user what changes; turning a workflow on (`n8n.workflow.activate`) is their call.
-6. **Data tables.** `n8n.tables.list`, `n8n.table.rows.list`, `n8n.table.rows.add`,
+6. **Data tables.** `n8n.tables.list`, `n8n.table.rows.list`, `n8n.table.rows.create`,
    `n8n.table.row.upsert`.
 
 `n8n.credentials.list` shows credential names and types only, never secrets. To be told about

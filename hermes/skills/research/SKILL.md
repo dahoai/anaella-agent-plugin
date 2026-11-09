@@ -59,7 +59,7 @@ before calling something new.
   `web.site.crawl` (async, 20 a day) is for when there is no sitemap.
 - **What people already asked AI:** `seo.ai.answers` ($0.20 a call: ask first).
 - **The user's own data:** `gsc.queries.list`, `analytics.report`, `drive.files.search`,
-  `email.list` when connected and relevant. Say which results come from their private data.
+  `email.messages.list` when connected and relevant. Say which results come from their private data.
 
 Prefer primary sources: official docs, filings, the paper itself, the pricing page. Be wary of
 unnamed sources, "could" and "may" presented as news, and aggregators repeating unconfirmed reports.
@@ -108,5 +108,5 @@ report can go to `docs.create`, shown to the user first. Never send or publish i
 
 ## Keep following a topic
 
-Offer this only after a report proved useful. `web.page.changes` tells what changed on a page,
+Offer this only after a report proved useful. `web.page.changes.list` tells what changed on a page,
 `rss.feed.read` reads a feed, and `alerts-automations` turns either into a watch or a weekly digest.

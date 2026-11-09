@@ -8,7 +8,7 @@ description: Find which of the user's own published social posts did unusually w
 Read the `anaella` skill first. Everything here is free and read-only.
 
 Anaella reads the user's own posts only. For a competitor's posts, say it can't, and offer their
-Meta ads (`ads.competitors`) or a web search (the `research` skill) instead.
+Meta ads (`ads.competitors.list`) or a web search (the `research` skill) instead.
 
 ## 1. Collect the posts
 

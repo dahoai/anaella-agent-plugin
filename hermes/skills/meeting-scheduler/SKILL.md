@@ -9,7 +9,7 @@ Read the `anaella` skill first.
 
 1. **Constraints.** Get the duration, the window (dates, working hours) and the time zone.
    If the user didn't give a time zone, ask, or use the one they mentioned before.
-2. **Free time.** `calendar.availability` with `start` / `end` as RFC 3339 with an offset
+2. **Free time.** `calendar.availability.get` with `start` / `end` as RFC 3339 with an offset
    (`2026-10-14T09:00:00+02:00`), at most 62 days apart. Add colleagues' emails in
    `calendarIds` to find a common slot (it works when their free/busy is visible to the
    account; an `error` per calendar says when it isn't; on Outlook, other calendars are always

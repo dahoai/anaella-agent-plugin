@@ -7,7 +7,9 @@ description: Write and schedule social media posts on the user's connected chann
 
 Read the `anaella` skill first. Posts are **public**.
 
-1. **Channels.** List the connected social channels (`social.channels.list`). None → create a connect link for the network the user wants.
+1. **Channels.** List the connected social channels (`social.channels.list`). None → ask the user
+   to connect that network (`request_connect` in-app, or a connect link / `connect_account` on
+   MCP/CLI), wait until it is connected, then continue.
 2. **Draft** per network: respect each network's length and style (X short, LinkedIn
    longer and professional, Instagram needs media). Keep the user's facts; don't invent
    claims, prices or dates. For images, use `media.stock.search` + `media.stock.import`, or
