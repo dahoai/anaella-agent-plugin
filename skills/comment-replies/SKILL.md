@@ -10,7 +10,7 @@ Read the `anaella` skill first. Replies are **public**, under the user's account
 1. **Find the comments.**
    - "Anything to answer?": `social.comments.list` with `unanswered: true`. It reads the posts
      published in the last 7 days live (`days` up to 30). `more: true` means older posts were
-     left out: narrow with `channelId` or a shorter `days`.
+     left out: narrow with `accountId` or a shorter `days`.
    - On one post: add its `postId` (from `social.posts.list` or `social.post.create`).
    - Replies Anaella already drafted: `inbox: true` with `status: "pending_review"`. These only
      exist on channels with reply monitoring on.

@@ -22,7 +22,7 @@ Drive and Business Profile push new items within seconds. Then read `watch.event
 - `instructions`: what Anaella's agent should do with each item or run, in plain words.
 - `tools`: the capability ids it may call, as few as the job needs. A scheduled run gets no
   items, so give it the read tools it needs (`email.messages.list`, `calendar.events.list`…).
-- `channelIds`: the accounts its tools use (ids from `list_accounts`). Set them whenever the user
+- `accountIds`: the accounts its tools use (ids from `list_accounts`). Set them whenever the user
   has several accounts of a kind (mailboxes, Slack workspaces…): one per kind pins the tools to it;
   without them the agent searches every account, which costs more and can pick the wrong one.
 - `approval`: keep the default `"review"`, where every write waits for the user

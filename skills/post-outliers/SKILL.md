@@ -13,7 +13,7 @@ Meta ads (`ads.competitors.list`) or a web search (the `research` skill) instead
 ## 1. Collect the posts
 
 - `social.posts.list` with `limit: 100`, then keep the posts with `status: "published"`. Page with
-  `cursor` only if fewer than 15 are published. `channelId` narrows to one account.
+  `cursor` only if fewer than 15 are published. `accountId` narrows to one account.
 - Leave out posts published in the last 48 hours: their metrics are still filling in.
 - Aim for 15 to 40 posts. Under 8 on one network, there's no baseline: list the posts by results,
   and say the sample is too small to call any of them an outlier.

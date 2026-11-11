@@ -18,7 +18,7 @@ can't be read: say so if the user posts mostly there.
 ## 1. Collect the comments
 
 - Across recent posts: `social.comments.list` with `days: 30` and `limit: 100`. If `more: true`,
-  older posts were left out: run it again per account (`channelId`) to cover them.
+  older posts were left out: run it again per account (`accountId`) to cover them.
 - On one post, such as a post that took off (find them with the `post-outliers` skill): add its
   `postId`.
 - List the channels in `skipped` and why.
