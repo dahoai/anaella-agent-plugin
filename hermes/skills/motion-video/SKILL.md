@@ -27,7 +27,7 @@ All four are async except the reference: pass `wait: true` to `do`, or poll `get
 takes one to two minutes.
 
 With this plugin installed the reference files are next to this skill
-(`references/*.md`, `examples/<look>/`); otherwise read them with `video.motion.reference`.
+(`references/*.md`, `examples/<look>.md`); otherwise read them with `video.motion.reference`.
 
 ## What makes it work (hold every film to this)
 

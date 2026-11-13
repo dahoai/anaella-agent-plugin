@@ -1,3 +1,50 @@
+# Ledgerly — 15 s vertical launch (Bold colour)
+
+**Logline:** freelancers stop chasing money; the invoices do it for them.
+**Promise:** Invoices that chase themselves.
+**Twist (lens: the problem, felt):** open on the chase itself: "STILL CHASING INVOICES?" slams in while red OVERDUE stickers pile up on a coral field. The answer flips the verb: the invoices chase *themselves*.
+**Proofs:** 1 Send an invoice in 30 s (zoom to the + button, tap, "Invoice sent" toast) · 2 Automatic reminders (focus the Overdue pill, reminder cards stack up) · 3 Get paid by card or bank (tap "Turn on payments", PAID stamp slams on).
+
+**Tempo:** 128 BPM, 8 bars (BAR 1.875 s, BEAT 0.469 s).
+| scene | bars | time | bg |
+|---|---|---|---|
+| hook | 0–1 | 0.00 | coral |
+| reveal (phone tilts in, impact) | 1–2 | 1.875 | indigo |
+| f1 send | 2–3.5 | 3.75 | amber |
+| f2 remind | 3.5–5 | 6.56 | paper |
+| f3 paid (the drop) | 5–6.5 | 9.375 | green |
+| end card | 6.5–8 | 12.19 | indigo |
+
+**Signature move:** the same phone stays put while the whole world colour-cuts behind it on every beat-wipe; each cut pushes the screen into a new real UI element.
+**End card:** logo on an off-white slab (logo untouched) + NEW sticker, "Stop chasing. Get paid.", DOWNLOAD FREE pill, ledgerly.app.
+**Palette:** indigo #4f46e5 (logo) · coral #ff5b3a · amber #ffc53d · green #22c55e · ink #0f172a (logo wordmark) · paper #fffaf0.
+**Type:** Boldonse slams, Bricolage Grotesque 700 support, Geist Mono 700 tags.
+**Sound:** punchy electronic, A minor Am–F–C–G. Sparse hook (pluck motif A4–C5–E5–D5, hats, pops on stickers) → riser + 0.25 s silence → reveal impact+boom → half-time groove → f3 full four-on-the-floor → end: hit + sparkle, motif resolves on A, ring out.
+
+## config.js
+
+```js
+// Film settings. The engine reads these before anything else.
+window.FILM_CONFIG = {
+  "title": "Ledgerly",
+  "style": "bold",
+  "format": "vertical",
+  "w": 1080,
+  "h": 1920,
+  "fps": 30,
+  "seconds": 15,
+  "bpm": 128,
+  "bg": "#ff5b3a",
+  "grain": 0.04,
+  "vignette": 0,
+  "twos": false,
+  "font": "Bricolage Grotesque"
+};
+```
+
+## scenes.js
+
+```js
 'use strict';
 // Ledgerly — "Invoices that chase themselves." 15 s vertical, Bold colour look.
 // One phone, one screenshot; the world colour-cuts behind it on the beat, and every cut
@@ -241,3 +288,71 @@ function frame(t) {
   }
   flash(pulse(t, S.f3, 0.16) * 0.6, C.paper);
 }
+```
+
+## score.js
+
+```js
+'use strict';
+// Punchy electronic, 128 BPM, A minor (Am–F–C–G). Every time comes from S / HOOK_* / F1–F3 / END in scenes.js.
+function score(A) {
+  const R = S.reveal, D = S.f3, E = S.end;
+  const PROG = ['Am', 'F', 'C', 'G'];
+  const MOTIF = [[0, 'A4'], [0.75, 'C5'], [1.5, 'E5'], [2.5, 'D5']];
+
+  // ---- hook: sparse, filtered, the motif on a pluck; every slam and sticker has a sound
+  A.pad(0, A.chord('Am', 3), R, 0.45, { cutoff: 900 });
+  A.pattern(0, '..x...x...x.....', (t) => A.hat(t, 0.45), 1);
+  MOTIF.forEach(([b, n]) => A.pluck(A.b(b), n, 0.3, 0.9));
+  HOOK_WORDS.forEach((w, i) => { A.hit(Math.max(0, w + 0.14), 0.75 + i * 0.1); A.kick(Math.max(0, w + 0.14), 0.7); });
+  HOOK_PILLS.slice(2).forEach((t, i) => A.pop(t, 0.6, 1 + i * 0.09));
+  A.riser(A.b(1), R - A.b(1) - 0.25, 0.8);
+  A.silence(R - 0.25, R);                                        // the breath before the reveal
+
+  // ---- reveal: the hero hit, then a half-time groove
+  A.impact(R, 1); A.boom(R, 1); A.hit(R, 0.8); A.crash(R, 0.7);
+  A.whoosh(R - 0.05, 0.5, 0.6);
+  REVEAL_WORDS.slice(1).forEach((w, i) => A.hit(R + w + 0.12, 0.6 + i * 0.1));
+  A.sweep(R, D, 1600, 9000);
+  const midBars = (D - R) / A.bar;
+  A.pattern(R, 'x.......x.......', (t) => A.kick(t, 0.85), midBars);
+  A.pattern(R, '....x.......x...', (t) => A.snare(t, 0.5), midBars);
+  A.pattern(R, '..x...x...x...x.', (t) => A.hat(t, 0.45), midBars);
+  A.progression(R, PROG, 4, (n, t) => { A.bass(t, n[0] - 12, A.b(4) - 0.05, 0.8, { cutoff: 900 }); A.pad(t, n, A.b(4), 0.45); }, 3);
+
+  // ---- colour cuts: a swipe into each wipe
+  [S.f1, S.f2, S.f3, E].forEach((c, i) => A.swipe(c - 0.2, 0.4, i % 2 ? 'left' : 'right'));
+
+  // ---- f1: send
+  A.pop(S.f1 + 0.5, 0.5, 1.2);                                   // focus ring
+  A.click(S.f1 + F1.tap, 1);
+  A.notify(S.f1 + F1.toast, 0.8);
+
+  // ---- f2: reminders stack up, pitched up
+  A.pop(S.f2 + F2.focus, 0.6, 1.1);
+  F2.cards.forEach((t, i) => { A.pop(S.f2 + t, 0.7, 1.15 + i * 0.12); A.bellFx(S.f2 + t + 0.02, ['E5', 'G5', 'A5'][i], 0.4, 0.4); });
+  A.riser(D - A.b(2), A.b(2) - 0.12, 0.6);
+  A.silence(D - 0.12, D);
+
+  // ---- f3: the drop, full four-on-the-floor
+  A.impact(D, 0.85); A.crash(D, 0.8);
+  // 1.5 bars: step with A.every so nothing spills into the end card
+  A.every(D, E - 0.01, A.beat, (t, i) => { A.kick(t, 0.95); if (i % 2) A.clap(t, 0.55); A.hat(t + A.beat / 2, 0.55); });
+  A.progression(D, ['F', 'C', 'G', 'Am', 'F', 'C'], 1, (n, t) => { A.bass(t, n[0] - 12, A.b(1) - 0.03, 0.9); }, 3);
+  A.pad(D, A.chord('F', 3), A.b(2), 0.5); A.pad(D + A.b(2), A.chord('C', 3), A.b(2), 0.5); A.pad(D + A.b(4), A.chord('G', 3), A.b(2), 0.5);
+  F3.pills.forEach((t, i) => A.pop(D + t, 0.4, 1.2 + i * 0.12));
+  A.click(D + F3.tap, 1);
+  A.hit(D + F3.stamp, 0.8); A.cash(D + F3.stamp + 0.05, 0.9);
+  A.level(D, 0.85, 0.05);
+
+  // ---- end card: logo hit, motif resolves on A, ring out
+  A.level(E, 0.9, 0.05);
+  A.hit(E + END.logo, 0.5); A.sparkle(E + END.logo + 0.1, 0.6);
+  A.kick(E, 0.55); A.sub(E, 'A1', A.dur - E, 0.7);
+  A.pad(E, A.chord('Am', 3), A.dur - E, 0.55, { cutoff: 2600, cutoffTo: 1200 });
+  A.pop(E + END.line, 0.5, 1.2); A.whoosh(E + END.phone - 0.1, 0.45, 0.5); A.pop(E + END.pill, 0.7, 1.4);
+  MOTIF.slice(0, 3).forEach(([b, n]) => A.pluck(E + END.line + A.b(b), n, 0.35, 0.8));
+  A.bell(E + END.url, 'A5', A.dur - E - END.url, 0.6);
+}
+```
+
