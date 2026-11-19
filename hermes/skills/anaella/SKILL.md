@@ -8,14 +8,17 @@ description: How to use Anaella's tools (find, explain, do) and connected accoun
 Anaella is one API for agents: typed tools plus the accounts the user connected. You reach
 it through the Anaella MCP server's tools.
 
-## The loop: find → explain → do
+## The loop: find → do (explain when you need more)
 
 1. **find** with plain words in `q` (`"google ads spend"`, `"reply to a review"`; `query` works
    too). It returns tool ids, summaries, prices and whether the workspace can run them
    (`available`). It takes only `q` and `category`: any other field is an error. With neither, it
    lists the families (not tools), so search with `q` or pick a `category` from that list.
-2. **explain** the id you picked. Read its `description` (it says what the tool won't do and
-   what to use instead) and its `input` JSON Schema. Never guess field names.
+2. The best matches in a `find` result carry their `input` JSON Schema: read it and go straight to
+   **do**, no separate step. **explain** the id when its result has `inputOmitted: true` (the
+   schema was too big to inline), or to read its `description` (it says what the tool won't do and
+   what to use instead) and `output`. Never guess field names. A **do** with input that doesn't
+   fit returns the schema in the error: fix the input and retry once.
 3. **do** with `{ id, input }`. Sync tools return the finished job: the result is
    `output`. Async ones (images, videos, transcripts) return a queued job: pass `wait: true` or poll
    with **job**.
