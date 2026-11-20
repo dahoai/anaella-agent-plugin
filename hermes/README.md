@@ -1,10 +1,11 @@
 # Anaella for Hermes
 
 Connects [Hermes Agent](https://hermes-agent.nousresearch.com) to [Anaella](https://anaella.com):
-one MCP server for the accounts you use every day (Gmail, Outlook or any IMAP mailbox, Google and
+one API for agents: typed tools (web research, SEO, images and video, documents and e-signatures)
+plus one MCP server for the accounts you connect (Gmail, Outlook or any IMAP mailbox, Google and
 Outlook calendars, Drive, Docs and Sheets, Slack, Search Console, Google Analytics, Meta and Google
 Ads, Business Profile reviews, Stripe, PayPal, n8n, a phone number, a meeting bot and 9 social
-networks), plus 24 workflow skills.
+networks), plus 25 workflow skills.
 
 This folder is the Hermes build of the [Anaella agent plugin](https://github.com/dahoai/anaella-agent-plugin):
 an [Agent Plugins v1](https://agent-plugins.org/specification) package (`plugin.json`, `mcp.json`

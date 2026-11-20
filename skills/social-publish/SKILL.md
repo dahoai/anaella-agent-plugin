@@ -1,6 +1,6 @@
 ---
 name: social-publish
-description: Write and schedule social media posts on the user's connected channels (X, LinkedIn, Instagram, Facebook, TikTok, YouTube, Threads, Bluesky, Mastodon) through Anaella. Use when the user wants to post, schedule, or plan social content, or adapt one message for several networks.
+description: Write and schedule social media posts on the user's connected channels (X, LinkedIn, Instagram, Facebook, TikTok, YouTube, Bluesky, Telegram, Pinterest) through Anaella. Use when the user wants to post, schedule, or plan social content, or adapt one message for several networks.
 ---
 
 # Social publishing with Anaella
@@ -14,7 +14,7 @@ Read the `anaella` skill first. Posts are **public**.
    longer and professional, Instagram needs media). Keep the user's facts; don't invent
    claims, prices or dates. For images, use `media.stock.search` + `media.stock.import`, or
    `media.image.generate` (paid, $0.01 to $0.13 per image) if the user wants a generated one.
-   Write like a person, not a brand, above all on X, Threads and Bluesky:
+   Write like a person, not a brand, above all on X and Bluesky:
    - One thought per post. Lead with the point; no warm-up line.
    - Plain words, short sentences, as if typed on a phone. Lowercase and fragments are fine
      when that is the user's voice.

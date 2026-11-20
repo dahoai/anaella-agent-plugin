@@ -1,6 +1,6 @@
 ---
 name: comment-replies
-description: Read the comments on the user's published social posts (X, Facebook, Instagram, YouTube, Bluesky, Mastodon) through Anaella, draft replies for the user to approve, post or queue them, and hide or delete spam. Use when the user asks what people said on a post, which comments need an answer, or wants help replying to comments.
+description: Read the comments on the user's published social posts (X, Facebook, Instagram, YouTube, Bluesky) through Anaella, draft replies for the user to approve, post or queue them, and hide or delete spam. Use when the user asks what people said on a post, which comments need an answer, or wants help replying to comments.
 ---
 
 # Comment replies with Anaella

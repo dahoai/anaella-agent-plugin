@@ -2,8 +2,9 @@
 
 [![M8ven Score](https://m8ven.ai/badge/mcp/dahoai-anaella-agent-plugin-1edqub)](https://m8ven.ai/mcp/dahoai-anaella-agent-plugin-1edqub?s=readme)
 
-Connects your coding agent to [Anaella](https://anaella.com): one hosted MCP server for the
-accounts you use every day (Gmail, Outlook or any IMAP mailbox, Google and Outlook calendars,
+Connects your coding agent to [Anaella](https://anaella.com), one API for agents: typed tools
+(web research, SEO, images and video, documents and e-signatures) plus one hosted MCP server for
+the accounts you connect (Gmail, Outlook or any IMAP mailbox, Google and Outlook calendars,
 Drive, Docs and Sheets, Slack, Search Console, Google Analytics, Meta and Google Ads, Business
 Profile reviews, Stripe, PayPal, n8n, any MCP server such as Notion or Linear, a phone number, a meeting bot and 9 social networks), plus
 25 workflow skills, listed [below](#whats-included).
