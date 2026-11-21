@@ -73,7 +73,7 @@ These tools act in the user's name (`explain` says `readOnly: false` for every w
   `calendar.event.create` / `.update` / `.delete` / `.respond` (attendees are notified),
   `slack.message.send` / `.update`, `slack.reaction.create`, `slack.file.upload`,
   `drive.file.share`, `ads.meta.events.send` (conversion events to Meta).
-- **Changes the live website**: `cms.content.create` / `.update` / `.delete`, `cms.media.upload` / `.update`, `cms.term.create`, `cms.comment.moderate`, `cms.request` (run `cms.content.update` with `dryRun` first and show the before and after).
+- **Changes the live website**: `cms.content.create` / `.update` / `.delete`, `cms.media.upload` / `.update`, `cms.term.create`, `cms.comment.moderate`, `cms.revision.restore` (undo), `cms.request` (run `cms.content.update` or `cms.revision.restore` with `dryRun` first and show the before and after).
 - **Hard to undo**: `email.message.update` (archive, trash, labels), `sheets.update` / `.clear`,
   `docs.replace`, `drive.file.update`, `n8n.workflow.*` / `n8n.execution.*` / `n8n.table.*`
   changes, every `mcp.*` tool except those `explain` marks `readOnly: true` (they run in the user's other services), `phone.answering.update` (how their number answers calls), `automation.create` /

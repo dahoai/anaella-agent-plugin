@@ -1,6 +1,6 @@
 ---
 name: site-editing
-description: Edit the user's own website through Anaella - a WordPress or Inkwire site connected as an account. Write and publish posts, change what an existing page says, fix SEO fields (meta titles and descriptions, canonical, noindex), fill in missing image alt text, manage the media library, tags and categories, moderate comments, and fix the pages that Search Console flags. Use when the user asks to publish to their site, update or rewrite a page or post, improve a page's SEO on the site itself, add alt text, change a title or meta description, schedule a post, or clean up comments.
+description: Edit the user's own website through Anaella - a WordPress or Inkwire site connected as an account. Write and publish posts, change what an existing page says, undo a change or bring back a deleted page (Inkwire), fix SEO fields (meta titles and descriptions, canonical, noindex), fill in missing image alt text, manage the media library, tags and categories, moderate comments, and fix the pages that Search Console flags. Use when the user asks to publish to their site, update or rewrite a page or post, improve a page's SEO on the site itself, add alt text, change a title or meta description, schedule a post, or clean up comments.
 ---
 
 # Editing a website with Anaella
@@ -18,9 +18,11 @@ Start with `cms.site.get`: its `features` say what this site supports (pages, ca
 comments, seo-meta, media-library). Then:
 
 - Read (free): `cms.content.list` and `cms.content.get` (kind `post` or `page`),
-  `cms.media.list`, `cms.terms.list`, `cms.comments.list` (WordPress).
+  `cms.media.list`, `cms.terms.list`, `cms.comments.list` (WordPress),
+  `cms.revisions.list` (Inkwire with `revisions` in `features`).
 - Write (the user approves each): `cms.content.create` / `.update` / `.delete`,
-  `cms.media.upload` / `.update`, `cms.term.create`, `cms.comment.moderate`.
+  `cms.media.upload` / `.update`, `cms.term.create`, `cms.comment.moderate`,
+  `cms.revision.restore` (Inkwire).
 - Anything else the site's own API does (menus, redirects, plugin settings): `cms.request`
   (WordPress; an Inkwire site has no raw API, so only the typed tools above).
   Every call needs the user's yes, because a POST, PUT, PATCH or DELETE changes the live site.
@@ -73,9 +75,23 @@ that can change.
   `publishAt`) only when the user said to. An Inkwire site schedules only when `cms.site.get`
   lists `schedule` in `features`; otherwise it would publish at once, so the call is refused.
   Inkwire has no `private` or `trash` status: use `draft`.
-- **Deleting.** WordPress trashes (recoverable). Inkwire takes the page off the public site (the site may keep it
-  internally); there is no trash to restore from, so say that before asking. Never permanent
-  without an explicit yes.
+- **Deleting.** WordPress trashes (recoverable). Inkwire takes the page off the public site; when its
+  `features` include `revisions` it can come back (`cms.revision.restore`), otherwise there is no trash
+  to restore from, so say that before asking. Never permanent without an explicit yes.
+
+## Undo (Inkwire sites with `revisions`)
+
+Every update, restore and delete keeps the version it replaced. "Undo that", "put the old
+title back", "I deleted the wrong page":
+
+1. `cms.revisions.list` (kind, id) shows the earlier versions, newest first, each with what
+   replaced it (`update`, `restore`, `delete`). With `revision` it returns that version in full.
+2. `cms.revision.restore` with **`dryRun: true`** (no `revision` = the version before the last
+   change). It returns `before` (null when the page is deleted) and `restores`. Show the user what
+   comes back, in plain words.
+3. Apply without `dryRun` after their yes. A restore is itself kept, so the same call undoes it.
+A restore is refused when someone changed the page since (read it again) or when another page
+took its address meanwhile.
 - **A read-only Inkwire key** reads everything and refuses every write with `forbidden`. That
   is the safe way to audit a site first: tell the user to connect a full key when they want
   changes made.
