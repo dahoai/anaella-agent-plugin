@@ -5,7 +5,7 @@ one API for agents: typed tools (web research, SEO, images and video, documents 
 plus one MCP server for the accounts you connect (Gmail, Outlook or any IMAP mailbox, Google and
 Outlook calendars, Drive, Docs and Sheets, Slack, Search Console, Google Analytics, Meta and Google
 Ads, Business Profile reviews, Stripe, PayPal, n8n, WordPress and Ghost sites, a phone number, a meeting bot and 9 social
-networks), plus 26 workflow skills.
+networks), plus 27 workflow skills.
 
 This folder is the Hermes build of the [Anaella agent plugin](https://github.com/dahoai/anaella-agent-plugin):
 an [Agent Plugins v1](https://agent-plugins.org/specification) package (`plugin.json`, `mcp.json`
@@ -58,6 +58,7 @@ capabilities), plus `get_job`, `list_accounts`, `connect_account` and
 | `marketing` | Runs the whole loop: brief, competitor research, campaign plan, content, publishing after approval, performance report and lessons |
 | `social-publish` | Drafts per-network posts and schedules them after approval |
 | `payments-followup` | Unpaid Stripe or PayPal invoices, reminders, payment requests and refunds, each confirmed first |
+| `bookkeeping` | The business's books: statements, receipts, Stripe/PayPal sales and ad spend in one ledger, categorized, with profit and loss |
 | `slack-digest` | Summarizes channels and open questions, posts approved updates or thread replies |
 | `lead-research` | Company profiles from a domain, local business prospects, and the owners behind them on LinkedIn |
 | `document-from-template` | Copies a Docs template and fills its placeholders, writes Docs from Markdown, shares on request |

@@ -1,6 +1,6 @@
 ---
 name: anaella
-description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, a WordPress or Inkwire website (posts, pages, SEO fields, media), Business Profile reviews, Google or Outlook calendars, Sheets, Drive or Docs, Slack, Gmail, Outlook or IMAP mail, Stripe or PayPal, n8n, any MCP server the user connected (Notion, Linear, …), a phone number (texts and AI calls), a meeting bot for Meet, Zoom and Teams, an advisory council for decisions, short videos, captions, voice-overs, transcripts, documents to markdown, PDF forms and e-signatures, media editing, social posts, comments and DMs, TikTok videos, the link-in-bio page, RSS feeds, short links and their clicks, watches and automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
+description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, a WordPress or Inkwire website (posts, pages, SEO fields, media), Business Profile reviews, Google or Outlook calendars, Sheets, Drive or Docs, Slack, Gmail, Outlook or IMAP mail, Stripe or PayPal, the business's books (income, expenses, profit and loss), n8n, any MCP server the user connected (Notion, Linear, …), a phone number (texts and AI calls), a meeting bot for Meet, Zoom and Teams, an advisory council for decisions, short videos, captions, voice-overs, transcripts, documents to markdown, PDF forms and e-signatures, media editing, social posts, comments and DMs, TikTok videos, the link-in-bio page, RSS feeds, short links and their clicks, watches and automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
 ---
 
 # Using Anaella
@@ -31,7 +31,7 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.op
 `drive.file.read`, `docs.create`, `slack.messages.list`, `slack.message.send`, `social.post.create`, `social.posts.list`,
 `social.post.analytics`, `social.analytics.get`, `social.followers.get`, `media.upload`, `social.comments.list`,
 `social.comments.reply`, `social.comments.delete`, `payments.request.create`, `stripe.customers.list`,
-`stripe.refund.create`, `paypal.invoices.list`, `n8n.workflows.list`, `n8n.workflow.run`, `mcp.tools.list`, `mcp.<server>.<tool>`,
+`stripe.refund.create`, `paypal.invoices.list`, `finance.report`, `finance.entries.import`, `finance.entry.create`, `finance.payments.sync`, `n8n.workflows.list`, `n8n.workflow.run`, `mcp.tools.list`, `mcp.<server>.<tool>`,
 `sms.message.send`, `sms.messages.list`, `call.create`, `call.get`, `calls.list`,
 `meeting.bot.join`, `meeting.bot.say`, `meeting.bot.stop`, `meeting.get`, `meetings.list`,
 `content.repurpose`, `media.video.create`, `media.video.captions.add`, `video.motion.check`, `video.motion.render`, `media.audio.speech`,
@@ -73,6 +73,9 @@ These tools act in the user's name (`explain` says `readOnly: false` for every w
   `calendar.event.create` / `.update` / `.delete` / `.respond` (attendees are notified),
   `slack.message.send` / `.update`, `slack.reaction.create`, `slack.file.upload`,
   `drive.file.share`, `ads.meta.events.send` (conversion events to Meta).
+- **The user's books** (private, nothing is sent): `finance.entry.create` / `.update` / `.delete`,
+  `finance.entries.import`, `finance.payments.sync`, `finance.adspend.sync`. Say what you will
+  record; a deleted entry is gone.
 - **Changes the live website**: `cms.content.create` / `.update` / `.delete`, `cms.media.upload` / `.update`, `cms.term.create`, `cms.comment.moderate`, `cms.revision.restore` (undo), `cms.request` (run `cms.content.update` or `cms.revision.restore` with `dryRun` first and show the before and after).
 - **Hard to undo**: `email.message.update` (archive, trash, labels), `sheets.update` / `.clear`,
   `docs.replace`, `drive.file.update`, `n8n.workflow.*` / `n8n.execution.*` / `n8n.table.*`
