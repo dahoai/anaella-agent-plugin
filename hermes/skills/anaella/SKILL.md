@@ -1,6 +1,6 @@
 ---
 name: anaella
-description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, Business Profile reviews, Google or Outlook calendars, Sheets, Drive or Docs, Slack, Gmail, Outlook or IMAP mail, Stripe or PayPal, n8n, any MCP server the user connected (Notion, Linear, …), a phone number (texts and AI calls), a meeting bot for Meet, Zoom and Teams, an advisory council for decisions, short videos, captions, voice-overs, transcripts, documents to markdown, PDF forms and e-signatures, media editing, social posts, comments and DMs, TikTok videos, the link-in-bio page, RSS feeds, short links and their clicks, watches and automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
+description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, a WordPress or Inkwire website (posts, pages, SEO fields, media), Business Profile reviews, Google or Outlook calendars, Sheets, Drive or Docs, Slack, Gmail, Outlook or IMAP mail, Stripe or PayPal, n8n, any MCP server the user connected (Notion, Linear, …), a phone number (texts and AI calls), a meeting bot for Meet, Zoom and Teams, an advisory council for decisions, short videos, captions, voice-overs, transcripts, documents to markdown, PDF forms and e-signatures, media editing, social posts, comments and DMs, TikTok videos, the link-in-bio page, RSS feeds, short links and their clicks, watches and automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
 ---
 
 # Using Anaella
@@ -38,7 +38,7 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.op
 `media.transcribe`, `youtube.transcript.get`, `document.to_markdown`, `document.form_fields`, `document.form_fill`, `document.sign`, `document.signature_request.get`, `media.convert`,
 `media.video.overlay`, `media.video.text.add`, `media.image.text.add`, `media.info`, `media.voice.create`, `media.audio.clone`,
 `council.ask`, `company.research`, `prospects.search`, `rss.feed.read`, `shortlink.create`, `shortlink.stats`, `watch.create`, `watch.events.list`,
-`automation.create`. To attach a file (a PDF, a resume) to an email, pass it in `email.message.send`
+`cms.site.get`, `cms.content.list`, `cms.content.get`, `cms.content.update`, `cms.media.upload`, `automation.create`. To attach a file (a PDF, a resume) to an email, pass it in `email.message.send`
 `attachments` (`contentBase64` + `filename`, a public `url`, a media `resourceId` or a `driveFile`),
 also with `draft: true`. The media library (`media.upload`) also stores documents (PDF, Office,
 OpenDocument, RTF, TXT, CSV, Markdown, JSON; kept private): upload once, then pass the id as `resourceId`
@@ -73,6 +73,7 @@ These tools act in the user's name (`explain` says `readOnly: false` for every w
   `calendar.event.create` / `.update` / `.delete` / `.respond` (attendees are notified),
   `slack.message.send` / `.update`, `slack.reaction.create`, `slack.file.upload`,
   `drive.file.share`, `ads.meta.events.send` (conversion events to Meta).
+- **Changes the live website**: `cms.content.create` / `.update` / `.delete`, `cms.media.upload` / `.update`, `cms.term.create`, `cms.comment.moderate`, `cms.request` (run `cms.content.update` with `dryRun` first and show the before and after).
 - **Hard to undo**: `email.message.update` (archive, trash, labels), `sheets.update` / `.clear`,
   `docs.replace`, `drive.file.update`, `n8n.workflow.*` / `n8n.execution.*` / `n8n.table.*`
   changes, every `mcp.*` tool except those `explain` marks `readOnly: true` (they run in the user's other services), `phone.answering.update` (how their number answers calls), `automation.create` /

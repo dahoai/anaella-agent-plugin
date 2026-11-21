@@ -1,8 +1,8 @@
 {
   "name": "anaella",
   "displayName": "Anaella",
-  "version": "0.9.52",
-  "description": "One hosted MCP server of typed tools plus the accounts you connect (email, calendars, Drive, Docs and Sheets, Slack, Search Console, Analytics, Meta and Google Ads, payments, any MCP server, 9 social networks), with web research, SEO, images and video, documents and e-signatures, a phone number and a meeting bot, plus 25 workflow skills: social publishing, comment replies, post and comment analysis, inbox triage, meeting scheduling, SEO and ads reports, research and leads, marketing campaigns, review replies, payment follow-ups, Slack digests, documents, forms and e-signatures, phone calls, meeting notes, n8n, any MCP server you connect, videos, an advisory council and automations.",
+  "version": "0.9.53",
+  "description": "One hosted MCP server of typed tools plus the accounts you connect (email, calendars, Drive, Docs and Sheets, Slack, Search Console, Analytics, Meta and Google Ads, payments, WordPress and Inkwire sites, any MCP server, 9 social networks), with web research, SEO, images and video, documents and e-signatures, a phone number and a meeting bot, plus 26 workflow skills: social publishing, comment replies, post and comment analysis, inbox triage, meeting scheduling, SEO and ads reports, research and leads, marketing campaigns, review replies, payment follow-ups, Slack digests, documents, forms and e-signatures, website editing, phone calls, meeting notes, n8n, any MCP server you connect, videos, an advisory council and automations.",
   "author": {
     "name": "Anaella",
     "url": "https://anaella.com"
@@ -58,6 +58,10 @@
     "paypal",
     "payments",
     "n8n",
+    "wordpress",
+    "inkwire",
+    "cms",
+    "website-editing",
     "mcp-servers",
     "connect-mcp",
     "phone",

@@ -4,8 +4,8 @@ Connects [Hermes Agent](https://hermes-agent.nousresearch.com) to [Anaella](http
 one API for agents: typed tools (web research, SEO, images and video, documents and e-signatures)
 plus one MCP server for the accounts you connect (Gmail, Outlook or any IMAP mailbox, Google and
 Outlook calendars, Drive, Docs and Sheets, Slack, Search Console, Google Analytics, Meta and Google
-Ads, Business Profile reviews, Stripe, PayPal, n8n, a phone number, a meeting bot and 9 social
-networks), plus 25 workflow skills.
+Ads, Business Profile reviews, Stripe, PayPal, n8n, WordPress and Ghost sites, a phone number, a meeting bot and 9 social
+networks), plus 26 workflow skills.
 
 This folder is the Hermes build of the [Anaella agent plugin](https://github.com/dahoai/anaella-agent-plugin):
 an [Agent Plugins v1](https://agent-plugins.org/specification) package (`plugin.json`, `mcp.json`
@@ -65,6 +65,7 @@ capabilities), plus `get_job`, `list_accounts`, `connect_account` and
 | `e-signature` | Gets a PDF signed: people sign in order on private links you send, can decline, and every step goes in an audit record |
 | `phone-calls` | Texts from your number, AI calls that book or ask and report back, an AI that answers and takes messages |
 | `meeting-bot` | Sends Anaella's bot into a Google Meet, Zoom or Teams call, then summarizes the transcript by speaker; in Meet it can talk for your agent |
+| `site-editing` | Edits a connected WordPress or Inkwire site: writes and publishes posts, changes existing pages with a before and after (`dryRun`), fixes SEO fields and image alt text, manages media, tags and comments, and acts on what Search Console flags |
 | `n8n-ops` | Finds failed n8n runs, explains why, retries them; runs and edits workflows and data tables |
 | `mcp-servers` | Connects any MCP server (with a token or by signing in) and runs its tools as Anaella tools, asking first for anything the server doesn't mark read-only |
 | `motion-video` | Makes motion-graphics launch and promo videos (15-30 s, original soundtrack) from the user's logo, product photos and screenshots: prepares the assets, writes the film, checks its key frames and renders the MP4 |

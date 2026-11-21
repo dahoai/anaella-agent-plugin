@@ -6,8 +6,8 @@ Connects your coding agent to [Anaella](https://anaella.com), one API for agents
 (web research, SEO, images and video, documents and e-signatures) plus one hosted MCP server for
 the accounts you connect (Gmail, Outlook or any IMAP mailbox, Google and Outlook calendars,
 Drive, Docs and Sheets, Slack, Search Console, Google Analytics, Meta and Google Ads, Business
-Profile reviews, Stripe, PayPal, n8n, any MCP server such as Notion or Linear, a phone number, a meeting bot and 9 social networks), plus
-25 workflow skills, listed [below](#whats-included).
+Profile reviews, Stripe, PayPal, n8n, WordPress and Inkwire sites, any MCP server such as Notion or Linear, a phone number, a meeting bot and 9 social networks), plus
+26 workflow skills, listed [below](#whats-included).
 
 This repository is the plugin only: a pointer to the hosted server (`https://api.anaella.com/mcp`)
 and Markdown skills. It follows the [Agent Plugins specification v1.0.0](https://agent-plugins.org/specification):
@@ -118,6 +118,7 @@ Create API keys in the Anaella app under **Settings > API keys**. Or tell any ag
 | `e-signature` | Gets a PDF signed: people sign in order on private links you send, can decline, and every step goes in an audit record |
 | `phone-calls` | Texts from your number, AI calls that book or ask and report back, an AI that answers and takes messages |
 | `meeting-bot` | Sends Anaella's bot into a Google Meet, Zoom or Teams call, then summarizes the transcript by speaker; in Meet it can talk for your agent |
+| `site-editing` | Edits a connected WordPress or Inkwire site: writes and publishes posts, changes existing pages with a before and after (`dryRun`), fixes SEO fields and image alt text, manages media, tags and comments, and acts on what Search Console flags |
 | `n8n-ops` | Finds failed n8n runs, explains why, retries them; runs and edits workflows and data tables |
 | `mcp-servers` | Connects any MCP server (with a token or by signing in) and runs its tools as Anaella tools, asking first for anything the server doesn't mark read-only |
 | `motion-video` | Makes motion-graphics launch and promo videos (15-30 s, original soundtrack) from the user's logo, product photos and screenshots: prepares the assets, writes the film, checks its key frames and renders the MP4 |
