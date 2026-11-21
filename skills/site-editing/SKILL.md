@@ -1,6 +1,6 @@
 ---
 name: site-editing
-description: Edit the user's own website through Anaella - a WordPress or Inkwire site connected as an account. Write and publish posts, change what an existing page says, undo a change or bring back a deleted page (Inkwire), fix SEO fields (meta titles and descriptions, canonical, noindex), fill in missing image alt text, manage the media library, tags and categories, moderate comments, and fix the pages that Search Console flags. Use when the user asks to publish to their site, update or rewrite a page or post, improve a page's SEO on the site itself, add alt text, change a title or meta description, schedule a post, or clean up comments.
+description: Edit the user's own website through Anaella - a WordPress or Inkwire site connected as an account. Write and publish posts, change what an existing page says, undo a change or bring back a deleted page (Inkwire), act on the site's own SEO warnings, link the language versions of a page (Inkwire), fix SEO fields (meta titles and descriptions, canonical, noindex), fill in missing image alt text, manage the media library, tags and categories, moderate comments, and fix the pages that Search Console flags. Use when the user asks to publish to their site, update or rewrite a page or post, improve a page's SEO on the site itself, add alt text, change a title or meta description, schedule a post, or clean up comments.
 ---
 
 # Editing a website with Anaella
@@ -37,6 +37,14 @@ comments, seo-meta, media-library). Then:
 4. Apply with the same call without `dryRun`, only after their yes. The page changes on the real
    site at once.
 
+On an Inkwire site with `warnings` in `features`, the site checks the dry run itself and both
+the dry run and the write come back with **`warnings`**: its own SEO advice on the page as it
+will be (`title_duplicate`, `title_long`, `description_missing`, `description_duplicate`,
+`h1_extra`, `heading_skipped`, `image_alt_missing`, `link_broken`, `link_redirect`,
+`anchor_generic`, `translation_lang_duplicate`), each with the `field` to change. They never
+block the write. Tell the user in plain words ("another page has the same title") and offer the
+fix in the same proposal. `cms.content.create` returns them too: fix them while the post is a draft.
+
 Change text with **`edits`**: a list of `{ find, replace }`. Each `find` must occur exactly once
 in the body as `cms.content.get` returned it, or the call fails and nothing changes. On an
 Inkwire site the body is **markdown**, not HTML (`markdown` in the result, no `html`): `find`
@@ -52,9 +60,18 @@ that can change.
 
 ## What goes where
 
-- **Title, slug, excerpt, tags, categories, status.** A slug change breaks the page's old
-  address: say so, and offer a redirect first if the page ranks (`cms.request`; Inkwire has none,
-  so leave the slug alone unless the user insists).
+- **Title, slug, excerpt, tags, categories, status.** A slug change moves the page. On an Inkwire
+  site with `redirects` in `features` the old address keeps working (it redirects to the new
+  one), so a rename is safe. Elsewhere it breaks the old address: say so, and offer a redirect
+  first if the page ranks (WordPress: `cms.request`; an Inkwire site without `redirects`: leave
+  the slug alone unless the user insists).
+- **Languages** (Inkwire with `translations` in `features`). `lang` is the page's language
+  ("en", "fr-CA"); the same `translationKey` on each language version links them, and the site
+  then gives each version hreflang links to the others. To translate a page: read it, write the
+  version in the other language as a new draft with its own slug, the original's
+  `translationKey` (set one on the original first if it has none) and its own `lang`.
+  `cms.content.list` with `translationKey` lists the versions of a page. Other sites refuse
+  these fields.
 - **SEO fields** (`seo`: metaTitle, metaDescription, canonicalUrl, ogTitle, ogDescription,
   ogImageUrl, noindex, schemaJsonLd). Only the ones you name change. A site that cannot store
   one returns `unsupported` naming the field: tell the user, do not retry. Inkwire keeps all of
