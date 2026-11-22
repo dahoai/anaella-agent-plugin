@@ -46,7 +46,8 @@ capabilities), plus `get_job`, `list_accounts`, `connect_account` and
 | Skill | What it does |
 |-------|--------------|
 | `anaella` | How to use find → explain → do, connected accounts, errors, and the rules for writes |
-| `seo-report` | SEO report from Search Console + GA4 (quick wins, drops, index coverage) and Bing Webmaster Tools, keyword research, competitors, backlinks, site technical audit, AI visibility and readiness, with a diagnose → choose → act method |
+| `seo-report` | SEO report from Search Console + GA4 (quick wins, drops, index coverage) and Bing Webmaster Tools, rank tracking with alerts, content audit and topic clusters, keyword research and gaps, competitors, backlinks and link-building prospects, site technical audit, Core Web Vitals, sitemap, schema and local SEO audits, brand presence, AI visibility and readiness, with a diagnose → choose → act method |
+| `seo-content` | Writes a page from a content brief of the live top results (terms, subtopics, questions, length) and publishes it as a draft after approval; or scores an existing page against the top pages and lists the edits |
 | `ads-report` | Google and Meta ads account audit (scored controls and grade); Meta and Google Ads spend, results and cost per result by campaign; anomalies, kill or scale verdicts per campaign and per Meta ad (hook rate, fatigue), wasted search spend and negatives; competitors' Meta ads from the Ad Library; paid search terms that already rank organically; applies the agreed fixes (negatives, pauses, budgets, bidding, keywords, ad copy) and builds paused Meta image, video and lead ads after a yes |
 | `review-replies` | Drafts Google review replies, posts only the ones you approve |
 | `comment-replies` | Reads comments on your published posts, drafts replies, posts or queues the approved ones, hides spam |

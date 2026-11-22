@@ -6,7 +6,7 @@ description: Run a business's marketing through Anaella — a positioning and au
 # Marketing with Anaella
 
 Read the `anaella` skill first. This skill runs the loop; the workflow skills do the detail:
-`social-publish`, `content-to-video`, `motion-video`, `seo-report`, `ads-report`, `comment-replies`,
+`social-publish`, `content-to-video`, `motion-video`, `seo-report`, `seo-content`, `ads-report`, `comment-replies`,
 `lead-research`, `advisory-council`, `alerts-automations`.
 
 The loop is brief → research → plan → make → approve → publish → measure → learn. Enter where the

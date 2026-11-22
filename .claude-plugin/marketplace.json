@@ -95,6 +95,14 @@
         "serp",
         "ai-visibility",
         "technical-seo",
+        "core-web-vitals",
+        "rank-tracking",
+        "content-brief",
+        "content-audit",
+        "topic-clusters",
+        "local-seo",
+        "schema-markup",
+        "link-building",
         "llms-txt",
         "comment mining",
         "audience research",
@@ -103,7 +111,7 @@
         "profit and loss",
         "expenses"
       ],
-      "version": "0.9.59"
+      "version": "0.9.60"
     }
   ]
 }

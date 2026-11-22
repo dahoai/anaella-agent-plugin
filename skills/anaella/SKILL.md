@@ -25,7 +25,7 @@ it through the Anaella MCP server's tools.
 
 Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.opportunities.list`, `gsc.index.coverage.get`, `bing.queries.list`,
 `analytics.report`, `seo.keywords.ideas`, `seo.serp.get`, `seo.domain.overview`, `seo.backlinks.summary`,
-`seo.ai.mentions`, `seo.site.audit`, `seo.ai.readiness`, `ads.meta.insights.get`, `ads.google.query`, `ads.pulse.get`, `ads.budget.review`, `ads.google.wasted_spend`, `ads.competitors.list`, `ads.google.organic_overlap`, `ads.audit.run`, `reviews.list`,
+`seo.ai.mentions`, `seo.site.audit`, `seo.ai.readiness`, `seo.content.brief`, `seo.page.speed`, `gsc.rankings.list`, `gsc.content.audit`, `ads.meta.insights.get`, `ads.google.query`, `ads.pulse.get`, `ads.budget.review`, `ads.google.wasted_spend`, `ads.competitors.list`, `ads.google.organic_overlap`, `ads.audit.run`, `reviews.list`,
 `reviews.reply`, `business.post.create`, `calendar.availability.get`, `calendar.event.create`, `email.messages.list`,
 `email.message.get`, `email.attachment.read` (text) / `email.attachment.save` (original file), `email.message.send`, `sheets.read`, `sheets.append`, `drive.files.search`,
 `drive.file.read`, `docs.create`, `slack.messages.list`, `slack.message.send`, `social.post.create`, `social.posts.list`,
