@@ -45,6 +45,10 @@
         "indexnow",
         "anaella",
         "mcp",
+        "notion",
+        "jira",
+        "airtable",
+        "zapier",
         "agent-tools",
         "followers",
         "gmail",
@@ -117,7 +121,7 @@
         "profit and loss",
         "expenses"
       ],
-      "version": "0.9.61"
+      "version": "0.9.62"
     }
   ]
 }
