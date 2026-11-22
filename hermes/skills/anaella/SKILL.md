@@ -25,7 +25,7 @@ it through the Anaella MCP server's tools.
 
 Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.opportunities.list`, `gsc.index.coverage.get`, `bing.queries.list`,
 `analytics.report`, `seo.keywords.ideas`, `seo.serp.get`, `seo.domain.overview`, `seo.backlinks.summary`,
-`seo.ai.mentions`, `seo.site.audit`, `seo.ai.readiness`, `seo.content.brief`, `seo.page.speed`, `gsc.rankings.list`, `gsc.content.audit`, `ads.meta.insights.get`, `ads.google.query`, `ads.pulse.get`, `ads.budget.review`, `ads.google.wasted_spend`, `ads.competitors.list`, `ads.google.organic_overlap`, `ads.audit.run`, `reviews.list`,
+`seo.ai.mentions`, `seo.site.audit`, `seo.ai.readiness`, `seo.content.brief`, `seo.page.speed`, `gsc.rankings.list`, `gsc.content.audit`, `ads.meta.insights.get`, `ads.google.query`, `ads.pulse.get`, `ads.budget.review`, `ads.google.wasted_spend`, `ads.competitors.list`, `ads.google.organic_overlap`, `ads.audit.run`, `ads.account.status`, `ads.changes.list`, `ads.conversions.list`, `ads.google.creative.review`, `ads.test.evaluate`, `ads.landing.audit`, `ads.math.calculate`, `reviews.list`,
 `reviews.reply`, `business.post.create`, `calendar.availability.get`, `calendar.event.create`, `email.messages.list`,
 `email.message.get`, `email.attachment.read` (text) / `email.attachment.save` (original file), `email.message.send`, `sheets.read`, `sheets.append`, `drive.files.search`,
 `drive.file.read`, `docs.create`, `slack.messages.list`, `slack.message.send`, `social.post.create`, `social.posts.list`,
@@ -66,7 +66,7 @@ OpenDocument, RTF, TXT, CSV, Markdown, JSON; kept private): upload once, then pa
 These tools act in the user's name (`explain` says `readOnly: false` for every write):
 
 - **Money**: `payments.request.create` and the `stripe.*` / `paypal.*` writes (invoices,
-  refunds, cancellations), `ads.meta.ad.create`, `ads.meta.entity.update` and the `ads.google.*` writes (campaign, negatives, keywords, ad, conversion goal) (ad spend; `dryRun` validates first),
+  refunds, cancellations), `ads.meta.ad.create`, `ads.meta.entity.update` and the `ads.google.*` writes (new Search or Performance Max campaign, campaign, negatives, keywords, ad, conversion goal, audiences) (ad spend; `dryRun` validates first),
   `call.create` and `meeting.bot.join` (billed per minute).
 - **Public or seen by others**: `social.post.create` / `.update` / `.delete`,
   `social.comments.reply` / `.delete`, `social.messages.send` (a DM), `reviews.reply`,

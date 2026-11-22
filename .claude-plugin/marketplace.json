@@ -32,6 +32,12 @@
         "paid vs organic",
         "ads audit",
         "negative keywords",
+        "create google ads campaign",
+        "performance max",
+        "landing page audit",
+        "ab test",
+        "ppc calculator",
+        "call leads",
         "ads changes",
         "search console",
         "index coverage",
@@ -111,7 +117,7 @@
         "profit and loss",
         "expenses"
       ],
-      "version": "0.9.60"
+      "version": "0.9.61"
     }
   ]
 }
