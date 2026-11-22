@@ -34,9 +34,10 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.op
 `stripe.refund.create`, `paypal.invoices.list`, `finance.report`, `finance.entries.import`, `finance.entry.create`, `finance.payments.sync`, `n8n.workflows.list`, `n8n.workflow.run`, `mcp.tools.list`, `mcp.<server>.<tool>`,
 `sms.message.send`, `sms.messages.list`, `call.create`, `call.get`, `calls.list`,
 `meeting.bot.join`, `meeting.bot.say`, `meeting.bot.stop`, `meeting.get`, `meetings.list`,
-`content.repurpose`, `media.video.create`, `media.video.captions.add`, `video.motion.check`, `video.motion.render`, `media.audio.speech`,
+`content.repurpose`, `media.video.create`, `media.video.captions.add`, `video.motion.check`, `video.motion.render`, `video.motion.variants`, `media.audio.speech`,
 `media.transcribe`, `youtube.transcript.get`, `document.to_markdown`, `document.form_fields`, `document.form_fill`, `document.sign`, `document.signature_request.get`, `media.convert`,
 `media.video.overlay`, `media.video.text.add`, `media.image.text.add`, `media.info`, `media.voice.create`, `media.audio.clone`,
+`media.video.shorts`, `media.silence.remove`, `media.watermark.add`, `media.video.from_image`, `media.video.audio.add`, `media.music.list`, `media.music.generate`, `media.image.geotag`,
 `council.ask`, `company.research`, `prospects.search`, `rss.feed.read`, `shortlink.create`, `shortlink.stats`, `watch.create`, `watch.events.list`,
 `cms.site.get`, `cms.content.list`, `cms.content.get`, `cms.content.update`, `cms.media.upload`, `automation.create`. To attach a file (a PDF, a resume) to an email, pass it in `email.message.send`
 `attachments` (`contentBase64` + `filename`, a public `url`, a media `resourceId` or a `driveFile`),

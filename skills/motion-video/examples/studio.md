@@ -50,6 +50,44 @@ window.FILM_CONFIG = {
 };
 ```
 
+## data.js
+
+The film's words and colours, sent as `data` (the `DATA` global). A variant replaces some of these keys.
+
+```js
+const DATA = {
+  "promise": [
+    "It arrives",
+    "*before* you do."
+  ],
+  "proofs": [
+    [
+      "Oud & black amber",
+      "THE ACCORD"
+    ],
+    [
+      "12-hour trail",
+      "THE SILLAGE"
+    ],
+    [
+      "Finished by hand",
+      "THE GOLD CAP"
+    ]
+  ],
+  "cta": "Available October 1",
+  "url": "noir.paris",
+  "colors": {
+    "top": "#f8f6f2",
+    "bot": "#e3ddd3",
+    "ink": "#16130f",
+    "mute": "#7b736a",
+    "gold": "#a47b3e",
+    "amber": "#9c6428",
+    "paper": "#faf8f4"
+  }
+};
+```
+
 ## scenes.js
 
 ```js
@@ -64,13 +102,10 @@ window.FILM_CONFIG = {
 
 // ── Palette ────────────────────────────────────────────────────────────────────────────────────────
 // Warm neutrals from the bottle's backdrop, ink from the logo, gold from the cap (darkened so it reads on light).
-const C = {
-  top: '#f8f6f2', bot: '#e3ddd3',
-  ink: '#16130f', mute: '#7b736a',
-  gold: '#a47b3e',     // accent: one word per line, small details
-  amber: '#9c6428',    // the scent trail
-  paper: '#faf8f4',    // text on the ink pill
-};
+// The palette and every word come from DATA (data.js), so a variant changes data, not code:
+// top/bot backdrop, ink, mute, gold (the accent: the *starred* word, small details), amber (the
+// scent trail), paper (text on the ink pill).
+const C = DATA.colors;
 
 // ── Timing: one source of truth on the beat grid (score.js reads these too) ─────────────────────────
 const S = {
@@ -85,8 +120,8 @@ const S = {
   end: bars(5),                    // 12.5  end card
 };
 const RACK = [S.promise - 0.3, S.promise + 0.15];           // macro → stage dissolve window
-const PROMISE = [['It', 'arrives'], ['before', 'you', 'do.']];
-const WORD_T = [0, 1, 2, 3, 4].map((i) => S.promise + i * BEAT / 2);   // one word per 8th note
+const PROMISE = DATA.promise.map((ln) => starred(ln, C.ink, C.gold));   // two lines, [text, colour per word]
+const WORD_T = PROMISE.flatMap(([ln]) => ln.split(' ')).map((_, i) => S.promise + i * BEAT / 2);   // one word per 8th note
 const QC_AT = [S.promise + 1.6, S.reveal - 0.1, S.reveal + 0.12, S.reveal + 0.9,
   S.p1 + 1.0, S.p2 + 1.0, S.p3 + 1.0, DUR - 0.05];
 
@@ -105,9 +140,9 @@ function bottlePt(fx, fy, x) { return [x + (fx - 0.5) * PW, PY - PH / 2 + fy * P
 
 // The three proofs, each anchored to a real spot on the bottle.
 const PROOFS = [
-  { t: S.p1, fx: 0.84, fy: 0.56, label: 'Oud & black amber', sub: 'THE ACCORD' },   // the juice
-  { t: S.p2, fx: 0.66, fy: 0.225, label: '12-hour trail', sub: 'THE SILLAGE', rise: 0 },     // the collar / atomiser
-  { t: S.p3, fx: 0.72, fy: 0.10, label: 'Finished by hand', sub: 'THE GOLD CAP' },  // the cap
+  { t: S.p1, fx: 0.84, fy: 0.56, label: DATA.proofs[0][0], sub: DATA.proofs[0][1] },   // the juice
+  { t: S.p2, fx: 0.66, fy: 0.225, label: DATA.proofs[1][0], sub: DATA.proofs[1][1], rise: 0 },     // the collar / atomiser
+  { t: S.p3, fx: 0.72, fy: 0.10, label: DATA.proofs[2][0], sub: DATA.proofs[2][1] },  // the cap
 ];
 
 // ── Shared drawing ──────────────────────────────────────────────────────────────────────────────────
@@ -172,13 +207,15 @@ function sceneMacro(t, push) {
 // ── Scene 2: the promise (words arrive, blurred into focus, one per 8th) ─────────────────────────────
 function promiseWords(t) {
   if (t > S.breath + 0.05) return;
-  const size = 108 * U, ys = [CY - 110 * U, CY + 10 * U];
+  // the copy comes from DATA, so its length varies: fit the longest line to the safe width
+  const size = Math.min(...PROMISE.map(([ln]) => fitSize(ln, 108 * U, SAFE.w * 0.92, { tracking: -0.02 })));
+  const ys = [CY - 110 * U, CY - 110 * U + size * 1.1];
   const out = eInQuad(seg(t, S.breath - 0.3, S.breath));
   let i = 0;
-  PROMISE.forEach((ln, li) => {
-    words(ln.join(' '), CX, ys[li], size, { align: 'center', tracking: -0.02 }).forEach((w) => {
+  PROMISE.forEach(([ln, cols], li) => {
+    words(ln, CX, ys[li], size, { align: 'center', tracking: -0.02 }).forEach((w, wi) => {
       const k = eOutQuint(seg(t, WORD_T[i], WORD_T[i] + 0.7));
-      const col = w.word === 'before' ? C.gold : C.ink;
+      const col = cols[wi];
       i++;
       if (k <= 0) return;
       ctx.save();
@@ -224,13 +261,15 @@ function endCard(t) {
   logo('logo', COL_X, logoY, lw, { u: eOutQuint(seg(lt, 0.05, 0.9)), mode: 'wipe' });
   const k = eOutQuint(seg(lt, 0.4, 1.1));
   const ly = logoY + lw / ASSET.logo.aspect / 2 + 100 * U;
-  text('It arrives', COL_X, ly + (1 - k) * 16 * U, 54 * U, { align: 'center', tracking: -0.02, color: C.ink, alpha: k });
-  const l2 = words('before you do.', COL_X, ly + 62 * U, 54 * U, { align: 'center', tracking: -0.02 });
-  l2.forEach((w) => text(w.word, w.x, w.y + (1 - k) * 16 * U, 54 * U,
-    { align: 'left', tracking: -0.02, color: w.word === 'before' ? C.gold : C.ink, alpha: k }));
-  pill('Available October 1', COL_X, ly + 170 * U, 36 * U,
+  const colW = 2 * (SAFE.x1 - COL_X) * 0.94;   // the end-card column, centred on COL_X
+  const es = Math.min(...PROMISE.map(([ln]) => fitSize(ln, 54 * U, colW, { tracking: -0.02 })));
+  PROMISE.forEach(([ln, cols], li) => {
+    words(ln, COL_X, ly + li * es * 1.15, es, { align: 'center', tracking: -0.02 }).forEach((w, wi) => text(w.word,
+      w.x, w.y + (1 - k) * 16 * U, es, { align: 'left', tracking: -0.02, color: cols[wi], alpha: k }));
+  });
+  pill(DATA.cta, COL_X, ly + 170 * U, 36 * U,
     { bg: C.ink, fg: C.paper, u: seg(lt, 0.75, 1.15), font: 'Instrument Sans', weight: 700, tracking: 0.02 });
-  text('noir.paris', COL_X, ly + 256 * U, 28 * U,
+  text(DATA.url, COL_X, ly + 256 * U, 28 * U,
     { font: 'Geist Mono', weight: 400, color: C.mute, tracking: 0.12, align: 'center', alpha: eOutQuad(seg(lt, 1.0, 1.4)) });
 }
 
@@ -294,7 +333,7 @@ function score(A) {
   // ── Promise (bar 2): filtered Bbmaj9 opening up, one soft pluck per word, a riser into true silence ──
   A.pad(S.promise, CH.Bbmaj9, S.breath - S.promise, 0.5, { cutoff: 600, cutoffTo: 2600, attack: 0.3 });
   A.sub(S.promise, 34, S.breath - S.promise, 0.3);
-  [62, 65, 69, 72, 74].forEach((n, i) => A.pluck(WORD_T[i], n, 0.5, 0.5, { pan: (i - 2) * 0.15 }));
+  WORD_T.forEach((t, i) => A.pluck(t, [62, 65, 69, 72, 74, 77, 79][i % 7], 0.5, 0.5, { pan: (i - 2) * 0.15 }));   // one pluck per promise word
   A.riser(S.promise + 0.6, S.breath - S.promise - 0.6, 0.55);
   A.silence(S.breath, S.reveal);
 

@@ -26,6 +26,9 @@ Read the `anaella` skill first. Posts are **public**.
    - If the user's past posts are available (`social.posts.list`), match their voice, and lean on
      what did best for them (the `post-outliers` skill).
 3. **Approve.** Show the text per channel, the media and the time. Ask for an explicit yes.
+   When you have the `preview_post` tool (Anaella's MCP server), call it with the exact
+   `social.post.create` input instead: the user sees the post on each account and publishes from
+   it, and you are told when they do. Don't publish that post again yourself.
 4. **Publish** with `social.post.create`: schedule for the time the
    user chose; publish immediately only when they asked for it.
 5. **Changes** to a draft or scheduled post (new text, add an image, another time): edit it in

@@ -42,6 +42,49 @@ window.FILM_CONFIG = {
 };
 ```
 
+## data.js
+
+The film's words and colours, sent as `data` (the `DATA` global). A variant replaces some of these keys.
+
+```js
+const DATA = {
+  "hook": [
+    "STILL",
+    "CHASING",
+    "INVOICES?"
+  ],
+  "promise": [
+    "Invoices that",
+    "CHASE",
+    "THEMSELVES."
+  ],
+  "proofs": [
+    [
+      "INVOICE IN",
+      "30 SECONDS"
+    ],
+    [
+      "REMINDERS",
+      "ON AUTOPILOT"
+    ],
+    [
+      "GET PAID"
+    ]
+  ],
+  "line": "Stop chasing. Get paid.",
+  "cta": "DOWNLOAD FREE",
+  "url": "ledgerly.app",
+  "colors": {
+    "coral": "#ff5b3a",
+    "amber": "#ffc53d",
+    "green": "#22c55e",
+    "ink": "#0f172a",
+    "paper": "#fffaf0",
+    "red": "#dc2626"
+  }
+};
+```
+
 ## scenes.js
 
 ```js
@@ -50,16 +93,10 @@ window.FILM_CONFIG = {
 // One phone, one screenshot; the world colour-cuts behind it on the beat, and every cut
 // pushes the screen into a different real UI element.
 
-// ---------- palette (logo brand + bold supports, flat) ----------
-const C = {
-  indigo: ASSET.logo.brand || '#4f46e5',   // the logo mark
-  coral: '#ff5b3a',
-  amber: '#ffc53d',
-  green: '#22c55e',
-  ink: '#0f172a',                          // the logo wordmark
-  paper: '#fffaf0',
-  red: '#dc2626',                          // the app's own "Overdue" red
-};
+// ---------- palette and words: from DATA (data.js), so a variant changes data, not code ----------
+// The palette: the logo mark (indigo) + DATA.colors (coral, amber, green, ink = the wordmark, paper,
+// red = the app's own "Overdue" red).
+const C = { indigo: ASSET.logo.brand || '#4f46e5', ...DATA.colors };
 const HARD = { x: 18 * U, y: 24 * U, color: C.ink };   // the one hard offset shadow, used everywhere
 
 // ---------- timing on the 128 BPM grid (BAR 1.875 s, BEAT 0.469 s) ----------
@@ -178,9 +215,9 @@ function sceneHook(lt) {
     });
   });
   const y0 = SAFE.y0 + SAFE.h * 0.4;
-  slamLine('STILL', y0, 165, lt, HOOK_WORDS[0], C.paper);
-  slamLine('CHASING', y0 + 235 * U, 165, lt, HOOK_WORDS[1], C.paper);
-  slamLine('INVOICES?', y0 + 470 * U, 165, lt, HOOK_WORDS[2], C.ink);
+  slamLine(DATA.hook[0], y0, 165, lt, HOOK_WORDS[0], C.paper);
+  slamLine(DATA.hook[1], y0 + 235 * U, 165, lt, HOOK_WORDS[1], C.paper);
+  slamLine(DATA.hook[2], y0 + 470 * U, 165, lt, HOOK_WORDS[2], C.ink);
 }
 
 function sceneReveal(lt) {
@@ -191,11 +228,11 @@ function sceneReveal(lt) {
   // the phone tilts in from below
   const s = spring(lt + 0.04, 2.4, 0.42);
   ledgerPhone(L.phoneX, lerp(H + 700 * U, L.phoneY, s), L.phoneW, { rot: lerp(-0.16, 0, clamp(s)) + (s - 1) * 0.2 });
-  text('Invoices that', CX, SAFE.y0 + 30 * U, 48 * U, {
+  text(DATA.promise[0], CX, SAFE.y0 + 30 * U, 48 * U, {
     align: 'center', color: C.paper, alpha: eOutQuint(seg(lt, REVEAL_WORDS[0], REVEAL_WORDS[0] + 0.3)),
   });
-  slamLine('CHASE', L.line1 + 20 * U, 92, lt, REVEAL_WORDS[1], C.amber);
-  slamLine('THEMSELVES.', L.line2 + 8 * U, 92, lt, REVEAL_WORDS[2], C.paper);
+  slamLine(DATA.promise[1], L.line1 + 20 * U, 92, lt, REVEAL_WORDS[1], C.amber);
+  slamLine(DATA.promise[2], L.line2 + 8 * U, 92, lt, REVEAL_WORDS[2], C.paper);
 }
 
 function sceneSend(lt) {
@@ -204,8 +241,8 @@ function sceneSend(lt) {
   uiFocus(dev, UI.plus, eOutQuint(seg(lt, 0.5, 0.8)), { color: C.indigo, dim: 0.4 });
   glidePointer(dev, lt, mid(UI.plus), 0.55, F1.tap);
   appCard(L.phoneX + 30 * U, L.phoneTop + 170 * U, 580 * U, seg(lt, F1.toast, F1.toast + 1), 'check', C.green, 'Invoice sent', 'Juniper Labs · $2,400.00');
-  slamLine('INVOICE IN', L.line1, 96, lt, 0.02, C.ink);
-  slamLine('30 SECONDS', L.line2, 96, lt, beats(0.5), C.paper);
+  slamLine(DATA.proofs[0][0], L.line1, 96, lt, 0.02, C.ink);
+  slamLine(DATA.proofs[0][1], L.line2, 96, lt, beats(0.5), C.paper);
 }
 
 function sceneRemind(lt) {
@@ -217,8 +254,8 @@ function sceneRemind(lt) {
     appCard(L.phoneX + (i % 2 ? -22 : 22) * U, L.phoneTop + 120 * U + i * 150 * U, 600 * U, seg(lt, t0, t0 + 1),
       'bell', C.indigo, 'Reminder sent', 'Atlas Row Architects');
   });
-  slamLine('REMINDERS', L.line1, 96, lt, 0.02, C.ink);
-  slamLine('ON AUTOPILOT', L.line2, 96, lt, beats(0.5), C.indigo);
+  slamLine(DATA.proofs[1][0], L.line1, 96, lt, 0.02, C.ink);
+  slamLine(DATA.proofs[1][1], L.line2, 96, lt, beats(0.5), C.indigo);
 }
 
 function scenePaid(lt) {
@@ -234,7 +271,7 @@ function scenePaid(lt) {
       badge('PAID', 0, 0, 160 * U, { bg: C.indigo, fg: C.paper, spin: lt * 0.2, points: 14, font: 'Boldonse', size: 54 * U });
     });
   }
-  slamLine('GET PAID', L.line1, 110, lt, -0.02, C.paper);
+  slamLine(DATA.proofs[2][0], L.line1, 110, lt, -0.02, C.paper);
   const py = L.line2 - 34 * U;
   const pu = F3.pills.map(t0 => seg(lt, t0, t0 + 0.35));
   pill('CARD', CX - 150 * U, py, 52 * U, { bg: C.ink, fg: C.paper, u: pu[0], font: 'Geist Mono', tracking: 0.08 });
@@ -252,15 +289,15 @@ function sceneEnd(lt) {
   });
   badge('NEW', CX + logoW / 2 + 20 * U, logoY - 80 * U, 78 * U,
     { bg: C.amber, fg: C.ink, u: seg(lt, END.line, END.line + 0.35), spin: lt * 0.25, font: 'Geist Mono', size: 30 * U });
-  reveal('Stop chasing. Get paid.', CX, logoY + 230 * U, 72 * U, seg(lt, END.line, END.line + 0.35),
+  reveal(DATA.line, CX, logoY + 230 * U, 72 * U, seg(lt, END.line, END.line + 0.35),
     { mode: 'rise', by: 'word', align: 'center', color: C.paper, weight: 700, tracking: -0.02, maxW: L.maxW });
   // the home screen rises in between the promise and the ask
   const ps = spring(lt - END.phone, 2.6, 0.5), pw = 310 * U;
   const phoneCY = logoY + 290 * U + pw * 1.03;
   if (ps > 0) ledgerPhone(CX, lerp(H + 400 * U, phoneCY, ps), pw, { rot: (1 - clamp(ps)) * 0.12 });
   const ctaY = SAFE.y1 - 125 * U;
-  pill('DOWNLOAD FREE', CX, ctaY, 50 * U, { bg: C.ink, fg: C.paper, u: seg(lt, END.pill, END.pill + 0.4), icon: 'arrowDown', tracking: 0.06 });
-  text('ledgerly.app', CX, SAFE.y1 - 12 * U, 44 * U, {
+  pill(DATA.cta, CX, ctaY, 50 * U, { bg: C.ink, fg: C.paper, u: seg(lt, END.pill, END.pill + 0.4), icon: 'arrowDown', tracking: 0.06 });
+  text(DATA.url, CX, SAFE.y1 - 12 * U, 44 * U, {
     align: 'center', font: 'Geist Mono', weight: 700, color: C.paper, tracking: 0.04,
     alpha: eOutQuint(seg(lt, END.url, END.url + 0.3)),
   });

@@ -11,6 +11,7 @@ config   window.FILM_CONFIG = { w, h, fps, seconds, bpm, bg, grain, vignette, tw
          grain, vignette, twos or font, and keep w, h and seconds as they are)
 ASSET    const ASSET = { name: { kind, w, h, aspect, colors, tone, cut?, device? } }
          (built from the assets you pass: each one's `meta` from video.motion.assets)
+DATA     const DATA = { ...the `data` you pass }   (the film's words and colours; {} without it)
 ```
 The check returns a contact sheet (evenly spaced moments + up to 8 `QC_AT` key moments, at most
 16 tiles) and the audio report; a check with `at` renders only those seconds, full size.
@@ -18,7 +19,7 @@ The check returns a contact sheet (evenly spaced moments + up to 8 `QC_AT` key m
 Scripts are plain globals (no imports) that share one scope with the engine. **At the top level of scenes.js** only numbers and metadata are ready (`W H U SAFE BEAT FILM ASSET`, e.g. `ASSET.product.aspect`); images load later, so call `aspect()`, `fitAsset()`, `product()` etc. only inside `frame()`/`setup()`. `frame(t)` is called once per frame with `t` in seconds. The canvas is already cleared to `FILM.bg`. Draw with the global `ctx` (CanvasRenderingContext2D) and the helpers below. Grain and vignette are added after `frame` if set in config.
 
 **Reserved names.** Don't declare any of these yourself; a clash is a `SyntaxError: Identifier 'x' has already been declared` and the film won't start. Give your own helpers distinctive names (e.g. `drawMug`, `sceneHook`) or put them inside one object (`const F = { ... }`):
-`W H U CX CY FPS FRAMES DUR TAU BEAT BAR SAFE FILM CLK PORTRAIT LANDSCAPE SQUARE ctx canvas TEX IMG ICONS GLYPHS SR` and every function listed on this page, plus these internals: `hashInts hashStr seedOf mulberry32 vnoise side hatchIn wob glyphPolys charLayout tabularText tabularW fontStr realWeight setCtx setClock scratch makeCanvas paperTex buildGrain post boot loadFonts renderFrame renderAudio audioWav lufs kWeight limit truePeakAbs wavFloat32 midi mtof chord CHORD_IV NOTE_IX OS_TAPS FONT_FILES FONT_WEIGHTS _col _glyphCache _iconPaths _scratch ASSET DEVICE loadAssets assetOf _tintCache _silhouette _theme`. Common traps: `line`, `ring`, `rect`, `circle`, `text`, `words`, `wrap`, `chord`, `limit`, `pick`, `side`, `bars`, `beats`, `keys`, `seg`, `face`, `image`, `icon`, `flash`, `wipe`, `layer`.
+`W H U CX CY FPS FRAMES DUR TAU BEAT BAR SAFE FILM CLK PORTRAIT LANDSCAPE SQUARE ctx canvas TEX IMG ICONS GLYPHS SR DATA` and every function listed on this page, plus these internals: `hashInts hashStr seedOf mulberry32 vnoise side hatchIn wob glyphPolys charLayout tabularText tabularW fontStr realWeight setCtx setClock scratch makeCanvas paperTex buildGrain post boot loadFonts renderFrame renderAudio audioWav lufs kWeight limit truePeakAbs wavFloat32 midi mtof chord CHORD_IV NOTE_IX OS_TAPS FONT_FILES FONT_WEIGHTS _col _glyphCache _iconPaths _scratch ASSET DEVICE loadAssets assetOf _tintCache _silhouette _theme`. Common traps: `line`, `ring`, `rect`, `circle`, `text`, `words`, `wrap`, `chord`, `limit`, `pick`, `side`, `bars`, `beats`, `keys`, `seg`, `face`, `image`, `icon`, `flash`, `wipe`, `layer`.
 
 ## Globals
 - **Canvas:** `W, H` (canvas px), `CX, CY` (centre), and `U`, the design unit: 1 U = 1 px when the short side is 1080. Size everything in U.
@@ -114,6 +115,7 @@ Draw checks, stars, hearts and arrows with `icon()` / `arrow()` instead.
 | `textW(str, size, o)`, `fitSize(str, size, maxW, o)`, `wrap(str, size, maxW, o)` → lines | measuring (all honour `tracking` and `tabular`) |
 | `words(str, x, y, size, o)` | per-word layout `[{word, i, line, x, y, w}]` (x = left edge, y = baseline), honouring `maxW` wrapping, `lh` (line height × size, default 1.08), `align`, `valign:'middle'`. Animate each word yourself |
 | `reveal(str, x, y, size, u, o)` | one-call kinetic text. `u` 0..1. `by: 'word'\|'char'`; `mode: 'rise'\|'fade'\|'scale'\|'slam'\|'mask'\|'blur'\|'type'`; `stagger` (0..1, default .6); `ease`; `colors: [...]` (per item) or `colorOf(label, i)`; `wrap: true` + `maxW` for multi-line; plus any `text()` option |
+| `starred(str, base, accent)` → `[text, colors]` | copy from `DATA` with *starred* accent words: `starred('Cash flow, *before* it happens.', C.fg, C.acc)` → `['Cash flow, before it happens.', [fg, fg, acc, fg, fg]]`, for `reveal(text, …, { by: 'word', colors })`. The accent stays on its word whatever the copy |
 | `counter(a, b, u, fmt)`, `fmtNum(v, dp=0)` (adds thousands separators: 1,745) | animated numbers: `text(counter(0, 12400, u, v => '$' + fmtNum(v)), ..., {tabular: true})` |
 
 ## Icons, charts, images, waveform
@@ -159,10 +161,23 @@ Every asset prepared by video.motion.assets is already loaded as `IMG[name]`; it
   - `streaks(x0,y0,w,h,{count,len,ang,speed,color,alpha,lw,id})` — rain or data streaks
 - **Transitions:** `flash(a, col, mode='source-over')` (full frame; `'lighter'` for a glow flash), `wipe(u, 'left'|'right'|'up'|'down', col)`, `iris(u, x, y, col)` (circle cover).
 
+## Content in DATA, code in scenes
+
+Every word on screen and the palette come from `DATA` (the `data` you send), never from string
+literals in scenes.js: `text(DATA.cta, …)`, `const C = DATA.colors`. Then another hook, CTA,
+language or colour scheme is a variant (`video.motion.render` `variants`) that re-renders the same
+code, with no new code. Keep mock UI details (a toast's
+"Invoice sent", a badge) in code; put in `DATA` what a variant would change: the hook, promise,
+benefits, end line, CTA, URL, colours. A *starred* word marks the accent (`starred()`).
+
+Since the copy's length changes, fit every `DATA` text to its space: `maxW` on `text()`, `fitSize()`
+for a size shared by several lines, `wrap: true` + `maxW` on `reveal()`. Never assume a word count:
+derive per-word timings from the copy (`DATA.promise.split(' ').map(...)`).
+
 ## Structure and practices
 ```js
 'use strict';
-const C = { bg: '#0d0d0d', fg: '#f4f1ea', acc: '#ff4d2e' };        // palette in one place
+const C = DATA.colors;                                              // palette in one place: { bg, fg, acc }
 const S = { hook: 0, set: bars(1), drop: bars(4), end: bars(7) };   // scene times on the beat grid (shared with score.js)
 const QC_AT = [S.set, S.drop, S.drop + 0.3, S.end + 1];             // key moments the QC sheet must include
 

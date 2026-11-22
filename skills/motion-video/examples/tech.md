@@ -50,6 +50,55 @@ window.FILM_CONFIG = {
 };
 ```
 
+## data.js
+
+The film's words and colours, sent as `data` (the `DATA` global). A variant replaces some of these keys.
+
+```js
+const DATA = {
+  "hook": [
+    "Who owes you what?",
+    "When does it land?",
+    "Stop *guessing.*"
+  ],
+  "badge": "2.0",
+  "line": "Cash flow, *before* it happens.",
+  "features": [
+    [
+      "01 · LIVE FORECAST",
+      "Your cash, *forecast* live."
+    ],
+    [
+      "02 · ONE-CLICK INVOICES",
+      "One click. *Invoiced.*"
+    ],
+    [
+      "03 · AUTO REMINDERS",
+      "*Overdue?* Chased for you."
+    ]
+  ],
+  "proof": [
+    "OUTSTANDING",
+    "Tracked to the cent.",
+    "WEB + MOBILE"
+  ],
+  "cta": "Start free",
+  "url": "ledgerly.app",
+  "colors": {
+    "top": "#0b1120",
+    "bot": "#05080f",
+    "fg": "#e8edf7",
+    "mute": "#7c86a2",
+    "acc": "#4f46e5",
+    "accHi": "#8b93ff",
+    "ok": "#2fe07a",
+    "late": "#f05252",
+    "card": "#0f172a",
+    "ghost": "#0b1120"
+  }
+};
+```
+
 ## scenes.js
 
 ```js
@@ -60,15 +109,13 @@ window.FILM_CONFIG = {
 // assembles itself. From there one continuous browser pans between three real features,
 // the phone joins it for the proof, and the film lands on logo + line + CTA.
 
-// ---------------------------------------------------------------- palette
-const C = {
-  top: '#0b1120', bot: '#05080f',            // space gradient
-  fg: '#e8edf7', mute: '#7c86a2',            // type
-  acc: '#4f46e5',                            // brand indigo (ASSET.logo.colors[1]; [0] is the navy wordmark)
-  accHi: '#8b93ff',                          // lighter indigo for rings, tags and glows on dark
-  ok: '#2fe07a', late: '#f05252',            // success / overdue
-  card: '#0f172a', ghost: '#0b1120',         // toast cards / empty screen before the build
-};
+// ---------------------------------------------------------------- palette and words
+// Both come from DATA (data.js), so a variant changes data, not code. Colours: top/bot (space
+// gradient), fg/mute (type), acc (brand indigo: ASSET.logo.colors[1]), accHi (lighter indigo for
+// rings, tags and glows on dark), ok/late (success / overdue), card/ghost (toasts / the empty screen).
+// A *starred* word in the copy is the accent (see starred()).
+const C = DATA.colors;
+const LINE = starred(DATA.line, C.fg, C.accHi);
 
 // ---------------------------------------------------------------- timing (on the beat grid; score.js reads S)
 const S = {
@@ -257,9 +304,10 @@ function sceneHook(t) {
   ctx.fillStyle = radGrad(CX, CY, 0, 620 * U, [[0, rgba(C.bot, 0.82)], [0.6, rgba(C.bot, 0.5)], [1, rgba(C.bot, 0)]]);
   ctx.fillRect(0, 0, W, H);
   const o = { align: 'center', base: 'middle' };
-  ldgHead('Who owes you what?', CX, CY, 124 * U, t, -0.45, S.when, o);
-  ldgHead('When does it land?', CX, CY, 124 * U, t, S.when, S.guess, o);
-  ldgHead('Stop guessing.', CX, CY, 150 * U, t, S.guess, S.converge + 0.15, { ...o, colors: [C.fg, C.accHi] });
+  ldgHead(DATA.hook[0], CX, CY, 124 * U, t, -0.45, S.when, o);
+  ldgHead(DATA.hook[1], CX, CY, 124 * U, t, S.when, S.guess, o);
+  const [h3, h3Cols] = starred(DATA.hook[2], C.fg, C.accHi);
+  ldgHead(h3, CX, CY, 150 * U, t, S.guess, S.converge + 0.15, { ...o, colors: h3Cols });
 }
 
 // ---------------------------------------------------------------- the browser (one continuous device from the build to the end card)
@@ -288,7 +336,7 @@ function ldgBrowser(t) {
   const exit = eInExpo(seg(t, S.end, S.end + 0.5));
   glow(x, y, w * 0.7, C.acc, (built ? 0.3 : 0.18 * rise) * (1 - exit));
   return device('browser', x, y + (1 - rise) * 90 * U + exit * 70 * U, w * (1 - 0.06 * exit), {
-    h: BROWSER_H(w), screen: built ? 'screen' : C.ghost, url: 'ledgerly.app', theme: 'dark',
+    h: BROWSER_H(w), screen: built ? 'screen' : C.ghost, url: DATA.url, theme: 'dark',
     alpha: rise * (1 - exit), rot: (1 - rise) * 0.04, shadow: 0.7,
     zoom: { x: z[0], y: z[1], w: z[2], h: z[3], u: 1 },
   });
@@ -301,12 +349,14 @@ function sceneTitle(t, dev) {
   const a = inout(t, S.title + 0.35, S.f1, 0.35, 0.3);
   const lw = 330 * U, lu = eOutExpo(seg(lt, 0.35, 1.0));
   ldgLogo(x + lw / 2, CY - 150 * U, lw, { u: lu, mode: 'rise', alpha: a });
-  pill('2.0', x + lw + 58 * U, CY - 150 * U, 26 * U, { bg: C.acc, fg: '#ffffff', u: seg(lt, 0.6, 1.0), font: 'Geist Mono', weight: 700, alpha: a });
-  ldgHead('Cash flow, before it happens.', x, CY - 20 * U, 84 * U, t, S.title + 0.75, S.f1 + 0.05, { wrap: true, maxW: TEXT_W, colors: [C.fg, C.fg, C.accHi, C.fg, C.fg] });
+  pill(DATA.badge, x + lw + 58 * U, CY - 150 * U, 26 * U, { bg: C.acc, fg: '#ffffff', u: seg(lt, 0.6, 1.0), font: 'Geist Mono', weight: 700, alpha: a });
+  ldgHead(LINE[0], x, CY - 20 * U, 84 * U, t, S.title + 0.75, S.f1 + 0.05, { wrap: true, maxW: TEXT_W, colors: LINE[1] });
 }
 
 // ---------------------------------------------------------------- features
-function ldgFeatureCopy(t, t0, t1, tag, head, x, colors) {
+// feature = DATA.features[i]: [tag, line with a *starred* accent word]
+function ldgFeatureCopy(t, t0, t1, feature, x, accent = C.accHi) {
+  const [tag, line] = feature, [head, colors] = starred(line, C.fg, accent);
   ldgTag(tag, x, CY - 110 * U, t, t0 + 0.55, t1);
   ldgHead(head, x, CY - 10 * U, 80 * U, t, t0 + 0.7, t1, { wrap: true, maxW: TEXT_W, colors });
 }
@@ -331,7 +381,7 @@ function sceneForecast(t, dev) {
     ringStroke(px, py, (14 + 46 * eOutCubic(pk)) * U, rgba(C.accHi, (1 - pk) * out), 3 * U);
     glow(px, py, 60 * U, C.acc, 0.5 * (1 - pk) * out);
   }
-  ldgFeatureCopy(t, S.f1, S.f2 + 0.05, '01 · LIVE FORECAST', 'Your cash, forecast live.', TEXT_R, [C.fg, C.fg, C.accHi, C.fg]);
+  ldgFeatureCopy(t, S.f1, S.f2 + 0.05, DATA.features[0], TEXT_R);
 }
 
 function sceneInvoice(t, dev) {
@@ -348,7 +398,7 @@ function sceneInvoice(t, dev) {
   if (pa > 0) pointer(pp[0], pp[1], { pressed: press, alpha: pa });
   const [bx] = dev.pt(0.98, 0), by = dev.pt(0, 0.2)[1];
   ldgToast(bx - 190 * U, by + 60 * U, 380 * U, seg(t, S.click + 0.2, S.click + 0.7) * out, 'check', C.ok, 'Invoice ready to send', null);
-  ldgFeatureCopy(t, S.f2, S.f3 + 0.05, '02 · ONE-CLICK INVOICES', 'One click. Invoiced.', TEXT_L, [C.fg, C.fg, C.accHi]);
+  ldgFeatureCopy(t, S.f2, S.f3 + 0.05, DATA.features[1], TEXT_L);
 }
 
 function sceneReminder(t, dev) {
@@ -358,7 +408,7 @@ function sceneReminder(t, dev) {
   uiFocus(dev, R.lateFocus, eOutExpo(seg(lt, 0.8, 1.2)) * out, { color: C.late, dim: 0.45, pad: 6 * U });
   const r = dev.rect(R.lateFocus);
   ldgToast(r.x + r.w / 2, r.y - 90 * U, 440 * U, seg(lt, 1.5, 2.0) * out, 'bell', C.ok, 'Reminder sent', 'Atlas Row Architects · $1,950');
-  ldgFeatureCopy(t, S.f3, S.proof + 0.05, '03 · AUTO REMINDERS', 'Overdue? Chased for you.', TEXT_R, [C.late, C.fg, C.fg, C.fg]);
+  ldgFeatureCopy(t, S.f3, S.proof + 0.05, DATA.features[2], TEXT_R, C.late);   // the overdue word in red
 }
 
 // ---------------------------------------------------------------- proof: the phone joins, the number lands
@@ -376,7 +426,7 @@ function sceneProof(t, dev) {
   uiFocus(dev, R.outstanding, eOutExpo(seg(lt, 1.1, 1.5)) * (1 - exit), { color: C.accHi, dim: 0.4 });
 
   const x = TEXT_L, a = 1 - seg(t, S.end - 0.05, S.end + 0.25);
-  ldgTag('OUTSTANDING', x, CY - 110 * U, t, S.proof + 0.6, S.end + 0.25);
+  ldgTag(DATA.proof[0], x, CY - 110 * U, t, S.proof + 0.6, S.end + 0.25);
   const cu = eOutQuart(seg(t, S.proof + 0.9, S.cash));
   if (cu > 0 && a > 0) {
     const v = 12480 * cu, whole = Math.floor(v), cents = Math.floor((v - whole) * 100 + 1e-6);
@@ -385,8 +435,8 @@ function sceneProof(t, dev) {
     const m = text('$' + fmtNum(whole), x, CY + 10 * U, 96 * U * (1 + 0.04 * land), { ...mo, color: C.fg });
     text('.' + String(cents).padStart(2, '0'), x + m.w + 2 * U, CY + 10 * U, 50 * U, { ...mo, color: C.mute });
   }
-  ldgHead('Tracked to the cent.', x, CY + 90 * U, 44 * U, t, S.cash - 0.3, S.end + 0.25, { weight: 400, color: C.mute, tracking: 0 });
-  ldgTag('WEB + MOBILE', x, CY + 170 * U, t, S.proof + 1.0, S.end + 0.25, { color: C.mute, weight: 400 });
+  ldgHead(DATA.proof[1], x, CY + 90 * U, 44 * U, t, S.cash - 0.3, S.end + 0.25, { weight: 400, color: C.mute, tracking: 0 });
+  ldgTag(DATA.proof[2], x, CY + 170 * U, t, S.proof + 1.0, S.end + 0.25, { color: C.mute, weight: 400 });
 }
 
 // ---------------------------------------------------------------- end card
@@ -395,9 +445,9 @@ function sceneEnd(t) {
   if (lt < 0) return;
   glow(CX, CY - 40 * U, 700 * U, C.acc, 0.22 * eOutCubic(seg(lt, 0.2, 1.2)));
   ldgLogo(CX, CY - 160 * U, 700 * U, { u: eOutExpo(seg(lt, 0.25, 1.0)), mode: 'rise' });
-  ldgHead('Cash flow, before it happens.', CX, CY + 20 * U, 72 * U, t, S.end + 0.55, DUR + 1, { align: 'center', colors: [C.fg, C.fg, C.accHi, C.fg, C.fg] });
-  pill('Start free', CX, CY + 160 * U, 44 * U, { bg: C.acc, fg: '#ffffff', u: seg(lt, 0.9, 1.35), icon: 'arrowRight' });
-  text('ledgerly.app', CX, CY + 262 * U, 32 * U, { font: 'Geist Mono', weight: 400, align: 'center', color: C.mute, tracking: 0.06, alpha: eOutCubic(seg(lt, 1.1, 1.5)) });
+  ldgHead(LINE[0], CX, CY + 20 * U, 72 * U, t, S.end + 0.55, DUR + 1, { align: 'center', colors: LINE[1] });
+  pill(DATA.cta, CX, CY + 160 * U, 44 * U, { bg: C.acc, fg: '#ffffff', u: seg(lt, 0.9, 1.35), icon: 'arrowRight' });
+  text(DATA.url, CX, CY + 262 * U, 32 * U, { font: 'Geist Mono', weight: 400, align: 'center', color: C.mute, tracking: 0.06, alpha: eOutCubic(seg(lt, 1.1, 1.5)) });
 }
 
 // ---------------------------------------------------------------- frame

@@ -1,6 +1,6 @@
 ---
 name: content-to-video
-description: Turn an article, a video, a podcast or a document into ready posts, short narrated videos, captions, voice-overs (including a cloned voice), transcripts and cleaned-up images with Anaella's media tools, then schedule them. Use when the user asks to repurpose content, make a reel / TikTok / short from a topic, a script, their own photos or a story, clone their voice, add a logo or watermark to a video, put text or a hook on a video or a photo, add subtitles to a video, transcribe audio or video, get a YouTube transcript, read a PDF or Word file, remove a photo background, convert, trim or merge media, or download a TikTok / Instagram / YouTube video into their library.
+description: Turn an article, a video, a podcast or a document into ready posts, short narrated videos, clips, captions, voice-overs (including a cloned voice), music, transcripts and cleaned-up images with Anaella's media tools, then schedule them. Use when the user asks to repurpose content, cut a long video or podcast into shorts / reels / clips, make a reel / TikTok / short from a topic, a script, their own photos or a story, turn a photo into a video, add music or a voice-over to a video, make a soundtrack or jingle, remove silences, clone their voice, add a logo or watermark to a video or a photo, put text or a hook on a video or a photo, add subtitles to a video, transcribe audio or video, get a YouTube transcript, read a PDF, a scan, a screenshot or a Word file, set or remove a photo's GPS location, remove a photo background, convert, trim or merge media, or download a TikTok / Instagram / YouTube video into their library.
 ---
 
 # Content to posts and videos with Anaella
@@ -14,11 +14,13 @@ resource whose `id` goes straight into `social.post.create`.
 - **Article, video page or text → posts**: `content.repurpose` with one of `url`, `text` or
   `mediaId`, and the `platforms` (x, linkedin, instagram, threads, newsletter, blog…). It
   returns `ideas` and per platform `text` (plus `items` for a thread or carousel). $0.05.
-- **Audio or video → text**: `media.transcribe` (`srt: true` for subtitles). $0.01 a minute.
+- **Audio or video → text**: `media.transcribe` with a file or a TikTok / Instagram / X /
+  Facebook link (`srt: true` for subtitles). $0.01 a minute.
 - **YouTube → text**: `youtube.transcript.get` (uses the video's captions; usually free, $0.005 when YouTube
   turns the first source away and a second one fetches them).
-- **PDF, Word, slides, spreadsheet → markdown**: `document.to_markdown` with a `url` or a
-  local file as base64 `data` + `name` (free).
+- **PDF (scanned too), Word, slides, spreadsheet, a photo or screenshot of text, a web page →
+  markdown**: `document.to_markdown` with a `url`, a `mediaId` or a local file as base64
+  `data` + `name`; `language` helps OCR read a scan that isn't in English or French (free).
 
 ## Media
 
@@ -37,6 +39,14 @@ resource whose `id` goes straight into `social.post.create`.
   script first.
 - **A motion-graphics video** (a launch, a promo, an ad from their logo, product photos and
   screenshots, with an original soundtrack, no narration): the `motion-video` skill.
+- **Shorts from a long video** (a podcast, a webinar, a talk): `media.video.shorts` finds the
+  `count` best self-contained moments, crops them to 9:16 and captions them; `instructions`
+  steers the choice ("the pricing advice"). Each comes with a `title`, `hook` and `score`. Show
+  the user the picks; `cut: false` returns only the picks, cheaper. $0.01 a minute of video plus
+  $0.04 a short. Not for YouTube links: ask for the file.
+- **A photo into a video**: `media.video.from_image` (slow zoom or pan, `duration`, `aspect`,
+  optional `music` mood or own audio). $0.02. Several joined with `media.video.merge` make a
+  slideshow.
 - **Captions on the user's own video**: `media.video.captions.add` ($0.10).
 - **Text on a video** (a hook, a title, labels): `media.video.text.add` takes 1-30 `texts`,
   each with `start` / `end` seconds, a `style` (classic, box, dark_box, neon, meme, headline,
@@ -49,7 +59,13 @@ resource whose `id` goes straight into `social.post.create`.
   wraps and shrinks to fit. $0.01. A stock photo needs a hook; on a real photo of the work keep
   it short.
 - **Voice-over**: `media.audio.speech` (`text`, `language`, `voice`; `words: true` adds when
-  each word is said); lay it over a video with `media.video.merge` (`mediaIds`, `audioId`).
+  each word is said); put it under a video with `media.video.audio.add` (`audioMediaId`).
+- **Music**: `media.video.audio.add` with `music` (a mood) puts a royalty-free library track
+  under a video, quiet and looped ($0.02); `media.music.list` lists the tracks (free).
+  `media.music.generate` composes new music from a description: a 30 s clip ($0.06) or a
+  3-minute song ($0.12), instrumental unless they want vocals (`lyrics`).
+- **Dead air**: `media.silence.remove` cuts the pauses out of a voice-over, podcast or
+  talking-head video ($0.02; `listOnly: true` only lists them).
 - **The user's own voice**: `media.voice.create` saves a 5-30 s recording as a voice, only with
   consent: read them the statement `explain` gives and set `consent: true` after they confirm
   it is their voice or they have the speaker's permission. Then `media.audio.clone`
@@ -58,8 +74,12 @@ resource whose `id` goes straight into `social.post.create`.
   1,000 more. `media.voices.list` / `media.voice.delete` manage them.
 - **Edit**: `media.video.trim`, `media.video.merge`, `media.video.frames` (thumbnails or
   carousel slides; `sheet: true` adds a contact sheet), `media.convert` (MOV→MP4, HEIC→JPG, a lighter file), `$0.01` each.
-- **Branding**: `media.video.overlay` puts a logo or watermark (`overlayId`, a transparent PNG,
-  `opacity`) or a green-screen layer (`mode: colorkey`) on a video. $0.02.
+- **Branding**: `media.watermark.add` puts a logo (`logoMediaId`, a transparent PNG) on a photo
+  or a video, in one of 9 `position`s at a `width` and `opacity`. $0.01 a photo, $0.02 a video.
+  `media.video.overlay` lays a full-frame layer or a green-screen video (`mode: colorkey`).
+- **Photo location**: `media.image.geotag` reads a photo's GPS and place, writes one
+  (`latitude`/`longitude` or a `place`, e.g. for Google Business photos) or removes it before
+  sharing (`action: remove`). Free.
 - **Check a file**: `media.info` gives duration, size and dimensions (free): check a video
   against the platform's limits before scheduling it.
 - **Photos**: `media.image.background.remove`, `media.image.upscale` (`factor` 2-4 enlarges;

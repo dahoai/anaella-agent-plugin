@@ -22,8 +22,9 @@ images (`media.video.create`), captions on their own clip (`media.video.captions
 | `video.motion.assets` | trims logos, cuts product photos out of a plain backdrop, reads brand colours, suggests a device for each screenshot; returns each asset's `mediaId` and `meta`, plus a `preview` | $0.01 |
 | `video.motion.check` | renders the whole film's key moments to a contact sheet, or with `at` (up to 8 seconds) only those moments full size; the audio report; or the error with its file and line | $0.01 |
 | `video.motion.render` | the MP4: 1080p H.264, AAC 48 kHz, -14 LUFS, in the media library | $0.10 |
+| `video.motion.variants` | the same film again as up to 5 more MP4s: another `format` and/or other `data` (hook, CTA, language, colours) | $0.10 each |
 
-All four are async except the reference: pass `wait: true` to `do`, or poll `get_job`. A render
+All but the reference are async: pass `wait: true` to `do`, or poll `get_job`. A render
 takes one to two minutes.
 
 With this plugin installed the reference files are next to this skill
@@ -61,33 +62,47 @@ With this plugin installed the reference files are next to this skill
    promise, the twist, the 3 proofs, the structure and BPM for their product and length, the
    hook, the reveal, the signature move, the end card, a palette from the assets' colours, and
    the exact on-screen words. Use their real name, benefits and call to action; never invent
-   prices, numbers or claims.
+   prices, numbers or claims. The words and the palette go in a `data` object (`hook`, `promise`,
+   `proofs`, `line`, `cta`, `url`, `colors`...), never as strings in the code: see "Content in
+   DATA" in the `api` reference and each example's `data.js`.
 4. **Ask the look**, at most four short questions with your pick first: look (studio: bright
    and soft; premium: black with a spotlight; bold: flat brand colour, punchy type; tech: deep
    navy, grid, glowing UI), sound mood, colours (match the logo, naming the hex values), and the
    words only if unsure.
 5. **Write the film:** read `style-<look>` and `example-<look>`, start from the example's
-   structure (palette object, timing object on the beat grid, `QC_AT`, one function per scene)
-   and replace all of its content. Write `scenes` (300-450 lines) and `score` (70-130 lines)
-   directly; positions come from `SAFE`, `U` and `fitAsset`, not hand-worked numbers.
+   structure (`data`, palette from `DATA.colors`, timing object on the beat grid, `QC_AT`, one
+   function per scene) and replace all of its content. Write `scenes` (300-450 lines), `score`
+   (70-130 lines) and `data` directly; positions come from `SAFE`, `U` and `fitAsset`, not
+   hand-worked numbers, and every text from `DATA` is fitted to its space (`maxW`, `fitSize`).
 6. **Check it with your own eyes:** `video.motion.check` with `format`, `seconds`, `style`,
-   `bpm`, `scenes`, `score` and `assets: [{name, kind, mediaId, meta}]`. Open the `sheet`
+   `bpm`, `scenes`, `score`, `data` and `assets: [{name, kind, mediaId, meta}]`. Open the `sheet`
    and fix: frame 0 engaging, product by 3 s and sharp, text inside the safe area and off the
    product, right screenshot in the right device, no blank frames, a clean end card, audio
    about -14 LUFS with a dip before the reveal. Then spot-check 2-3 key moments full size with a
    separate check that passes `at` (its sheet shows only those moments). An
-   error names the file and line: fix it and check again. Two check passes is the norm.
-7. **Render:** `video.motion.render` with the same input (no `at`). Show the user the video.
-8. **Deliver:** one sentence on the idea, and offer other words, another look or another
-   format (send the same code with the new `format` and check the layout). Post it with
-   `social.post.create` (see `social-publish`) only after an explicit yes on the exact video,
-   text, accounts and time.
+   error names the file and line: fix it and check again. Two check passes is the norm. Then
+   look at the sheet as a phone shows it (about a third of its size): any word you can't read
+   there is too small.
+7. **Storyboard approval:** show the user the sheet (its link) with one line per scene and the
+   exact words, and ask for a yes or changes before rendering. A change to words or colours is
+   a change to `data`, not to the code.
+8. **Render:** `video.motion.render` with the same input (no `at`). Show the user the video.
+9. **Deliver and offer variants:** one sentence on the idea. Offer the versions a campaign
+   needs: other formats (vertical for Reels / TikTok / Shorts, square, landscape for YouTube and
+   the website), other hooks to test, another CTA, another language. They are one
+   `video.motion.variants` call with the same input plus `variants` (each a `format` and/or the
+   `data` keys that change), $0.10 each. Check each new format once with `video.motion.check`
+   (`format` changed) before, since the layout moves; new words of a similar length need no new
+   check. Post with `social.post.create` (see `social-publish`) only after an explicit yes on the
+   exact video, text, accounts and time.
 
 ## Hard rules
 
 - Their assets untouched: never redraw or restyle a logo or product; a logo may only be tinted
   flat white or black for contrast.
 - Honest claims only: the benefits, numbers, prices and dates the user gave.
+- Content in `data`: every on-screen word and the palette come from `DATA`, so variants never
+  need new code.
 - Deterministic code: never `Math.random`, `Date.now` or `performance.now`; use `rng()`,
   `h01()`, `particles()`, `snoise()` with stable ids.
 - Nothing from the network: bundled fonts only, images only from `assets`. A film that fetches

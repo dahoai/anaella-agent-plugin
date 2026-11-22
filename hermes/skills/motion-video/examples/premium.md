@@ -34,6 +34,50 @@ window.FILM_CONFIG = {
 };
 ```
 
+## data.js
+
+The film's words and colours, sent as `data` (the `DATA` global). A variant replaces some of these keys.
+
+```js
+const DATA = {
+  "name": "VOLT",
+  "hook": "ICE COLD.",
+  "promise": [
+    "FULLY",
+    "CHARGED."
+  ],
+  "tagline": "500 ML · ENERGY DRINK",
+  "proofs": [
+    [
+      "160 MG",
+      "natural caffeine"
+    ],
+    [
+      "0 SUGAR",
+      "10 kcal a can"
+    ],
+    [
+      "REAL LIME",
+      "sharp, cold finish"
+    ]
+  ],
+  "line": [
+    "STAY",
+    "CHARGED."
+  ],
+  "cta": "OUT NOW · 500 ML",
+  "url": "volt.energy",
+  "colors": {
+    "bg": "#050506",
+    "lime": "#c6ff1a",
+    "limeD": "#84aa14",
+    "white": "#f4f7ee",
+    "mute": "#8b917c",
+    "ink": "#0b0c0b"
+  }
+};
+```
+
 ## scenes.js
 
 ```js
@@ -42,7 +86,8 @@ window.FILM_CONFIG = {
 // Hook: a macro of the ice-cold can, drips running. Dark: the can as a rim-lit silhouette, crackling.
 // Drop (6.0 s): the can lights up in a burst of arcs. Proofs: three callouts. Line-up. Lime end card.
 
-const C = { bg: '#050506', lime: '#c6ff1a', limeD: '#84aa14', white: '#f4f7ee', mute: '#8b917c', ink: '#0b0c0b' };
+// Palette and words come from DATA (data.js), so a variant changes data, not code.
+const C = DATA.colors;
 const S = {
   hook: 0, whip: bars(1) - beats(0.5), dark: bars(1), crack1: bars(1) + beats(1), words: bars(1) + beats(0.5),
   rise: bars(2), hush: bars(3) - beats(0.5), drop: bars(3),
@@ -91,7 +136,7 @@ function sceneHook(t) {
   voltMacro(t);
   wash(0, H * 0.55, 0, H, '#000000', 0, 0.75);
   sweepLight(seg(t, 0.25, 1.35), { color: C.lime, alpha: 0.28, width: W * 0.35 });
-  reveal('ICE COLD.', CX, SAFE.y1 - 40 * U, 250 * U, seg(t, 0.05, 0.6), { align: 'center', font: 'Big Shoulders', weight: 700, tracking: -0.01, color: C.white, mode: 'slam', by: 'char', stagger: 0.25, maxW: SAFE.wc });
+  reveal(DATA.hook, CX, SAFE.y1 - 40 * U, 250 * U, seg(t, 0.05, 0.6), { align: 'center', font: 'Big Shoulders', weight: 700, tracking: -0.01, color: C.white, mode: 'slam', by: 'char', stagger: 0.25, maxW: SAFE.wc });
 }
 
 function sceneDark(t, lt) {
@@ -107,8 +152,8 @@ function sceneDark(t, lt) {
   });
   const wu = seg(t, S.words, S.words + 0.5), wo = 1 - seg(t, S.hush - 0.4, S.hush);
   withT({ alpha: wo }, () => {
-    reveal('FULLY', CX, SAFE.y0 + 150 * U, 170 * U, wu, { align: 'center', font: 'Big Shoulders', weight: 700, color: C.white, mode: 'rise', by: 'char', stagger: 0.3 });
-    reveal('CHARGED.', CX, SAFE.y0 + 300 * U, 170 * U, seg(t, S.words + 0.25, S.words + 0.8), { align: 'center', font: 'Big Shoulders', weight: 700, color: C.lime, mode: 'rise', by: 'char', stagger: 0.3 });
+    reveal(DATA.promise[0], CX, SAFE.y0 + 150 * U, 170 * U, wu, { align: 'center', font: 'Big Shoulders', weight: 700, color: C.white, mode: 'rise', by: 'char', stagger: 0.3 });
+    reveal(DATA.promise[1], CX, SAFE.y0 + 300 * U, 170 * U, seg(t, S.words + 0.25, S.words + 0.8), { align: 'center', font: 'Big Shoulders', weight: 700, color: C.lime, mode: 'rise', by: 'char', stagger: 0.3 });
   });
 }
 
@@ -117,7 +162,7 @@ function sceneDrop(t) {
   const h = SAFE.h * lerp(0.95, 0.86, eInOutSine(seg(t, S.drop, S.c1)));
   camera({ zoom: lerp(1.25, 1, push), shake: 22 * U * pulse(t, S.drop, 0.4), y: CY }, () => {
     // giant outlined VOLT behind the can
-    text('VOLT', CX, CY + 250 * U, 560 * U, { align: 'center', font: 'Big Shoulders', weight: 700, color: null, stroke: rgba(C.lime, 0.28 * push), lw: 3 * U, tracking: -0.02 });
+    text(DATA.name, CX, CY + 250 * U, 560 * U, { align: 'center', font: 'Big Shoulders', weight: 700, color: null, stroke: rgba(C.lime, 0.28 * push), lw: 3 * U, tracking: -0.02 });
     glow(CX, CY, 700 * U, C.lime, 0.16 + 0.3 * hit, 'lighter');
     // arcs radiating to the frame edges on the hit
     for (let i = 0; i < 6; i++) { const ang = -Math.PI / 2 + (i - 2.5) * 0.55, R = H * 0.7; voltArc(CX, CY - 60 * U, CX + Math.cos(ang) * R, CY + Math.sin(ang) * R, 'burst' + i, 140 * U, 4 * U, hit * 1.2); }
@@ -138,17 +183,17 @@ function sceneProofs(t) {
   const b = product('product', x, CY + 20 * U, h, { rim: C.lime, rimA: 0.55, rot: sway, shadow: 0, float: 8 * U, id: 'proofCan' });
   droplets('product', b, t, { n: 0, runs: 4, size: 11, id: 'proofRuns' });
   const cs = { color: C.lime, text: C.white, size: 58 * U, font: 'Big Shoulders', subFont: 'Geist Mono', subColor: C.mute, len: 70 * U, rise: -40 * U, dir: 'right' };
-  callout(...b.pt(0.72, 0.22), '160 MG', seg(t, S.c1 + 0.5, S.c1 + 1.3), { ...cs, sub: 'natural caffeine' });
-  callout(...b.pt(0.78, 0.5), '0 SUGAR', seg(t, S.c2, S.c2 + 0.8), { ...cs, sub: '10 kcal a can' });
-  callout(...b.pt(0.72, 0.78), 'REAL LIME', seg(t, S.c3, S.c3 + 0.8), { ...cs, sub: 'sharp, cold finish' });
-  text('500 ML · ENERGY DRINK', CX, SAFE.y0 + 10 * U, 30 * U, { align: 'center', font: 'Geist Mono', weight: 400, tracking: 0.14, color: rgba(C.mute, eOut(seg(t, S.c1 + 0.3, S.c1 + 1))) });
+  callout(...b.pt(0.72, 0.22), DATA.proofs[0][0], seg(t, S.c1 + 0.5, S.c1 + 1.3), { ...cs, sub: DATA.proofs[0][1] });
+  callout(...b.pt(0.78, 0.5), DATA.proofs[1][0], seg(t, S.c2, S.c2 + 0.8), { ...cs, sub: DATA.proofs[1][1] });
+  callout(...b.pt(0.72, 0.78), DATA.proofs[2][0], seg(t, S.c3, S.c3 + 0.8), { ...cs, sub: DATA.proofs[2][1] });
+  text(DATA.tagline, CX, SAFE.y0 + 10 * U, 30 * U, { align: 'center', font: 'Geist Mono', weight: 400, tracking: 0.14, color: rgba(C.mute, eOut(seg(t, S.c1 + 0.3, S.c1 + 1))) });
 }
 
 function sceneLineup(t) {
   // five cans pop in on eighth notes, the centre one steps forward
   const xs = [-2, -1, 1, 2, 0], h = SAFE.h * 0.5;
-  reveal('STAY', CX, SAFE.y0 + 120 * U, 150 * U, seg(t, S.line, S.line + 0.4), { align: 'center', font: 'Big Shoulders', weight: 700, color: C.white, mode: 'slam', by: 'word' });
-  reveal('CHARGED.', CX, SAFE.y0 + 260 * U, 150 * U, seg(t, S.line + 0.25, S.line + 0.65), { align: 'center', font: 'Big Shoulders', weight: 700, color: C.lime, mode: 'slam', by: 'word' });
+  reveal(DATA.line[0], CX, SAFE.y0 + 120 * U, 150 * U, seg(t, S.line, S.line + 0.4), { align: 'center', font: 'Big Shoulders', weight: 700, color: C.white, mode: 'slam', by: 'word' });
+  reveal(DATA.line[1], CX, SAFE.y0 + 260 * U, 150 * U, seg(t, S.line + 0.25, S.line + 0.65), { align: 'center', font: 'Big Shoulders', weight: 700, color: C.lime, mode: 'slam', by: 'word' });
   xs.forEach((k, i) => {
     const t0 = S.line + i * BEAT / 2, s = spring(t - t0, 2.6, 0.4); if (s <= 0) return;
     const front = k === 0, hh = h * (front ? 1.18 : 0.9), x = CX + k * 190 * U, y = SAFE.y0 + SAFE.h * 0.66 + (front ? 30 * U : 0);
@@ -168,8 +213,8 @@ function sceneLime(t) {
   const s = spring(t - S.lime - 0.1, 2.2, 0.45), h = SAFE.h * 0.58;
   const b = product('product', CX, floor - h / 2, h, { scale: Math.max(0.001, s), floor, shadow: 0.55, drop: { x: 16 * U, y: 10 * U, color: '#8fbf0c' }, shine: seg(t, S.lime + 0.8, S.lime + 1.8) });
   if (s > 0.2) droplets('product', b, t, { n: 0, runs: 3, size: 11, id: 'endRuns' });
-  pill('OUT NOW · 500 ML', CX, SAFE.y1 - 30 * U, 44 * U, { bg: C.ink, fg: C.lime, u: seg(t, S.cta, S.cta + 0.6), font: 'Big Shoulders', weight: 700, tracking: 0.06 });
-  text('volt.energy', CX, SAFE.y1 + 70 * U, 34 * U, { align: 'center', font: 'Geist Mono', weight: 400, color: rgba(C.ink, eOut(seg(t, S.cta + 0.3, S.cta + 0.9))) });
+  pill(DATA.cta, CX, SAFE.y1 - 30 * U, 44 * U, { bg: C.ink, fg: C.lime, u: seg(t, S.cta, S.cta + 0.6), font: 'Big Shoulders', weight: 700, tracking: 0.06 });
+  text(DATA.url, CX, SAFE.y1 + 70 * U, 34 * U, { align: 'center', font: 'Geist Mono', weight: 400, color: rgba(C.ink, eOut(seg(t, S.cta + 0.3, S.cta + 0.9))) });
   ctx.restore();
   flash(pulse(t, S.lime, 0.15) * 0.8, '#ffffff');
 }
