@@ -1,6 +1,6 @@
 ---
 name: anaella
-description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, a WordPress or Inkwire website (posts, pages, SEO fields, media), Business Profile reviews, Google or Outlook calendars, Sheets, Drive or Docs, Slack, Gmail, Outlook or IMAP mail, Stripe or PayPal, the business's books (income, expenses, profit and loss), n8n, any MCP server the user connected (Notion, Linear, …), a phone number (texts and AI calls), a meeting bot for Meet, Zoom and Teams, an advisory council for decisions, short videos, captions, voice-overs, transcripts, documents to markdown, PDF forms and e-signatures, media editing, social posts, comments and DMs, TikTok videos, the link-in-bio page, RSS feeds, short links and their clicks, watches and automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
+description: How to use Anaella's tools (find, explain, do) and connected accounts safely. Use whenever a task needs Anaella — web search or page reading, company and prospect research, stock media or images, Search Console, Google Analytics, Meta or Google Ads, a WordPress or Inkwire website (posts, pages, SEO fields, media), Business Profile reviews, Google or Outlook calendars, Sheets, Drive or Docs, Slack, Gmail, Outlook or IMAP mail, Stripe or PayPal, the business's books (income, expenses, profit and loss), n8n, any MCP server the user connected (Notion, Linear, …), a phone number (texts and AI calls), a meeting bot for Meet, Zoom and Teams, an advisory council for decisions, short videos, captions, voice-overs, transcripts, documents to markdown, PDF forms and e-signatures, media editing, social posts, comments and DMs, Reddit research (subreddits, threads, accounts), TikTok videos, the link-in-bio page, RSS feeds, short links and their clicks, watches and automations — or when an Anaella call fails with channel_required, reconnect_required or rate_limited.
 ---
 
 # Using Anaella
@@ -30,7 +30,8 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.op
 `email.message.get`, `email.attachment.read` (text) / `email.attachment.save` (original file), `email.message.send`, `sheets.read`, `sheets.append`, `drive.files.search`,
 `drive.file.read`, `docs.create`, `slack.messages.list`, `slack.message.send`, `social.post.create`, `social.posts.list`,
 `social.post.analytics`, `social.analytics.get`, `social.followers.get`, `media.upload`, `social.comments.list`,
-`social.comments.reply`, `social.comments.delete`, `payments.request.create`, `stripe.customers.list`,
+`social.comments.reply`, `social.comments.delete`, `reddit.search`, `reddit.post.get`, `reddit.posts.list`,
+`reddit.subreddit.get`, `reddit.subreddits.search`, `reddit.subreddit.flairs.list`, `reddit.user.get`, `payments.request.create`, `stripe.customers.list`,
 `stripe.refund.create`, `paypal.invoices.list`, `finance.report`, `finance.entries.import`, `finance.entry.create`, `finance.payments.sync`, `n8n.workflows.list`, `n8n.workflow.run`, `mcp.tools.list`, `mcp.<server>.<tool>`,
 `sms.message.send`, `sms.messages.list`, `call.create`, `call.get`, `calls.list`,
 `meeting.bot.join`, `meeting.bot.say`, `meeting.bot.stop`, `meeting.get`, `meetings.list`,

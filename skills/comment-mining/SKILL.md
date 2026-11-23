@@ -1,6 +1,6 @@
 ---
 name: comment-mining
-description: Read the comments on the user's own published social posts (X, Facebook, Instagram, YouTube, Bluesky) and turn them into audience research - the questions people ask, objections, complaints, praise, buying signals and the exact words they use - with content, FAQ and product ideas. Use when the user asks what their audience wants, what people say about them or their product, for voice-of-customer research, content ideas from comments, or which objections to answer. To reply to comments, use `comment-replies`.
+description: Read the comments on the user's own published social posts (X, Facebook, Instagram, YouTube, Bluesky, Mastodon, Reddit) and turn them into audience research - the questions people ask, objections, complaints, praise, buying signals and the exact words they use - with content, FAQ and product ideas. Use when the user asks what their audience wants, what people say about them or their product, for voice-of-customer research, content ideas from comments, or which objections to answer. To reply to comments, use `comment-replies`.
 ---
 
 # Comment mining with Anaella

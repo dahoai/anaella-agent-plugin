@@ -6,8 +6,8 @@ Connects your coding agent to [Anaella](https://anaella.com), one API for agents
 (web research, SEO, images and video, documents and e-signatures) plus one hosted MCP server for
 the accounts you connect (Gmail, Outlook or any IMAP mailbox, Google and Outlook calendars,
 Drive, Docs and Sheets, Slack, Search Console, Google Analytics, Meta and Google Ads, Business
-Profile reviews, Stripe, PayPal, n8n, WordPress and Inkwire sites, any MCP server such as Notion or Linear, a phone number, a meeting bot and 9 social networks), plus
-27 workflow skills, listed [below](#whats-included).
+Profile reviews, Stripe, PayPal, n8n, WordPress and Inkwire sites, any MCP server such as Notion or Linear, a phone number, a meeting bot and 10 social networks), plus
+28 workflow skills, listed [below](#whats-included).
 
 This repository is the plugin only: a pointer to the hosted server (`https://api.anaella.com/mcp`)
 and Markdown skills. It follows the [Agent Plugins specification v1.0.0](https://agent-plugins.org/specification):
@@ -111,6 +111,7 @@ Create API keys in the Anaella app under **Settings > API keys**. Or tell any ag
 | `research` | Answers a question from web, news and paper search, full pages, PDFs and YouTube transcripts, with every claim linked to its source and gaps stated |
 | `marketing` | Runs the whole loop: brief, competitor research, campaign plan, content, publishing after approval, performance report and lessons |
 | `social-publish` | Drafts per-network posts and schedules them after approval |
+| `reddit` | Finds conversations on Reddit, picks subreddits by their rules and flairs, posts text, links, images, galleries or videos after approval, and answers comments |
 | `payments-followup` | Unpaid Stripe or PayPal invoices, reminders, payment requests and refunds, each confirmed first |
 | `bookkeeping` | The business's books: statements, receipts, Stripe/PayPal sales and ad spend in one ledger, categorized, with profit and loss |
 | `slack-digest` | Summarizes channels and open questions, posts approved updates or thread replies |

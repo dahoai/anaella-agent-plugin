@@ -4,8 +4,8 @@ Connects [Hermes Agent](https://hermes-agent.nousresearch.com) to [Anaella](http
 one API for agents: typed tools (web research, SEO, images and video, documents and e-signatures)
 plus one MCP server for the accounts you connect (Gmail, Outlook or any IMAP mailbox, Google and
 Outlook calendars, Drive, Docs and Sheets, Slack, Search Console, Google Analytics, Meta and Google
-Ads, Business Profile reviews, Stripe, PayPal, n8n, WordPress and Ghost sites, a phone number, a meeting bot and 9 social
-networks), plus 27 workflow skills.
+Ads, Business Profile reviews, Stripe, PayPal, n8n, WordPress and Ghost sites, a phone number, a meeting bot and 10 social
+networks), plus 28 workflow skills.
 
 This folder is the Hermes build of the [Anaella agent plugin](https://github.com/dahoai/anaella-agent-plugin):
 an [Agent Plugins v1](https://agent-plugins.org/specification) package (`plugin.json`, `mcp.json`
@@ -58,6 +58,7 @@ capabilities), plus `get_job`, `list_accounts`, `connect_account` and
 | `research` | Answers a question from web, news and paper search, full pages, PDFs and YouTube transcripts, with every claim linked to its source and gaps stated |
 | `marketing` | Runs the whole loop: brief, competitor research, campaign plan, content, publishing after approval, performance report and lessons |
 | `social-publish` | Drafts per-network posts and schedules them after approval |
+| `reddit` | Finds conversations on Reddit, picks subreddits by their rules and flairs, posts text, links, images, galleries or videos after approval, and answers comments |
 | `payments-followup` | Unpaid Stripe or PayPal invoices, reminders, payment requests and refunds, each confirmed first |
 | `bookkeeping` | The business's books: statements, receipts, Stripe/PayPal sales and ad spend in one ledger, categorized, with profit and loss |
 | `slack-digest` | Summarizes channels and open questions, posts approved updates or thread replies |
