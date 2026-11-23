@@ -47,6 +47,12 @@ resource whose `id` goes straight into `social.post.create`.
 - **A photo into a video**: `media.video.from_image` (slow zoom or pan, `duration`, `aspect`,
   optional `music` mood or own audio). $0.02. Several joined with `media.video.merge` make a
   slideshow.
+- **A new AI clip** (a scene that doesn't exist yet, or a photo brought to life with real
+  motion): `media.video.generate` from a `prompt` (what happens, the camera, the style), with an
+  optional start frame (`imageMediaId` / `imageUrl`), `duration` up to 8 s, `aspect` 9:16 or 16:9.
+  About $0.05 to $0.25 a second depending on the model; takes a minute or more. Show the user the
+  prompt and the price first. Real footage of the user's own business beats a generated one:
+  use this for b-roll, a hook shot or an idea with no footage.
 - **Captions on the user's own video**: `media.video.captions.add` ($0.10).
 - **Text on a video** (a hook, a title, labels): `media.video.text.add` takes 1-30 `texts`,
   each with `start` / `end` seconds, a `style` (classic, box, dark_box, neon, meme, headline,

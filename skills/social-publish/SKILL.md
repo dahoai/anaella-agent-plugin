@@ -14,7 +14,8 @@ Read the `anaella` skill first. Posts are **public**.
    longer and professional, Instagram needs media, Reddit needs a subreddit and a title and its
    own care: use the `reddit` skill). Keep the user's facts; don't invent
    claims, prices or dates. For images, use `media.stock.search` + `media.stock.import`, or
-   `media.image.generate` (paid, $0.01 to $0.13 per image) if the user wants a generated one.
+   `media.image.generate` (paid, $0.01 to $0.13 per image) if the user wants a generated one,
+   or `media.video.generate` for a short AI clip (paid, per second; see `content-to-video`).
    Write like a person, not a brand, above all on X and Bluesky:
    - One thought per post. Lead with the point; no warm-up line.
    - Plain words, short sentences, as if typed on a phone. Lowercase and fragments are fine
