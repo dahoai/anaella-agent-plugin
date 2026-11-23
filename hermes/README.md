@@ -29,7 +29,7 @@ and Antigravity; only the MCP server differs, running locally with your API key.
    hermes plugins enable anaella
    ```
 
-The MCP server runs locally with `npx -y @anaella/mcp@0.12.1`, so Node.js 20 or later and npm are
+The MCP server runs locally with `npx -y @anaella/mcp@0.17.1`, so Node.js 20 or later and npm are
 needed. The key works in chat, cron jobs and the messaging gateway alike: there is no browser
 sign-in.
 
