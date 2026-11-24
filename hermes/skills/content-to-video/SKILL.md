@@ -53,6 +53,17 @@ resource whose `id` goes straight into `social.post.create`.
   About $0.05 to $0.25 a second depending on the model; takes a minute or more. Show the user the
   prompt and the price first. Real footage of the user's own business beats a generated one:
   use this for b-roll, a hook shot or an idea with no footage.
+- **A person talking to the camera** (a talking-head, UGC-style or spokesperson video): `media.video.talking`
+  makes a photo speak, lip-synced, with natural head and hand movements. The photo
+  (`imageMediaId` / `imageUrl`) is one face looking at the camera, framed as the video should be
+  (9:16 for a reel). The speech is a `text` script (read with `voice` in `language`), or the
+  user's own recording or cloned voice (`audioMediaId` / `audioUrl`, e.g. from
+  `media.audio.clone`). At most 30 s; for longer, make several and join them with
+  `media.video.merge`. `quality` turbo (default, about $0.065 a second, so $1.30 for 20 s) or
+  standard (about $0.13 a second). Then add captions (`media.video.captions.add`). Show the user
+  the photo and the script first. Only a photo of someone who agreed, or a generated person; a
+  generated person never poses as a real customer or a real testimonial, and the post says the
+  presenter is computer-generated.
 - **Captions on the user's own video**: `media.video.captions.add` ($0.10).
 - **Text on a video** (a hook, a title, labels): `media.video.text.add` takes 1-30 `texts`,
   each with `start` / `end` seconds, a `style` (classic, box, dark_box, neon, meme, headline,
