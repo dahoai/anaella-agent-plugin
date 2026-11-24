@@ -39,7 +39,7 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.op
 `media.transcribe`, `youtube.transcript.get`, `document.to_markdown`, `document.form_fields`, `document.form_fill`, `document.sign`, `document.signature_request.get`, `media.convert`,
 `media.video.overlay`, `media.video.text.add`, `media.image.text.add`, `media.info`, `media.voice.create`, `media.audio.clone`,
 `media.video.shorts`, `media.silence.remove`, `media.watermark.add`, `media.video.from_image`, `media.video.generate`, `media.video.talking`, `media.video.audio.add`, `media.music.list`, `media.music.generate`, `media.image.geotag`,
-`council.ask`, `company.research`, `prospects.search`, `rss.feed.read`, `shortlink.create`, `shortlink.stats`, `watch.create`, `watch.events.list`,
+`code.run` (python, javascript or bash in a sandbox without internet; see `run-code`), `council.ask`, `company.research`, `prospects.search`, `rss.feed.read`, `shortlink.create`, `shortlink.stats`, `watch.create`, `watch.events.list`,
 `cms.site.get`, `cms.content.list`, `cms.content.get`, `cms.content.update`, `cms.media.upload`, `automation.create`. To attach a file (a PDF, a resume) to an email, pass it in `email.message.send`
 `attachments` (`contentBase64` + `filename`, a public `url`, a media `resourceId` or a `driveFile`),
 also with `draft: true`. The media library (`media.upload`) also stores documents (PDF, Office,
