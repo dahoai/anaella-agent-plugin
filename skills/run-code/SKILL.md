@@ -12,7 +12,7 @@ Read the `anaella` skill first. `code.run` runs `code` in a fresh sandbox and re
 ## What the sandbox has, and hasn't
 
 - python 3.12 with pandas, numpy, matplotlib, seaborn, scipy, openpyxl, xlsxwriter, pillow,
-  pypdf, python-docx, beautifulsoup4, pyyaml; javascript (Node); bash with ffmpeg, imagemagick,
+  pypdf, python-docx, beautifulsoup4, pyyaml; javascript (Node 22 with `canvas`: `createCanvas`, `loadImage`, to draw or edit images); bash with ffmpeg, imagemagick,
   jq, sqlite3, pdftotext.
 - **No internet.** Fetch first with other tools (`sheets.read`, `web.page.read`,
   `drive.file.read`, `email.attachment.save`), then pass the data in: a library file in `files`
