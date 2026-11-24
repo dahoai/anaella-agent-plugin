@@ -108,6 +108,32 @@ resource whose `id` goes straight into `social.post.create`.
 
 The media tools are async: pass `wait: true` to `do`, or poll `get_job`.
 
+## A talking-head ad with proof (UGC style)
+
+A person says the script to the camera, the video cuts to proof while they keep talking, and
+it ends on what to do next. Any product, any language; only the script and the proof change.
+About $1.20 for 20 s.
+
+1. **Script**: 3-6 short sentences, 15-25 s spoken. A hook the viewer has lived, what changes,
+   one call to action they can really do. Show it to the user before spending anything.
+2. **Voice, kept as one file** (the cuts reuse it): the user's own recording (`media.upload`),
+   their cloned voice (`media.audio.clone`, only with consent), or `media.audio.speech` with a
+   `voice` that matches the person in the photo (every default voice is a woman's).
+3. **Talking video**: `media.video.talking` with the photo and that file as `audioMediaId`.
+4. **Proof cutaways**, if there is proof (a screenshot of the product doing the thing, a review,
+   a result): `media.info` for the length, `media.video.trim` the talking video into the parts
+   before, between and after the proof, `media.video.from_image` each proof image (the same shape as the talking video, e.g. a 9:16 phone screenshot; `zoom: 1.05` keeps it near still) for the length
+   of the speech it covers, then `media.video.merge` the parts in order with `audioId` = the
+   voice file (`audioMode` replace), so the voice runs on unbroken over the cuts.
+5. **Captions**: `media.video.captions.add` on the merged video.
+6. **Labels and the ending**: `media.video.text.add` for what must stay on screen (a
+   "Computer-generated presenter" label whenever the person is generated, the link or offer on
+   the last seconds).
+7. Show the user the finished video before it is posted.
+
+Proof is real: a screenshot of the product as it is, never a made-up chat, review or number.
+A generated person is never presented as a customer.
+
 ## Typical flow
 
 1. `content.repurpose` the source for the platforms the user names; or `media.video.create`
