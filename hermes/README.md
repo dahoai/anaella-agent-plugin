@@ -49,7 +49,7 @@ capabilities), plus `get_job`, `list_accounts`, `connect_account` and
 | `seo-report` | SEO report from Search Console + GA4 (quick wins, drops, index coverage) and Bing Webmaster Tools, rank tracking with alerts, content audit and topic clusters, keyword research and gaps, competitors, backlinks and link-building prospects, site technical audit, Core Web Vitals, sitemap, schema and local SEO audits, brand presence, AI visibility and readiness, with a diagnose → choose → act method |
 | `seo-content` | Writes a page from a content brief of the live top results (terms, subtopics, questions, length) and publishes it as a draft after approval; or scores an existing page against the top pages and lists the edits |
 | `ads-report` | Google and Meta ads account audit (scored controls and grade); Meta and Google Ads spend, results and cost per result by campaign; anomalies, kill or scale verdicts per campaign and per Meta ad (hook rate, fatigue), wasted search spend and negatives; competitors' Meta ads from the Ad Library; paid search terms that already rank organically; why an account stopped serving, change history, real leads and calls, Google ad fatigue, A/B test winners, landing page audits and PPC maths; applies the agreed fixes (negatives, pauses, budgets, bidding, keywords, ad copy, audiences), builds complete paused Google Search and Performance Max campaigns and paused Meta image, video and lead ads after a yes |
-| `review-replies` | Drafts Google review replies, posts only the ones you approve |
+| `review-replies` | Drafts Google review replies, posts only the ones you approve; profile views, calls and hours |
 | `comment-replies` | Reads comments on your published posts, drafts replies, posts or queues the approved ones, hides spam |
 | `comment-mining` | Turns the comments on your posts into audience research: questions, objections, complaints, buying signals and their exact words, with content and FAQ ideas |
 | `post-outliers` | Finds your posts that beat or missed your usual results on each network, explains why (topic, hook, format, timing) and suggests what to post next |
@@ -63,7 +63,7 @@ capabilities), plus `get_job`, `list_accounts`, `connect_account` and
 | `bookkeeping` | The business's books: statements, receipts, Stripe/PayPal sales and ad spend in one ledger, categorized, with profit and loss |
 | `slack-digest` | Summarizes channels and open questions, posts approved updates or thread replies |
 | `lead-research` | Company profiles from a domain, local business prospects, and the owners behind them on LinkedIn |
-| `document-from-template` | Copies a Docs template and fills its placeholders, writes Docs from Markdown, shares on request |
+| `document-from-template` | Fills Docs and Slides templates, writes Docs and decks, builds Google Forms and reads the answers, replies to comments, shares on request |
 | `form-filler` | Fills PDF forms from your documents and answers, ready for you to sign: asks only for what is missing, then reports anything left empty or unverified |
 | `e-signature` | Gets a PDF signed: people sign in order on private links you send, can decline, and every step goes in an audit record |
 | `phone-calls` | Texts from your number, AI calls that book or ask and report back, an AI that answers and takes messages |

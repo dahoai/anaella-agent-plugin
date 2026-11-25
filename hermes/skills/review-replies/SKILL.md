@@ -24,3 +24,14 @@ business name.
    already has a reply is refused unless `replace: true`; only pass it if the user asked to
    change an existing reply. Limit: 200 replies per location per day.
 6. Report what was posted and what was skipped.
+
+## The rest of the profile
+
+- **How the profile is doing:** `business.performance.get` with `startDate`/`endDate` gives
+  views on Search and Maps, calls, direction requests, website clicks, messages and bookings,
+  per day and in total. Put it next to the review summary when the user asks how the business
+  is doing on Google.
+- **Hours and details:** `business.location.get` reads the hours, holiday hours, phone, website
+  and description. `business.location.update` changes them and is public on Google and Maps:
+  show the user the exact new hours or text, and change only what they asked (`hours`
+  replaces the whole week, `specialHours` all the holiday dates).

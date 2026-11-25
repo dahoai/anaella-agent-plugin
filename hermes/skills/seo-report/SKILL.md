@@ -13,8 +13,8 @@ Two kinds of data, never mixed up:
   chosen keywords), `gsc.content.audit` (a verdict per page: refresh, push to page one,
   improve snippet, rework or merge, prune, keep), `gsc.topics.list` (queries grouped into
   topics, topical focus), `gsc.index.coverage.get` (which pages Google indexed and why
-  not), `gsc.queries.list` (raw rows; `filters` for one query or page), `gsc.url.inspect`, `analytics.properties.list`,
-  `analytics.report`. Needs Search Console / GA4 connected. Bing (also behind Yahoo,
+  not), `gsc.queries.list` (raw rows; `filters` for one query or page), `gsc.url.inspect`, `gsc.sitemaps.list` (submitted sitemaps, errors, URL counts), `analytics.properties.list`,
+  `analytics.report`, `analytics.realtime.get` (who is on the site now). Needs Search Console / GA4 connected. Bing (also behind Yahoo,
   DuckDuckGo, Ecosia and ChatGPT search), once Bing Webmaster Tools is connected:
   `bing.sites.list`, `bing.queries.list`, `bing.crawl.issues`, `bing.url.inspect`.
 - **Outside data** (third-party estimates, paid per call, any domain): `seo.keywords.ideas`,
