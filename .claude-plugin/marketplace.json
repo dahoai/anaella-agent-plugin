@@ -21,6 +21,7 @@
         "talking head video",
         "reddit",
         "subreddit",
+        "facebook groups",
         "social listening",
         "marketing",
         "motion graphics",
@@ -129,7 +130,7 @@
         "profit and loss",
         "expenses"
       ],
-      "version": "0.9.71"
+      "version": "0.9.72"
     }
   ]
 }

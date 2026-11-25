@@ -12,6 +12,7 @@ Read the `anaella` skill first. Replies are **public**, under the user's account
      published in the last 7 days live (`days` up to 30). `more: true` means older posts were
      left out: narrow with `accountId` or a shorter `days`.
    - On one post: add its `postId` (from `social.posts.list` or `social.post.create`).
+   - About something: `query` keeps comments whose text or author contains it (any mode).
    - Replies Anaella already drafted: `inbox: true` with `status: "pending_review"`. These only
      exist on channels with reply monitoring on.
    - `unanswered` also skips comments the user already answered directly on the network

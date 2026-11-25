@@ -42,6 +42,9 @@ Run several on different angles, change the words each time, and broaden if resu
 - **Papers:** `type: "scholar"`; results may carry `citedBy` and `pdfUrl`.
 - **One kind of site:** `sites` for forums and official sources, such as
   `["reddit.com", "news.ycombinator.com"]` for what users report. `excludeSites` removes vendors.
+- **Facebook:** `facebook.search` finds public posts, group discussions and Pages (`in: "groups"`
+  for groups only), with each result's `kind`. Only public, indexed content, often days late; it
+  never reads private groups. The user answers on Facebook from the link.
 - **A period or a market:** `after`, `before` (YYYY-MM-DD), `country`, `language`. Search in the
   local language for a local market.
 - **More:** `page`, and the `related` searches in the response.
