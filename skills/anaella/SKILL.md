@@ -36,7 +36,7 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.op
 `sms.message.send`, `sms.messages.list`, `call.create`, `call.get`, `calls.list`,
 `meeting.bot.join`, `meeting.bot.say`, `meeting.bot.stop`, `meeting.get`, `meetings.list`,
 `content.repurpose`, `media.video.create`, `media.video.captions.add`, `video.motion.check`, `video.motion.render`, `video.motion.variants`, `media.audio.speech`,
-`media.transcribe`, `youtube.transcript.get`, `document.to_markdown`, `document.form_fields`, `document.form_fill`, `document.sign`, `document.signature_request.get`, `media.convert`,
+`media.transcribe`, `youtube.transcript.get`, `youtube.videos.list`, `youtube.video.update`, `document.to_markdown`, `document.form_fields`, `document.form_fill`, `document.sign`, `document.signature_request.get`, `media.convert`,
 `media.video.overlay`, `media.video.text.add`, `media.image.text.add`, `media.info`, `media.voice.create`, `media.audio.clone`,
 `media.video.shorts`, `media.silence.remove`, `media.watermark.add`, `media.video.from_image`, `media.video.generate`, `media.video.talking`, `media.video.audio.add`, `media.music.list`, `media.music.generate`, `media.image.geotag`,
 `code.run` (python, javascript or bash in a sandbox without internet; see `run-code`), `council.ask`, `company.research`, `prospects.search`, `rss.feed.read`, `shortlink.create`, `shortlink.stats`, `watch.create`, `watch.events.list`,
@@ -80,7 +80,7 @@ These tools act in the user's name (`explain` says `readOnly: false` for every w
   record; a deleted entry is gone.
 - **Changes the live website**: `cms.content.create` / `.update` / `.delete`, `cms.media.upload` / `.update`, `cms.term.create`, `cms.comment.moderate`, `cms.revision.restore` (undo), `cms.request` (run `cms.content.update` or `cms.revision.restore` with `dryRun` first and show the before and after).
 - **Hard to undo**: `email.message.update` (archive, trash, labels), `sheets.update` / `.clear`,
-  `docs.replace`, `docs.edit` (run it with `dryRun` first and show the changes), `slides.update`, `drive.file.update`, `n8n.workflow.*` / `n8n.execution.*` / `n8n.table.*`
+  `docs.replace`, `youtube.video.update`, `docs.edit` (run it with `dryRun` first and show the changes), `slides.update`, `drive.file.update`, `n8n.workflow.*` / `n8n.execution.*` / `n8n.table.*`
   changes, every `mcp.*` tool except those `explain` marks `readOnly: true` (they run in the user's other services), `phone.answering.update` (how their number answers calls), `automation.create` /
   `.update` / `.action.decide`.
 

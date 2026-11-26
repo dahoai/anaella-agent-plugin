@@ -12,7 +12,8 @@ Read the `anaella` skill first. Posts are **public**.
    MCP/CLI), wait until it is connected, then continue.
 2. **Draft** per network: respect each network's length and style (X short, LinkedIn
    longer and professional, Instagram needs media, Reddit needs a subreddit and a title and its
-   own care: use the `reddit` skill). Keep the user's facts; don't invent
+   own care: use the `reddit` skill; YouTube takes only a video, the text becomes its
+   description, and `settings.<id>.youtube` sets title, privacy, tags and `thumbnailUrl`). Keep the user's facts; don't invent
    claims, prices or dates. For images, use `media.stock.search` + `media.stock.import`, or
    `media.image.generate` (paid, $0.01 to $0.13 per image) if the user wants a generated one,
    or `media.video.generate` for a short AI clip (paid, per second; see `content-to-video`).
@@ -35,7 +36,9 @@ Read the `anaella` skill first. Posts are **public**.
    user chose; publish immediately only when they asked for it.
 5. **Changes** to a draft or scheduled post (new text, add an image, another time): edit it in
    place with `social.post.update`; don't delete and recreate it.
-   `media` replaces the whole list. Published posts can't be edited.
+   `media` replaces the whole list. Published posts can't be edited. A YouTube video already
+   up is the exception: `youtube.videos.list` finds it, `youtube.video.update` changes its title,
+   description, tags, privacy or thumbnail (confirm first: a public video changes at once).
 6. Report the post ids and scheduled times. Analytics are available later with
    `social.post.analytics` (video views, watch time and saves included; `period: "lifetime"`
    for all time); links to the published posts with `social.post.get`; follower growth per

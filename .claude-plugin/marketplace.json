@@ -108,6 +108,8 @@
         "advisory-council",
         "decisions",
         "youtube-transcript",
+        "youtube-videos",
+        "youtube-thumbnail",
         "pdf-to-markdown",
         "keyword-research",
         "backlinks",
@@ -130,7 +132,7 @@
         "profit and loss",
         "expenses"
       ],
-      "version": "0.9.73"
+      "version": "0.9.74"
     }
   ]
 }
