@@ -7,7 +7,7 @@ Connects your coding agent to [Anaella](https://anaella.com), one API for agents
 the accounts you connect (Gmail, Outlook or any IMAP mailbox, Google and Outlook calendars,
 Drive, Docs and Sheets, Slack, Search Console, Google Analytics, Meta and Google Ads, Business
 Profile reviews, Stripe, PayPal, n8n, WordPress and Inkwire sites, any MCP server such as Notion or Linear, a phone number, a meeting bot and 10 social networks), plus
-28 workflow skills, listed [below](#whats-included).
+30 workflow skills, listed [below](#whats-included).
 
 This repository is the plugin only: a pointer to the hosted server (`https://api.anaella.com/mcp`)
 and Markdown skills. It follows the [Agent Plugins specification v1.0.0](https://agent-plugins.org/specification):

@@ -5,7 +5,7 @@ one API for agents: typed tools (web research, SEO, images and video, documents 
 plus one MCP server for the accounts you connect (Gmail, Outlook or any IMAP mailbox, Google and
 Outlook calendars, Drive, Docs and Sheets, Slack, Search Console, Google Analytics, Meta and Google
 Ads, Business Profile reviews, Stripe, PayPal, n8n, WordPress and Ghost sites, a phone number, a meeting bot and 10 social
-networks), plus 28 workflow skills.
+networks), plus 30 workflow skills.
 
 This folder is the Hermes build of the [Anaella agent plugin](https://github.com/dahoai/anaella-agent-plugin):
 an [Agent Plugins v1](https://agent-plugins.org/specification) package (`plugin.json`, `mcp.json`
