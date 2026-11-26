@@ -1,6 +1,6 @@
 ---
 name: document-from-template
-description: Create Google Docs, Slides decks and Forms through Anaella — fill a template (proposal, contract, pitch deck) by copying it and replacing its placeholders, write a new Doc from Markdown or a deck from a slide outline, build a survey or sign-up form and read its responses, read and answer comments on a file, find and read existing files in Drive, and share the result. Use when the user wants a document or presentation drafted, a template filled in, a form or survey made, form answers summarized, comments on a Doc handled, notes saved as a Doc, or a Drive file found, read or shared.
+description: Create Google Docs, Slides decks and Forms through Anaella — fill a template (proposal, contract, pitch deck) by copying it and replacing its placeholders, write a new Doc from Markdown or a deck from a slide outline, edit an existing Doc in one call with sed-style expressions (replace, restyle, delete or add paragraphs), build a survey or sign-up form and read its responses, read and answer comments on a file, find and read existing files in Drive, and share the result. Use when the user wants a document or presentation drafted, a template filled in, a Doc edited or reformatted, a form or survey made, form answers summarized, comments on a Doc handled, notes saved as a Doc, or a Drive file found, read or shared.
 ---
 
 # Documents, decks and forms with Anaella
@@ -19,7 +19,17 @@ Read the `anaella` skill first.
    misspelled or missing; tell the user. Never edit the original template.
 3. **Write a new Doc.** `docs.create` with `title` and `content` in Markdown (headings, lists,
    bold, links become Doc formatting) and optional `folder`. Add more later with `docs.append`.
-4. **Share** only when the user asks, with the people they name: `drive.file.share` with
+4. **Edit an existing Doc.** `docs.edit` takes sed-style (SEDMAT) `expressions`, so one call does
+   what would otherwise take reading the whole doc and many edits, e.g.
+   `["$a/Reports to the VP Technology./", "s/VP Technology/{c=red _}CTO/g"]` appends a
+   paragraph, then turns every "VP Technology" into a red underlined "CTO". `s/pattern/replacement/g`
+   (RE2 regex, `$1` groups, `{b}` `{i}` `{c=red}` `{h=2}` `{u=https://…}` or Markdown for formatting),
+   `d/pattern/` deletes matching paragraphs, `a/pattern/text/` and `i/pattern/text/` add one after
+   or before. To edit by position, `docs.structure` numbers the paragraphs and tables first, then
+   address them: `3s/draft/final/gi`, `5d`, `2,4d`, `$a/Appendix/`. Run it with `dryRun: true`,
+   show the user the listed changes, then run it again without. Check `matches`: 0 means the
+   pattern missed. A plain placeholder fill is still simplest with `docs.replace`.
+5. **Share** only when the user asks, with the people they name: `drive.file.share` with
    `email` and `role` (reader, commenter, writer); Google emails them unless `notify: false`.
    A public link (`anyoneWithLink: true`) only on explicit request. Sharing exposes the file
    outside the account, so confirm the recipients first.

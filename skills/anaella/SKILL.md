@@ -28,7 +28,7 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.op
 `seo.ai.mentions`, `seo.site.audit`, `seo.ai.readiness`, `seo.content.brief`, `seo.page.speed`, `gsc.rankings.list`, `gsc.content.audit`, `ads.meta.insights.get`, `ads.google.query`, `ads.pulse.get`, `ads.budget.review`, `ads.google.wasted_spend`, `ads.competitors.list`, `ads.google.organic_overlap`, `ads.audit.run`, `ads.account.status`, `ads.changes.list`, `ads.conversions.list`, `ads.google.creative.review`, `ads.test.evaluate`, `ads.landing.audit`, `ads.math.calculate`, `reviews.list`,
 `reviews.reply`, `business.post.create`, `calendar.availability.get`, `calendar.event.create`, `email.messages.list`,
 `email.message.get`, `email.attachment.read` (text) / `email.attachment.save` (original file), `email.message.send`, `sheets.read`, `sheets.append`, `drive.files.search`,
-`drive.file.read`, `docs.create`, `slides.create`, `slides.update`, `forms.create`, `forms.responses.list`, `drive.comments.list`, `gsc.sitemaps.list`, `analytics.realtime.get`, `business.performance.get`, `business.location.get`, `slack.messages.list`, `slack.message.send`, `social.post.create`, `social.posts.list`,
+`drive.file.read`, `docs.create`, `docs.structure`, `docs.edit`, `slides.create`, `slides.update`, `forms.create`, `forms.responses.list`, `drive.comments.list`, `gsc.sitemaps.list`, `analytics.realtime.get`, `business.performance.get`, `business.location.get`, `slack.messages.list`, `slack.message.send`, `social.post.create`, `social.posts.list`,
 `social.post.analytics`, `social.analytics.get`, `social.followers.get`, `media.upload`, `social.comments.list`,
 `social.comments.reply`, `social.comments.delete`, `facebook.search`, `reddit.search`, `reddit.post.get`, `reddit.posts.list`,
 `reddit.subreddit.get`, `reddit.subreddits.search`, `reddit.subreddit.flairs.list`, `reddit.user.get`, `payments.request.create`, `stripe.customers.list`,
@@ -80,7 +80,7 @@ These tools act in the user's name (`explain` says `readOnly: false` for every w
   record; a deleted entry is gone.
 - **Changes the live website**: `cms.content.create` / `.update` / `.delete`, `cms.media.upload` / `.update`, `cms.term.create`, `cms.comment.moderate`, `cms.revision.restore` (undo), `cms.request` (run `cms.content.update` or `cms.revision.restore` with `dryRun` first and show the before and after).
 - **Hard to undo**: `email.message.update` (archive, trash, labels), `sheets.update` / `.clear`,
-  `docs.replace`, `slides.update`, `drive.file.update`, `n8n.workflow.*` / `n8n.execution.*` / `n8n.table.*`
+  `docs.replace`, `docs.edit` (run it with `dryRun` first and show the changes), `slides.update`, `drive.file.update`, `n8n.workflow.*` / `n8n.execution.*` / `n8n.table.*`
   changes, every `mcp.*` tool except those `explain` marks `readOnly: true` (they run in the user's other services), `phone.answering.update` (how their number answers calls), `automation.create` /
   `.update` / `.action.decide`.
 

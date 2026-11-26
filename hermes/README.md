@@ -63,7 +63,7 @@ capabilities), plus `get_job`, `list_accounts`, `connect_account` and
 | `bookkeeping` | The business's books: statements, receipts, Stripe/PayPal sales and ad spend in one ledger, categorized, with profit and loss |
 | `slack-digest` | Summarizes channels and open questions, posts approved updates or thread replies |
 | `lead-research` | Company profiles from a domain, local business prospects, and the owners behind them on LinkedIn |
-| `document-from-template` | Fills Docs and Slides templates, writes Docs and decks, builds Google Forms and reads the answers, replies to comments, shares on request |
+| `document-from-template` | Fills Docs and Slides templates, writes Docs and decks, edits Docs with sed-style expressions, builds Google Forms and reads the answers, replies to comments, shares on request |
 | `form-filler` | Fills PDF forms from your documents and answers, ready for you to sign: asks only for what is missing, then reports anything left empty or unverified |
 | `e-signature` | Gets a PDF signed: people sign in order on private links you send, can decline, and every step goes in an audit record |
 | `phone-calls` | Texts from your number, AI calls that book or ask and report back, an AI that answers and takes messages |
