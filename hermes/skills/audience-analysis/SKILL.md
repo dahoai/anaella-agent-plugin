@@ -33,7 +33,8 @@ what the account is about in `about`. With no idea yet, leave `groups` out: the 
 
 - `groups`: count and share each, with the 3 biggest accounts as examples. "Other" is everyone
   who fit none.
-- `seniority` (leader, senior, individual, student, unknown) and `kinds` (person, organization).
+- `seniority` (leader, senior, individual, student, unknown) and `kinds` (person, organization, spam, unknown).
+- `spam`: accounts that look fake or follow-for-follow. They are left out of the group counts and shares and listed last in `people`. A high share of spam among new followers is worth telling the user on its own.
 - `unsure`: people the model wasn't sure about (confidence under 0.6). Over a third unsure means
   the bios are thin or the groups overlap: say so, and tighten the groups.
 - `people`: everyone, biggest accounts first, with their group and why: the lead list.
