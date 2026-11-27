@@ -18,6 +18,7 @@ the facts. The poster is HTML and CSS you write, rendered to a PNG at its exact 
 - **The brand**: logo (`media.upload` or their library: `media.list`), colours and fonts. Read
   their site with `web.page.read` or `seo.page.audit` for the name, the line they use and their
   look; `video.motion.assets` reads brand colours off a logo. Ask once for what you can't find.
+- **Already made in Canva?** When Canva is connected (an MCP server, `mcp.canva.*` in `find`), its designs and brand kit are the first place to look: `mcp.canva.search-designs`, then `mcp.canva.export-design` (png; `pages` for carousel slides) and `media.upload` with the returned links. Use that design as is, or as the reference and the assets for a new poster.
 - **Where it goes**, which sets the size:
 
 | Use | Size (px) | Keep clear |
