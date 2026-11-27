@@ -126,6 +126,15 @@ Create API keys in the Anaella app under **Settings > API keys**. Or tell any ag
 | `mcp-servers` | Connects any MCP server (with a token or by signing in) and runs its tools as Anaella tools, asking first for anything the server doesn't mark read-only |
 | `motion-video` | Makes motion-graphics launch and promo videos (15-30 s, original soundtrack) from the user's logo, product photos and screenshots: prepares the assets, writes the film, checks its key frames and renders the MP4 |
 | `content-to-video` | Repurposes an article, video or document into posts, makes narrated short videos (stock, own visuals, stories), talking-head videos from a photo, captions, text overlays, voice-overs, voice clones and transcripts |
+| `poster-design` | Designs posters, feed posts, carousel slides, quote cards, flyers, thumbnails and banners from references broken down by Anaella, with your words, logo, colours and fonts, rendered sharp at the exact size |
+| `launch-brief` | Turns a one-line idea into a creative brief: one look, borrowed moves and numbered beats, each tied to a real reference |
+| `launch-references` | Finds the closest real launch posts for your product, breaks them down and turns them into a direction for yours |
+| `launch-video-direction` | Plans a launch video beat by beat (hook, timings, on-screen text, type, colour, end card) from real launch videos broken down by Anaella; or breaks down any video you link |
+| `launch-copy` | Writes the launch caption (first line, length, line breaks, mentions) from how real launches in your field are written, in your own voice |
+| `competitor-audit` | How a brand launches and posts: recurring formats, hooks, look and copy from its ads, posts and site, what changed and what to borrow |
+| `og-image` | Designs and builds a page's link preview image (1200×630), as a PNG or a Next.js opengraph-image |
+| `x-header` | Designs an X, LinkedIn or YouTube profile banner at the right size, clear of the crop and the profile photo |
+| `remake` | Remakes a launch film you like, beat for beat, for your product as a motion video; or rebuilds your own video so its words, colours and format can change |
 | `run-code` | Runs Python, JavaScript or bash in a private sandbox to calculate, analyse a spreadsheet, convert files or draw a chart, and returns the output and files |
 | `advisory-council` | Puts a decision before simulated founders and marketers (Musk, Bezos, Hormozi, Ogilvy…), grounded in your own numbers: each take, where they disagree, a recommendation |
 | `alerts-automations` | Watches for new items and automations on a schedule or trigger, writes held for approval |

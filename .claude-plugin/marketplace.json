@@ -26,6 +26,12 @@
         "marketing",
         "motion graphics",
         "launch video",
+        "poster design",
+        "creative direction",
+        "launch references",
+        "og image",
+        "x header",
+        "video breakdown",
         "research",
         "pdf forms",
         "e-signature",
@@ -132,7 +138,7 @@
         "profit and loss",
         "expenses"
       ],
-      "version": "0.9.75"
+      "version": "0.9.76"
     }
   ]
 }
