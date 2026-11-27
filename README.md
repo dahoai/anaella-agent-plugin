@@ -106,6 +106,7 @@ Create API keys in the Anaella app under **Settings > API keys**. Or tell any ag
 | `comment-replies` | Reads comments on your published posts, drafts replies, posts or queues the approved ones, hides spam |
 | `comment-mining` | Turns the comments on your posts into audience research: questions, objections, complaints, buying signals and their exact words, with content and FAQ ideas |
 | `post-outliers` | Finds your posts that beat or missed your usual results on each network, explains why (topic, hook, format, timing) and suggests what to post next |
+| `audience-analysis` | Sorts who follows or comments on an account (Bluesky, Mastodon, your X, your commenters anywhere) into groups you name, with shares and a lead list |
 | `meeting-scheduler` | Finds free time and books a Google or Outlook event (invites only on request) |
 | `inbox-triage` | Summarizes unread mail (Gmail, Outlook, IMAP) and saves reply drafts for you to send |
 | `research` | Answers a question from web, news and paper search, full pages, PDFs and YouTube transcripts, with every claim linked to its source and gaps stated |

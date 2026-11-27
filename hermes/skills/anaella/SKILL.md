@@ -29,7 +29,7 @@ Ids you'll use often: `web.search`, `web.page.read`, `gsc.queries.list`, `gsc.op
 `reviews.reply`, `business.post.create`, `calendar.availability.get`, `calendar.event.create`, `email.messages.list`,
 `email.message.get`, `email.attachment.read` (text) / `email.attachment.save` (original file), `email.message.send`, `sheets.read`, `sheets.append`, `drive.files.search`,
 `drive.file.read`, `docs.create`, `docs.structure`, `docs.edit`, `slides.create`, `slides.update`, `forms.create`, `forms.responses.list`, `drive.comments.list`, `gsc.sitemaps.list`, `analytics.realtime.get`, `business.performance.get`, `business.location.get`, `slack.messages.list`, `slack.message.send`, `social.post.create`, `social.posts.list`,
-`social.post.analytics`, `social.analytics.get`, `social.followers.get`, `media.upload`, `social.comments.list`,
+`social.post.analytics`, `social.analytics.get`, `social.followers.get`, `social.audience.analyze` / `x.followers.analyze` (who follows or comments, sorted into groups), `media.upload`, `social.comments.list`,
 `social.comments.reply`, `social.comments.delete`, `facebook.search`, `reddit.search`, `reddit.post.get`, `reddit.posts.list`,
 `reddit.subreddit.get`, `reddit.subreddits.search`, `reddit.subreddit.flairs.list`, `reddit.user.get`, `payments.request.create`, `stripe.customers.list`,
 `stripe.refund.create`, `paypal.invoices.list`, `finance.report`, `finance.entries.import`, `finance.entry.create`, `finance.payments.sync`, `n8n.workflows.list`, `n8n.workflow.run`, `mcp.tools.list`, `mcp.<server>.<tool>`,
