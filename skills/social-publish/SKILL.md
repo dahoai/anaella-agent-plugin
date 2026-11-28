@@ -17,6 +17,10 @@ Read the `anaella` skill first. Posts are **public**.
    claims, prices or dates. For images, use `media.stock.search` + `media.stock.import`, or
    `media.image.generate` (paid, $0.01 to $0.13 per image) if the user wants a generated one,
    or `media.video.generate` for a short AI clip (paid, per second; see `content-to-video`).
+   **Alt text.** For every image you post, write alt text: what it shows, in one or two plain
+   sentences, no "image of". Pass it with the image (`media.upload` url as `{ url, altText }`, or
+   `media.update` on a library image) before `social.post.create`. Facebook, Instagram and Bluesky
+   send it; skip it on videos.
    **AI label.** When the video or photos for YouTube or TikTok were made or realistically
    changed by AI (a generated clip, a talking head, AI voice-over on real footage), set
    `settings.<id>.youtube.aiGenerated` / `settings.<id>.tiktok.aiGenerated` to `true` and say so
