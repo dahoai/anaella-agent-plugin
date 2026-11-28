@@ -17,6 +17,11 @@ Read the `anaella` skill first. Posts are **public**.
    claims, prices or dates. For images, use `media.stock.search` + `media.stock.import`, or
    `media.image.generate` (paid, $0.01 to $0.13 per image) if the user wants a generated one,
    or `media.video.generate` for a short AI clip (paid, per second; see `content-to-video`).
+   **AI label.** When the video or photos for YouTube or TikTok were made or realistically
+   changed by AI (a generated clip, a talking head, AI voice-over on real footage), set
+   `settings.<id>.youtube.aiGenerated` / `settings.<id>.tiktok.aiGenerated` to `true` and say so
+   in the approval. Both networks require that disclosure. A TikTok draft can't carry the label;
+   tell the user to switch it on in the TikTok app.
    Write like a person, not a brand, above all on X and Bluesky:
    - One thought per post. Lead with the point; no warm-up line.
    - Plain words, short sentences, as if typed on a phone. Lowercase and fragments are fine
