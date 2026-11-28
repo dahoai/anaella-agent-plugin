@@ -19,8 +19,8 @@ Read the `anaella` skill first. Posts are **public**.
    or `media.video.generate` for a short AI clip (paid, per second; see `content-to-video`).
    **Alt text.** For every image you post, write alt text: what it shows, in one or two plain
    sentences, no "image of". Pass it with the image (`media.upload` url as `{ url, altText }`, or
-   `media.update` on a library image) before `social.post.create`. Facebook, Instagram, Threads,
-   Bluesky, Mastodon, X and single-image Pinterest pins send it; on X each image with alt text costs
+   `media.update` on a library image) before `social.post.create`. Facebook, Instagram, LinkedIn,
+   Threads, Bluesky, Mastodon, X and single-image Pinterest pins send it; on X each image with alt text costs
    one more X call. Skip it on videos.
    **AI label.** When the video or photos for YouTube or TikTok were made or realistically
    changed by AI (a generated clip, a talking head, AI voice-over on real footage), set
